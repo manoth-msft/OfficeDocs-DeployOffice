@@ -25,7 +25,7 @@ As an admin, you might have to deploy Microsoft 365 Apps (previously named Offic
 
 This article shows you how to build dynamic, lean, and universal packages for Microsoft 365 Apps. This method can greatly reduce long-term maintenance costs and effort in managed environments.
  
-## The challenge
+## The challenge!
 When you plan your upgrade to Microsoft 365 Apps, the actual upgrade from a legacy version to the always-current Microsoft 365 Apps is front and center (1st install scenario). But looking beyond the initial deployment, there are other scenarios you’ll need to cover as an admin (2nd install). Sometimes, after you upgrade your users, they might need any of the following components:
  
 - Additional language packs
