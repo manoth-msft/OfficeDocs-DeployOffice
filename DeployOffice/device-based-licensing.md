@@ -23,8 +23,8 @@ Starting in Summer 2020, commercial customers can use *Microsoft 365 Apps for en
 
 The following are the requirements for device-based licensing for Microsoft 365 Apps for enterprise:
 
-- Version 1907 or later of Microsoft 365 Apps for enterprise
-- Version 1803 or later of Windows 10. Device-based licensing can be used with the Long Term Servicing Channel (LTSC) as well, but it must be version 1803 or later.
+- Version 1907 or later of Microsoft 365 Apps for enterprise.
+- A supported version of Windows 10 Semi-Annual Channel, but at least Version 1803.
 - The Windows 10 device must be [Azure Active Directory (Azure AD) joined](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-ad-join) or [hybrid Azure AD joined](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-ad-join-hybrid).
 
 To verify that Microsoft 365 Apps for enterprise and the Windows 10 device meet these requirements, do the following:
@@ -38,7 +38,7 @@ To verify that Microsoft 365 Apps for enterprise and the Windows 10 device meet 
 ## Steps to configure device-based licensing for Microsoft 365 Apps for enterprise
 
 After you have verified that your Windows 10 devices and Microsoft 365 Apps for enterprise installations meet the specified requirements, you need to do the following:
-- Add the Windows 10 devices to a group that's available in Azure AD and assign the appropriate licenses to that group.
+- Add the Windows 10 devices to a group that's available in Azure AD and assign the appropriate licenses to that group. The license assignment is done in the M365 Admin Portal > Billing > Licenses. 
 - Configure Microsoft 365 Apps for enterprise to use device-based licensing instead of user-based licensing.
 
 > [!IMPORTANT]
@@ -46,12 +46,12 @@ After you have verified that your Windows 10 devices and Microsoft 365 Apps for 
 
 ### Add Windows 10 devices to a group in Azure AD and assign that group licenses
 
-To configure device-based licensing, you first need to add your Windows 10 devices to a group that's available in Azure AD. The following table provides information about the types of groups that are supported and where you can create those groups.
+To configure device-based licensing, you first need to add your Windows 10 devices to a group that's available in Azure AD. The following table provides information about the types of groups that are supported and where you can create those groups.The license assignment is done in the M365 Admin Portal > Billing > Licenses. 
 
 
-|**Group type**  |**Create using these tools**  |
+| Group type | Create using these tools |
 |---------|---------|
-|Security, with assigned or static membership| Azure AD portal <br/> <br/>On-premises Active Directory and sync to Azure AD with Azure AD Connect        |
+|Security, with assigned or static membership. The security group should not be mail-enabled. | Azure AD portal <br/> <br/>On-premises Active Directory and sync to Azure AD with Azure AD Connect        |
 |Security, with dynamic device membership |Azure AD portal |
 |Distribution list| On-premises Active Directory and sync to Azure AD with Azure AD Connect <br/><br/>On-premises Exchange Server and sync to Azure AD with Azure AD Connect<br/><br/> Microsoft 365 admin center      |
 |Office 365 | Not supported   (type of group in Azure AD |
@@ -109,14 +109,18 @@ If the device hasn't been properly configured for device-based licensing, when a
 
 In those cases, the user will also see a banner beneath the ribbon in the document with the following message:
 
-&nbsp; &nbsp; **LICENSE REQUIRED** Your admin needs to assign an Office license to this device so you can edit your files.
+> **LICENSE REQUIRED** Your admin needs to assign an Office license to this device so you can edit your files.
 
 To troubleshoot this issue, make sure the device is correctly joined to Azure AD and that the device is added to the group that has been assigned the licenses. Also, there can be a delay of approximately one hour after you add the device to the group, so that might be causing this message to appear. Close the app and open the app again later.
 
 In other cases, the user might see this message:
 
-&nbsp; &nbsp; **CAN'T VERIFY LICENSE** We're having trouble verifying the Office license for this device.
+> **CAN'T VERIFY LICENSE** We're having trouble verifying the Office license for this device.
 
 In this case, the device is having problems contacting the Office Licensing Service on the internet. Office tries to contact the Office Licensing Service to ensure the device is properly licensed and to automatically renew a license that is about to expire. A device-based license is set to expire in about 3 to 4 months, so the device doesn't have to access to internet constantly. The **CAN'T VERIFY LICENSE** message usually appears about 10 days before the license is about to expire.
 
-Make sure the device has access to the internet or that your firewall isn't preventing access to the Office licensing service. For more information about firewall settings, see [Office 365 URLs and IP address ranges](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges).  
+## Transition from subscription licensing or shared computer activation to device-based licensing 
+
+If Microsoft 365 Apps  are already installed and activated with user-based subscription licensing or shared computer activation, you will need to reset the license state on the device before it will transition over to device-based licensing. To reset the activation state, see [Reset Microsoft 365 Apps for enterprise activation state](https://docs.microsoft.com/office/troubleshoot/activation/reset-office-365-proplus-activation-state).
+
+Make sure the device has access to the internet or that your firewall isn't preventing access to the Office licensing service. For more information about firewall settings, see [Office 365 URLs and IP address ranges](https://docs.microsoft.com/microsoft-365/enterprise/urls-and-ip-address-ranges).  

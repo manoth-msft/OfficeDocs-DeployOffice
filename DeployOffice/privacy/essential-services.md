@@ -17,21 +17,14 @@ hideEdit: true
 
 # Essential services for Office
 
-> [!IMPORTANT]
-> The information in this article applies to Version 1904 or later of the following Office client software installed on a computer running Windows:
-> - Microsoft 365 Apps for enterprise (previously named Office 365 ProPlus)
-> - Microsoft 365 Apps for business (previously named Office 365 Business)
-> - Microsoft 365 Personal, Microsoft 365 Family, or other versions of Office that are part of a Microsoft 365 subscription.
-> - Project and Visio desktop apps that come with some subscription plans, such as Project Plan 5 or Visio Plan 2.
->
-> The information also applies to Version 16.28 or later of the following Office for Mac applications: Excel, Outlook, OneNote, PowerPoint, and Word.
+> [!NOTE]
+> For a list of Office products covered by this privacy information, see [Privacy controls available for Office products](products-versions-privacy-controls.md).
 
-Office consists of client software applications and connected experiences designed to enable you to create, communicate, and collaborate more effectively. While you can control many of the connected experiences that are available to you, or to your users if you're the admin in your organization, there are a set of services that are essential to how Office functions and therefore cannot be disabled. For example, the licensing service that confirms that you are properly licensed to use Office. Required service data about these services is collected and sent to Microsoft, regardless of any other privacy-related policy settings that you have configured. You can see this data by using the Diagnostic Data Viewer.
+Office consists of client software applications and connected experiences designed to enable you to create, communicate, and collaborate more effectively. While you can control many of the connected experiences that are available to you, or to your users if you're the admin in your organization, there are a set of services that are essential to how Office functions and therefore cannot be disabled. For example, the licensing service that confirms that you are properly licensed to use Office. Required service data about these services is collected and sent to Microsoft, regardless of any other privacy-related policy settings that you have configured.
 
 For more information, see the following:
 
 - [Required service data for Office](required-service-data.md)
-- [Using the Diagnostic Data Viewer with Office](https://support.office.com/article/cf761ce9-d805-4c60-a339-4e07f3182855)
 - [Connected experiences in Office](connected-experiences.md)
 
 If you're the admin for your organization, you might also be interested in the following:
@@ -41,6 +34,7 @@ If you're the admin for your organization, you might also be interested in the f
 - [Use preferences to manage privacy controls for Office for Mac](mac-privacy-preferences.md)
 - [Use preferences to manage privacy controls for Office on iOS devices](ios-privacy-preferences.md)
 - [Use policy settings to manage privacy controls for Office on Android devices](android-privacy-controls.md)
+- [Use policy settings to manage privacy controls for Office for the web applications](office-web-privacy-controls.md)
 
 ## List of essential services for Office 
 
@@ -53,9 +47,9 @@ The following table provides a list of the essential services for Office and a d
 | [Enhanced Configuration Service (ECS)](#enhanced-configuration-service-ecs-events) | ECS provides Microsoft the ability to reconfigure Office installations without the need for you to redeploy Office. It is used to control the gradual rollout of features or updates, while the impact of the rollout is monitored from diagnostic data being collected. It is also used to mitigate security or performance issues with a feature or update. In addition, ECS supports configuration changes related to diagnostic data to help ensure that the appropriate events are being collected. |
 | [Licensing](#licensing-events)     | Licensing is a cloud-based service that supports your Office activation for new installations and maintains the license on your devices after Office has been activated. It registers each of your devices and activates Office, checks the status of your Office subscription, and manages your product keys.    |
 |[Microsoft AutoUpdate (MAU)](#microsoft-autoupdate-mau-events)|Microsoft AutoUpdate (MAU) is the technology used to update Microsoft applications produced for macOS, such as Office. MAU will detect the need for, perform the download of, and install application updates, including security updates.|
-|[OneNote sync](#onenote-sync-events)|OneNote for Mac only supports notebooks stored on the internet in OneDrive or SharePoint Online. OneNote for Mac continually syncs all of the user's notes with OneDrive or SharePoint Online. This lets users open, view, and edit their notebooks on all their devices so their notebooks are always up-to-date.
+|[OneNote sync](#onenote-sync-events)|OneNote for Mac only supports notebooks stored on the internet in OneDrive or SharePoint Online. OneNote for Mac continually syncs all of the user's notes with OneDrive or SharePoint Online. This lets users open, view, and edit their notebooks on all their devices so their notebooks are always up to date.
  [Services Configuration](#services-configuration-events)  | Services Configuration provides the ability to make updates to Office configuration settings to enable or disable client features. It is called every time an Office application is started and provides details about other Office configurations and services. Services Configuration also controls which services are designated as essential services.  |
-| [Telemetry ](#telemetry-events)  | The Telemetry service is used to collect diagnostic data from Office applications. It enables the collection of the diagnostic data generated by Office, both required and optional diagnostic data. It is also responsible for the collection of the service diagnostic data portion of required service data for Office.  |
+| [Telemetry ](#telemetry-events)  | The Telemetry service is used to collect diagnostic data from Office applications. It enables the collection of the diagnostic data generated by Office, both required and optional diagnostic data. It is also responsible for the collection of some required service data for Office.  |
 
 ## Events and data fields for essential services for Office
 
@@ -65,9 +59,6 @@ The next sections provide the following information:
 - A description of each event
 - A list of data fields in each event
 - A description of each data field
-
-You can see these events by using the Diagnostic Data Viewer.
-
 
 
 ## Authentication events
@@ -89,7 +80,7 @@ The following fields are collected:
 
 Collected when Office shows the user a Forms-Based-Auth sign-in prompt.
 
-Along with silent token acquisitions, authentication prompts is used to determine if user is in a broken authentication state which, for the user, results in what is essentially an Offline Client state, or in the worst case, broken authentication may prevent license acquisition and result in a completely unusable client.
+Along with silent token acquisitions, authentication prompts are used to determine if user is in a broken authentication state which, for the user, results in what is essentially an Offline Client state, or in the worst case, broken authentication may prevent license acquisition and result in a completely unusable client.
 
 Forms-Based-Auth (FBA) sign-in prompts are used for some on-premises authentication scenarios and typically we want to make sure this isn't happening, as everyone should be using Modern-Auth because of security vulnerabilities associated with FBA.
 
@@ -145,7 +136,7 @@ The following fields are collected:
 
 Collected when Office shows the user a Windows SSPI sign-in prompt. Along with silent token acquisitions, authentication prompts determine whether a user is in a broken authentication state, which results in an Offline Client state. Broken authentication may prevent license acquisition and result in a completely unusable client.
 
-Windows SSPI prompts are used for authenticating with Exchange (for mail synchronizing) when the user's Exchange resource hasn't been setup for multi-factor authentication.
+Windows SSPI prompts are used for authenticating with Exchange (for mail synchronizing) when the user's Exchange resource hasn't been set up for multi-factor authentication.
 
 These events, along with the Office.MATS namespace events, are used for the following purposes:
 
@@ -297,6 +288,12 @@ The following fields are collected:
 
   - **Duration** - How long the authentication took
 
+  - **Duration_Max** - If this signal is aggregated, the maximum duration of any aggregated event.
+
+  - **Duration_Min** - If this signal is aggregated, the minimum duration of any aggregated event.
+
+  - **Duration_Sum** - If this signal is aggregated, the sum of the durations of all the aggregated events.
+
   - **Endtime** - When the authentication event ended
 
   - **Error** - Error code if the authentication failed
@@ -411,11 +408,19 @@ The following fields are collected:
 
   - **Microsoft\_ADAL\_user\_cancel** - True / false if the user interface window was canceled.
 
+  - **Microsoft_ADAL_was_request_throttled** – True / false indicating if this event was throttled by ADAL due to too many requests.
+ 
   - **Microsoft\_ADAL\_x\_ms\_request\_id** – Additional request ID provided in HTTP header to service by ADAL.
 
   - **Platform** - Win32/WinRT/Android/iOS/Mac
 
+  - **Promptreasoncorrelationid** – For prompts, this is the correlation id of another event which explains why the user might be seeing an authentication prompt.
+
+  - **Resource** – The resource that the user is requesting a token for, such as Exchange or SharePoint.
+
   - **Scenarioid** – GUID. Multiple events may belong to a single scenario, e.g. the scenario may be adding a new account but there are multiple prompts that occur as part of that scenario. This ID enables correlation to happen.
+
+  - **Scenarioname** – The name of the scenario which this authentication event belongs to.
 
   - **Sessionid** - GUID identifying the boot session
 
@@ -430,6 +435,463 @@ The following fields are collected:
   - **Wamapi** - Identifies which WAM API is called
 
   - **Wamtelemetrybatch** - Currently unused. In the future, allows the WAM component to dispatch additional information regarding the authentication event.
+
+
+### Office.MATS.OneAuth.ActionMicrosoftOfficeWin32
+
+Microsoft Auth Telemetry System (MATS) is collected when Office attempts to acquire an authentication token, either silently or through prompting. When acquisition attempts fail, error information is included. These events help our users avoid entering broken authentication states by:
+
+1) Identifying whether clients can successfully obtain an authentication token from the service, or have entered a broken authentication state.
+
+2) Evaluate when changes occur on the client or services, whether they result in critical regressions in the user's authentication experience and reliability
+
+3) When failures occur, these signals emit important failure codes from the responsible component (Office client code, authentication libraries, or authority services) which can be used for triage, diagnosis and mitigation
+
+4) These signals power various ship readiness and health monitors which fire alerts so our engineers can engage quickly and reduce the time to mitigation of critical failures.
+
+The following fields are collected:
+
+- **Accounttype** - Type of the account used for this authentication event, for example, consumer or organizational.
+
+- **Actionname** - Friendly name for this event, if one was provided.
+
+- **Actiontype** - Specifies the type of authentication library in use.
+
+- **Appaudience** - Is the app build for internal or external use
+
+- **Appforcedprompt** - Did the app override cache and force a prompt to be shown
+
+- **Appname** - Name of the application doing authentication
+
+- **Appver** - Version of the application doing authentication
+
+- **Askedforcreds** - Did the application ask the user to enter credentials for this action
+
+- **Authoutcome** - Did the authentication attempt succeed, fail, or was canceled
+
+- **Blockingprompt** -  Did the application throw a prompt requiring user interaction
+
+- **Correlationid** - Identifier used to join information regarding this individual event with services data
+
+- **Count** - The total number of aggregated actions reported in this one data event.
+
+- **Devicenetworkstate** - Is the device connected to the internet.
+
+- **Deviceprofiletelemetryid** - Anonymous device ID used to measure device-wide authentication experience and reliability.
+
+- **Duration** - How long the authentication took
+
+- **duration_max** - Max duration of any one of the aggregated events
+
+- **duration_min** - Min duration of any one of the aggregated events
+
+- **duration_sum** - Sum of the duration of all the aggregated events
+
+- **endtime** - When the authentication event ended
+
+- **error** - Error code if the authentication failed
+
+- **errordescription** - Brief description of the error
+
+- **errorsource** - Did the error come from service, authentication library, or application
+
+- **eventtype** - Is this event reporting an authentication datapoint, or a data quality error event. Used to measure data quality.
+
+- **from_cache** - Boolean representing whether the record is from the WAM core cache, or the plugin
+
+- **hasadaltelemetry** - Indicates whether the Azure Active Directory Authentication Library (ADAL) provided telemetry for this event.
+
+- **Identityservice** - Was Microsoft Service Account (MSA) or Azure Active Directory (AAD) service invoked
+
+- **Interactiveauthcontainer** - What type of prompt was shown
+
+- **Issilent** - Was a prompt shown or was this a silent (background) authentication event.
+
+- **Microsoft_ADAL_adal_version** - Version of the Azure Active Directory Authentication Library (ADAL)
+
+- **Microsoft_ADAL_api_error_code** - Error code emitted by authentication library for this authentication attempt
+
+- **Microsoft_ADAL_api_id** - API invoked for this authentication attempt
+
+- **Microsoft_ADAL_application_name** - The name of the application / process using ADAL.
+
+- **Microsoft_ADAL_application_version** - The version of the application using ADAL.
+
+- **Microsoft_ADAL_authority** - Azure Active Directory authority URL responsible for authenticating the user
+
+- **Microsoft_ADAL_authority_type** - Consumer / Microsoft Service Agreement (MSA) vs organizational / Azure Active Directory (AAD); currently always AAD
+
+- **Microsoft_ADAL_authority_validation_status** - Tells whether authentication completed on the service-side
+
+- **Microsoft_ADAL_broker_app** - Tells whether ADAL used a broker for authentication
+
+- **Microsoft_ADAL_broker_app_used** - Tells the name of the broker (e.g., Windows Account Management)
+
+- **Microsoft_ADAL_broker_version** - Tells the version of the broker if used
+
+- **Microsoft_ADAL_cache_event_count** - Number of cache events ADAL performed while retrieving token
+
+- **Microsoft_ADAL_cache_event_count_max** - If this signal is aggregated, max cache events of any one of the aggregated events
+
+- **Microsoft_ADAL_cache_event_count_min** - If this signal is aggregated, min cache events of any one of the aggregated events
+
+- **Microsoft_ADAL_cache_event_count_sum** - If this signal is aggregated, sum of the cache events of all the aggregated events
+
+- **Microsoft_ADAL_cache_read_count** - How many times the API read from the disk cache. Present if there was at least one read
+
+- **Microsoft_ADAL_cache_read_error_count** - How many times the disk cache read failed. Is present if there was at least one failure
+
+- **Microsoft_ADAL_cache_read_last_error** - ADAL error code. Present if there was at least one read failure
+
+- **Microsoft_ADAL_cache_read_last_system_error** - System error code.  Is present if there was at least one read failure
+
+- **Microsoft_ADAL_cache_write_count** - How many times the API wrote to the disk cache. Present if there was at least one write
+
+- **Microsoft_ADAL_cache_write_error_count** - How many times the disk cache-write failed. Present if there was at least one failure
+
+- **Microsoft_ADAL_cache_write_last_error** - ADAL error code. Present if there was at least one write failure
+
+- **Microsoft_ADAL_cache_write_last_system_error** - System error code. Present if there was at least one write failure
+
+- **Microsoft_ADAL_client_id** - Hashed Azure Active Directory app ID
+
+- **Microsoft_ADAL_device_id** - ADAL-generated local device id.
+
+- **Microsoft_ADAL_error_domain** - The domain/component which generated the error code.
+
+- **Microsoft_ADAL_error_protocol_code** - OAuth protocol error code returned by the service, recorded by ADAL.
+
+- **Microsoft_ADAL_extended_expires_on_setting** - True/false telling if the token has an extended lifetime
+
+- **Microsoft_ADAL_http_event_count** - Number of HTTP requests generated by ADAL.
+
+- **Microsoft_ADAL_idp** - The Identity Provider (idp) used by ADAL.
+
+- **Microsoft_ADAL_network_event_count** - Count of network calls made by ADAL
+
+- **Microsoft_ADAL_http_event_count_max** - If this signal is aggregated, max of http calls made by ADAL
+
+- **Microsoft_ADAL_http_event_count_min** - If this signal is aggregated, min of http calls made by ADAL
+
+- **Microsoft_ADAL_http_event_count_sum** - If this signal is aggregated, sum of http calls made by ADAL
+
+- **Microsoft_ADAL_network_event_count_max** - If this signal is aggregated, max network calls made by ADAL of any aggregated event
+
+- **Microsoft_ADAL_network_event_count_min** - If this signal is aggregated, min network calls made by ADAL of any aggregated event
+
+- **Microsoft_ADAL_network_event_count_sum** - If this signal is aggregated, sum of the network calls made by ADAL of all the aggregated events
+
+- **Microsoft_ADAL_is_silent_ui** - True/false telling if UI was shown (prompt) by ADAL
+
+- **Microsoft_ADAL_is_successfull** - True/false telling if ADAL API succeeded (MacOS)
+
+- **Microsoft_ADAL_is_successful** - True/false telling if ADAL API succeeded
+
+- **Microsoft_ADAL_logging_pii_enabled** - True/false telling if ADAL full logging mode is enabled. This data is only logged locally, not emitted in telemetry
+
+- **Microsoft_ADAL_ntlm** - True/false telling if ADAL used basic auth (NTLM).
+
+- **Microsoft_ADAL_oauth_error_code** - OAuth protocol error code returned by the service
+
+- **Microsoft_ADAL_prompt_behavior** - log-in or none network parameter passed to service to specify if user interface can be shown
+
+- **Microsoft_ADAL_request_id** - Transactional GUID for the request emitted by ADAL to the service
+
+- **Microsoft_ADAL_response_code** - network response code from the service
+
+- **Microsoft_ADAL_response_time** - How long it took service to return to ADAL
+
+- **Microsoft_ADAL_response_time_max** - If the signal is aggregated, the max time it took ADAL to return from its API among any of the aggregated events
+
+- **Microsoft_ADAL_response_time_min** - If the signal is aggregated, the min time it took the service to respond to ADAL among any of the aggregated events
+
+- **Microsoft_ADAL_response_time_sum** - If the signal is aggregated, the sum of the time it took ADAL to return from its API among all aggregated events
+
+- **Microsoft_ADAL_rt_age** - Age of the refresh token
+
+- **Microsoft_ADAL_server_error_code** - Error code returned by the server
+
+- **Microsoft_ADAL_server_sub_error_code** - Sub error code returned by the server to help disambiguate why the request failed
+
+- **Microsoft_ADAL_spe_info** - True/false telling if the user was using the Secure Production Enterprise inner ring (Microsoft employees only)
+
+- **Microsoft_ADAL_spe_ring** - True/false telling if the user was using the Secure Production Enterprise inner ring (Microsoft employees only)
+
+- **Microsoft_ADAL_start_time** - Time the ADAL API call was made
+
+- **Microsoft_ADAL_status** - Success/Failure status on the overall ADAL invocation
+
+- **Microsoft_ADAL_stop_time** - Time the ADAL API call returned
+
+- **Microsoft_ADAL_telemetry_pii_enabled** - True/false telling if ADAL full telemetry mode is enabled. The name is a misnomer, as no PII/EUII is emitted
+
+- **Microsoft_ADAL_tenant_id** - GUID identifying the tenant that the authenticated user belongs to
+
+- **Microsoft_ADAL_token_acquisition_from_context** - Describes the ADAL behavior based on the tokens in the authentication context
+
+- **Microsoft_ADAL_token_frt_status** - Status of the refresh token: whether it was tried, not needed, not found, or deleted.
+
+- **Microsoft_ADAL_token_mrrt_status** - Status of the MultiResourceRefreshToken: whether it was tried, not needed, not found, or deleted.
+
+- **Microsoft_ADAL_token_rt_status** - Status of the refresh token: whether it was tried, not needed, not found, or deleted.
+
+- **Microsoft_ADAL_token_type** - Either refresh token (RT) or multi-resource refresh token (MRRT)
+
+- **Microsoft_ADAL_ui_event_count** - Count of prompts shown to the user. May have been silent
+
+- **Microsoft_ADAL_user_cancel** - True / false if the user interface window was canceled
+
+- **Microsoft_ADAL_x_ms_request_id** - Additional request ID provided in network header to service by ADAL
+
+- **Microsoft_ADAL_x_client_cpu** - Information regarding the CPU Architecture of the device
+
+- **Microsoft_ADAL_x_client_os** - The device OS Version.
+
+- **Microsoft_ADAL_x_client_sku** - The name of the device OS SKU.
+
+- **Microsoft_ADAL_x_client_ver** - The version of the ADAL library.
+
+- **MSAL_all_error_tags** - All error tags the Microsoft Authentication Library (MSAL) encountered during the authentication flow.
+
+- **MSAL_api_error_code** - If MSAL encounters an error bubbled up from the OS, platform error codes are stored here.
+
+- **MSAL_api_error_context** - String containing additional human readable details about the last error MSAL encountered. 
+
+- **MSAL_api_error_tag** - Unique string for the place in code where this error occurred.
+
+- **MSAL_api_name** - Name of the MSAL top level API called to start this authentication flow.
+
+- **MSAL_api_status_code** - Status code MSAL returned for this authentication flow result.
+
+- **MSAL_auth_flow** - Steps MSAL attempted during this authentication flow (AT, PRT, LRT, FRT, ART, IRT). Separated by the pipe "|" symbol for easy parsing.
+
+- **MSAL_auth_flow_last_error** - Error code we received from the server on the 2nd to last item in AuthFlow. (Ex: if AuthFlow = "PRT|LRT", PRT's error would be in AuthFlowLastError).
+
+- **MSAL_authority_type** - Was this request for a user in: AAD, Federated, or MSA.
+
+- **MSAL_broker_app_used** - Was a broker app used in this auth flow.
+
+- **MSAL_client_id** - Client ID of the calling application
+
+- **MSAL_correlation_id** - Unique GUID for this event, used to join actions across client, server, and app logs.
+
+- **MSAL_delete_token** - List of tokens that were deleted from cache during this authentication flow.
+
+- **MSAL_http_call_count** - Number of HTTP calls MSAL made during the authentication flow.
+
+- **MSAL_is_successful** - Was the authentication flow successful.
+
+- **MSAL_last_http_response_code** - If MSAL made one or more HTTP call(s), this is the last HTTP response code we received.
+
+- **MSAL_msal_version** - MSAL's version string, format X.X.X+("OneAuth", "local", or a commit hash).
+
+- **MSAL_read_token** - Tokens that were read from cache (AT, ART, FRT, LRT, IRT, PRT, EAT [EAT = Expired AT was read, but discarded]).
+
+- **MSAL_read_token_last_error** - If MSAL encountered an error reading from cache, we'll store info here. (Ex: Disk read error bubbled from OS, Keychain error on MacOS).
+
+- **MSAL_request_duration** - How long the request took from when MSAL's top level API was called, until we returned a result.
+
+- **MSAL_request_id** - Request ID for the last call we made to Microsoft's secure token service.
+
+- **MSAL_server_error_code** - Microsoft specific secure token service numeric error code if we received one.
+
+- **MSAL_server_spe_ring** - Microsoft secure token service's Secure Production Enterprise ring info if we received it.
+
+- **MSAL_server_suberror_code** - Microsoft specific secure token service suberror code string if we received one.
+
+- **MSAL_start_time** - Time MSAL request was started at the top level public API.
+
+- **MSAL_stop_time** - Time MSAL finished processing the request and returned a result to the caller.
+
+- **MSAL_tenant_id** - Microsoft GUID identifying the tenant the user exists in.
+
+- **MSAL_ui_event_count** - Number of UI prompts MSAL displayed on screen.
+
+- **MSAL_wam_telemetry** - Contains a batch of WAM telemetry data in a JSON string that will be parsed and converted to the fields in this document that are sourced from WAM.
+
+- **MSAL_was_request_throttled** - True if MSAL throttled this request and prevented it from hitting network. If this is ever true, there is most likely a loop in the calling app.
+
+- **MSAL_write_token** - Tokens that were written to cache (AT, ART, FRT, LRT, IRT, PRT, EAT [EAT = Expired AT was read, but discarded]).
+
+- **MSAL_write_token_last_error** - If MSAL encountered an error writing to cache, we'll store info here. (Ex: Disk read error bubbled from OS, Keychain error on MacOS).
+
+- **oneauth_api** - OneAuth API invoked for this authentication attempt.
+
+- **oneauth_transactionuploadid** - GUID specifying an individual call to the OneAuth API.
+
+- **oneauth_version** - The version of the OneAuth SDK.
+
+- **Platform** - OS Platform (0: Windows Desktop, 1: Android, 2: iOS, 3: MacOS, 4: UWP)
+
+- **Promptreasoncorrelationid** - A correlation identifier that can be used to look up a previous authentication event, which is used to explain why the user was prompted to authenticate.
+
+- **Resource** - The resource for which a token is requested for.
+
+- **Scenarioid** - Multiple events may belong to a single scenario, e.g. the scenario may be adding a new account but there are multiple prompts that occur as part of that scenario. This identifier enables correlation of those related events.
+
+- **Scenarioname** - Name of the application scenario where authentication was required, e.g., first-boot, licensing check, etc.
+
+- **Scope** - The scope for which a token is requested for.
+
+- **Sdkver** - Version of Microsoft Auth Telemetry System library used to produce this data
+
+- **Sessionid** - Identifier for the boot session
+
+- **Starttime** - Time at which the authentication event began.
+
+- **Tenantid** - GUID identifying the tenant the authenticated user belongs to (in non-ADAL cases)
+
+- **Uploadid** - Unique GUID for this event, used for de-duping
+
+- **wamapi** - Identifies which Windows Web Account Management (WAM) API is called
+
+- **wamtelemetrybatch** - Currently unused. In the future, allows the WAM component to dispatch additional information regarding the authentication event
+
+- **WAM_account_join_on_end** - Account join state at the end of a WAM operation.  Possible values: “primary”, “secondary”, “not_joined”
+
+- **WAM_account_join_on_start** - Account join state at the start of a WAM operation.  Possible values: “primary”, “secondary”, “not_joined”
+
+- **WAM_api_error_code** - If an error response came from the AAD WAM plugin, this field will exist and will contain that error code
+
+- **WAM_authority** - String containing the authority url—this should be the login.windows.net endpoint used
+
+- **WAM_broker_version** - Present if WAM was used, this is the broker version string
+
+- **WAM_cache_event_count** - The number of WAM cache events within the operation
+
+- **WAM_client_id** - Identifier for joining with services data, this identifies the client application.
+
+- **WAM_correlation_id** - Identifier for joining events with services data
+
+- **WAM_device_join** - The device join state; possible values are “aadj”, “haadj”
+
+- **WAM_network_event_count** - Present if at least one network call happened; the number of network calls to the service for that WAM operation
+
+- **WAM_network_status** - Present if at least one network call happened, contains an HTTP error code if the network request failed.
+
+- **WAM_idp** - Specifies if the WAM consumer or organizational auth plugin was used.
+
+- **WAM_is_cached** - Specifies if the response provided by WAM was retrieved from cache.
+
+- **WAM_oauth_error_code** - Contains the error code returned by the service as part of the oauth protocol.
+
+- **WAM_prompt_behavior** - Specifies if this prompt is forced by the app, or, if this request might skip prompting if it can silently authenticate.
+
+- **WAM_provider_id** - Specifies the Microsoft endpoint for the authority in use for the auth scenario.
+
+- **WAM_redirect_uri** - The redirect URI registered for the application in Azure Active Directory.
+
+- **WAM_resource**	- The resource for which a token is requested for.
+
+- **WAM_server_error_code** - The error code returned by the service to WAM.
+
+- **WAM_server_sub_code** - An additional error code used to further break down the causes for failure, returned by the service.
+
+- **WAM_silent_code** - The error code encountered by the internal silent attempt WAM makes, prior to prompting the user.
+
+- **WAM_silent_mats** - Unused.
+
+- **WAM_silent_message** - The error message associated with the internal silent attempt WAM makes, prior to prompting the user.
+
+- **WAM_silent_status** - The success/fail status for the internal silent attempt WAM makes, prior to prompting the user.
+
+- **WAM_tenant_id** - An identifier for the tenant the authenticated AAD user belongs to, if returned by the service
+
+- **WAM_ui_visible** - Present if at least one UI window was shown to the user, either ‘true’ or ‘false’
+
+- **WAM_x_ms_clitelem** - Present if service returns header “x-ms-clitelem"
+
+
+### Office.MATS.OneAuth.TransactionMicrosoftOfficeWin32
+
+Microsoft Auth Telemetry System (MATS) is collected when Office attempts to acquire an authentication token, either silently or through prompting. This event is a parent of one or more ActionMicrosoftOffice events, allowing related events to be grouped together. These events help our users avoid entering broken authentication states by:
+
+1) Identifying whether clients can successfully obtain an authentication token from the service, or have entered a broken authentication state.
+
+2) Evaluate when changes occur on the client or services, whether they result in critical regressions in the user's authentication experience and reliability
+
+3) When failures occur, these signals emit important failure codes from the responsible component (Office client code, authentication libraries, or authority services) which can be used for triage, diagnosis and mitigation
+
+4) These signals power various ship readiness and health monitors which fire alerts so our engineers can engage quickly and reduce the time to mitigation of critical failures.
+
+The following fields are collected:
+
+- **Actiontype** - "oneauthtransaction" is the only value.
+
+- **Appaudience** - Application audience (Automation, Preproduction or Production)
+
+- **Appname** - App name
+
+- **Appver** - App version
+
+- **Authoutcome** - Did the authentication attempt succeed, fail, or was canceled
+
+- **Correlationid** - Identifier used to join information regarding this individual event with services 
+data
+
+- **Count** - Number of times the error occurred
+
+- **Devicenetworkstate** - Device network state
+
+- **Deviceprofiletelemetryid** - Device profile telemetry ID (string used by MATS to identify a 
+specific device)
+
+- **duration_max** - Minimum duration, in milliseconds, of the transactions aggregated on this signal.
+
+- **duration_min** - Maximum duration, in milliseconds, of the transactions aggregated on this signal.
+
+- **duration_sum** - Sum of durations, in milliseconds, of the transactions aggregated on this signal.
+
+- **Endtime** - Time at which the OneAuth transaction ended.
+
+- **Error** - OneAuth status code.
+
+- **Eventtype** - Event type
+
+- **Issilent** - False if UI was shown; true if it was a background event.
+
+- **oneauth_api** - Specifies the public API of OneAuth that was invoked.
+
+- **oneauth_Domain** - If the API call resulted in an error, this is the system domain of that error.
+
+- **oneauth_ErrorCode** - Error code representing the internal error state for OneAuth. Replaces the old oneauth_errortag field.
+
+- **oneauth_errortag** - Numerical identifier for a line of code that was responsible for generating an error.
+
+- **oneauth_ExecutionFlow** - A series of tags identifying the codepath this API invocation took.
+
+- **oneauth_internalerror** - Error code representing the internal error state for OneAuth.
+
+- **oneauth_ServerErrorCode** - The server error returned to OneAuth at the conclusion of this API call, if one was encountered.
+
+- **oneauth_SystemErrorCode** - The system error returned to OneAuth at the conclusion of this API call, if one was encountered.
+
+- **oneauth_Tag** - The OneAuth tag designating the final place in code reached at the conclusion of this API call.
+
+- **oneauth_transactionuploadid** - Specifies the randomly-generated internal GUID that maps to the specific invocation of a OneAuth API.
+
+- **oneauth_version** - The version of the OneAuth SDK.
+
+- **Platform** - OS Platform (0: Win32, 1: Android, 2: iOS, 3: MacOS, 4: WinRT
+
+- **Scenarioname** - Name of the scenario for which auth is necessary, specified by the calling application.
+
+- **Schemaver** - Schema Version
+
+- **Sdkver** - Version of the MATS sdk
+
+- **Sessionid** - Session ID
+
+- **severityError** - severity
+
+- **starttime** - Time at which the OneAuth transaction began.
+
+- **Timestamp** - Timestamp
+
+- **Type** - Error type
+
+- **Uploaded** - Unique identifier for this particular event, for de-duping purposes.
+
 
 ### OneNote.SignIn.SSOExternalAppsAccountFound
  
@@ -2714,13 +3176,22 @@ This event is logged when the call to the webservice made within the Click-to-Ru
 
 The following fields are collected:
 
+- **ActionDetail** -  Additional details for when a failure occurs.
+   - If the HTTP request succeeds, ActionDetail will be 0.
+   - If the Result field is not OK (i.e. not 0), which means that the request is not sent, this field will log the internal error code which is the same as the Result field.
+   - If the Result field is OK (i.e. 0), which means that the HTTP response code >= 300, it will log the HTTP response code (e.g. 404).
+
+- **Result** - Numeric error code flags returned by the Office webservice call APIs. – e.g. 3 would mean that there was a problem initializing the HTTP headers.
+
+- **Type** - Additional type information. In the case of the Inventory, this information specifies the type of payload being sent – e.g. full or just a delta of changes. 
+
 -  **WebCallSource** - An enumeration value (specified as an integer) indicating the Serviceability Manager add-on that was the source of the call:
    - Inventory: 0
    - Inventory Configuration: 1
    - Inventory Policy: 2
    - Inventory Network Status: 3
-
-- **Result** - Numeric error code flags returned by the Office webservice call APIs.
+   - Serviceability Manager: 4
+   - Manageability: 5
 
 ### Office.ServiceabilityManager.WebserviceFailure
 
@@ -2789,6 +3260,101 @@ The following fields are collected:
 
 ## Licensing events
 
+### Office.Android.DocsUI.PaywallControl.AutoRedeemPendingPurchaseResult
+
+Critical engineering telemetry to log the result of automatic attempt of trying to redeem pending purchases of a user. Product telemetry used for reconciliation of purchase transaction information with Microsoft’s commerce system to enable associated subscription benefits.
+
+The following fields are collected:
+
+- **EventDate** – Timestamp of the event occurrence 
+
+- **Result** – Int denoting the enum result of the operation. 
+
+- **SessionID** – GUID to connect events by session
+
+### Office.Android.DocsUI.PaywallControl.PaywallUIShown
+
+Critical Usage telemetry for when Paywall control is shown to the user. Used to understand the in app purchase experience for the user and optimize the same for future versions.
+
+The following fields are collected:
+
+- **EventDate** – Timestamp of the event occurrence 
+
+- **IsModeFRE** – Boolean to indicate experience type, Upsell dialog or SKU Chooser
+
+- **SessionID** – GUID to connect events by session
+
+### Office.Android.DocsUI.PaywallControl.PurchaseButtonClicked
+
+Critical Usage telemetry to know when user clicks on the Purchase Button. Used to infer the usage pattern and conversion metric for users who attempt to buy a subscription in the app.
+
+The following fields are collected:
+
+- **EventDate** – Timestamp of the event occurrence
+
+- **IsDefaultSku** – Boolean indicating if user is attempting to purchase the Sku that showed up first/default
+
+- **ProductID** – String identifying which subscription user is attempting to purchase as configured in the store
+
+- **SessionID** – GUID to connect events by session
+
+### Office.Android.DocsUI.PaywallControl.PurchaseResult
+
+Critical engineering telemetry to log the result of purchase attempt triggered manually by user. Product telemetry used for reconciliation of purchase transaction information with Microsoft’s commerce system to enable associated subscription benefits.
+
+The following fields are collected:
+
+- **EventDate** – Timestamp of the event occurrence 
+
+- **IsModeFre** – Boolean indicating if purchase was made from upsell FRE screen or Sku Chooser
+
+- **Result** – Int denoting the enum result of the operation.
+
+- **SessionID** – GUID to connect events by session
+
+
+### Office.Android.DocsUI.PaywallControl.SeeAllFeaturesAnalytics
+
+We collect this usage telemetry to see how much time the user spends on the “See more benefits” screen.  The data is used to understand usage of the “See more benefits” feature and further optimize the experience in future versions.
+
+The following fields are collected:
+
+- **Duration** - Long integer indicating time spent by user on “See All Features” screen in milliseconds
+
+- **EventDate** - Timestamp of the event occurrence 
+
+- **MostExplored** - Integer denoting the index of the most toggled item in a list of Microsoft 365 apps and their features
+
+- **SessionID** - Globally Unique Identifier (GUID) to connect events by session
+
+### Office.Android.DocsUI.PaywallControl.SkuChooserAnalytics
+
+Usage telemetry to see how much time user spends on SKU Chooser screen. Usage telemetry to see how much time user spends on Sku Chooser screen.
+
+The following fields are collected:
+
+- **Duration** – Long integer indicating time spent by user on Sku Chooser screen in milliseconds
+
+- **EventDate** – Timestamp of the event occurrence
+
+- **SessionID** – GUID to connect events by session
+
+
+### Office.iOS.Paywall.SKUChooser.BuyButtonTap
+
+Critical usage telemetry is collected to indicate when the user taps the Purchase/Buy Button.  The data is used to infer the usage pattern and conversion metric for users who attempt to buy a subscription in the app.
+
+The following fields are collected:
+
+- **entryPoint** - String – The Button/Flow from which Paywall was displayed. Like “Premium Upgrade Button” or “First Run Flow”.
+
+- **isDefaultSKU** - Bool – If the user is purchasing the product, we recommended for them, by displaying it by default.
+
+- **productId** - String – App-store product-id of the product for which the Buy Button was tapped
+
+- **toggleCount** - Int – Number of times the user switched between viewing various products, before they tapped the Buy Button, in the current session of Paywall.
+
+
 ### Office.Licensing.AcceptEulaForCurrentLicense 
 
 This is collected when the user gets licensed and accepts EULA for the current license
@@ -2805,7 +3371,7 @@ The following fields are collected:
 
 Post setting up the license on the machine, we attempt to activate the license by calling the AVS service. This reports the result of the activation call
 
-It is critical in detecting how many users are facing activation issues. We have anomaly detection to detect any regression. This is super critical as we have an external dependency on AVS and this signal points whether our external partners are healthy . It is also used for diagnostic purposes and system health if a user reports an issue with their machine
+It is critical in detecting how many users are facing activation issues. We have anomaly detection to detect any regression. This is super critical as we have an external dependency on AVS and this signal points whether our external partners are healthy. It is also used for diagnostic purposes and system health if a user reports an issue with their machine
 
 The following fields are collected:
 
@@ -2829,7 +3395,7 @@ The following fields are collected:
 
 ### Office.Licensing.ExpirationDialogShown
 
-This is collected when we show the expiration dialog to the user that says that their license has expired It is critical in detecting if the user is in a good state and not missing functionality, used for system health and used for diagnostic purposes if a user reports an issue with their machine
+This is collected when we show the expiration dialog to the user that says that their license has expired. It is critical in detecting if the user is in a good state and not missing functionality, used for system health and used for diagnostic purposes if a user reports an issue with their machine
 
 The following fields are collected:
 
@@ -2837,11 +3403,13 @@ The following fields are collected:
 
 ### Office.Licensing.FullValidation 
 
-This is collected on every session that reports the licensing state of the machine and reports the errors that the user is seeing due to which they are not able to use the application. This event indicates if the user's machine is healthy or not. We have anomaly detection set up for this event to indicate if a regression is causing bad user behavior. This is also critical when diagnosing user issues and for monitoring system health
+This is collected on every session that reports the licensing state of the machine and reports the errors that the user is seeing due to which they are not able to use the application. This event indicates if the user's machine is healthy or not. We have anomaly detection set up for this event to indicate if a regression or activation mechanism is causing bad user behavior. This is also critical when diagnosing user issues and for monitoring system health.
 
 The following fields are collected:
 
   - **Acid** – A GUID identifier representing the Office product that the user is licensed for 
+  
+  - **ActivationAttributes** - Type of activation mechanism that the user is using.
 
   - **IsSessionLicensing** – Whether we are currently running under shared computer activation mode or not 
 
@@ -2916,7 +3484,7 @@ The following fields are collected:
 
 ### Office.Licensing.InvokeLicenseWizard
 
-In case we see problems with the Activation workflow, we trigger a license wizard and send out this signal to indicate the same It is critical in detecting if the user is in a good state and not missing functionality, used for system health and used for diagnostic purposes if a user reports an issue with their machine
+In case we see problems with the Activation workflow, we trigger a license wizard and send out this signal to indicate the same. It is critical in detecting if the user is in a good state and not missing functionality, used for system health and used for diagnostic purposes if a user reports an issue with their machine
 
 The following fields are collected:
 
@@ -2948,7 +3516,7 @@ The following fields are collected:
 
 ### Office.Licensing.LoadIdentityTicket
 
-In the process of trying to license the device, the app tries load the user's identity in order to see if the user has Office entitlement or not. This event reports the success or failure of the same along with the error code It is critical in detecting if the user is in a good state and not missing functionality, used for system health and used for diagnostic purposes if a user reports an issue with their machine.
+In the process of trying to license the device, the app tries load the user's identity in order to see if the user has Office entitlement or not. This event reports the success or failure of the same along with the error code. It is critical in detecting if the user is in a good state and not missing functionality, used for system health and used for diagnostic purposes if a user reports an issue with their machine.
 
 The following fields are collected:
 
@@ -2964,7 +3532,7 @@ The following fields are collected:
 
   - **Acid** - A GUID identifier representing the Office product that the user is licensed for
 
-  - **OptInShown** – Indicates whether the opt in dialog shown on the first boot of the app has already been shown
+  - **OptInShown** – Indicates whether the opt-in dialog shown on the first boot of the app has already been shown
 
 ### Office.Licensing.NextUserLicensingEligible 
 
@@ -2974,7 +3542,7 @@ This event collects no fields.
 
 ### Office.Licensing.Nul.Fetcher.FetchModelFromOls
 
-When the device is on the modern licensing stack, we try to get a license file directly from the service. This event reports the success or failure along with the error code of that service call. It is critical to detect if the user is in a good state on the modern licensing stack, used for system health and used for diagnostic purposes if a user reports an issue with their machine .
+When the device is on the modern licensing stack, we try to get a license file directly from the service. This event reports the success or failure along with the error code of that service call. It is critical to detect if the user is in a good state on the modern licensing stack, used for system health and used for diagnostic purposes if a user reports an issue with their machine.
 
 The following fields are collected:
 
@@ -2984,7 +3552,7 @@ The following fields are collected:
 
 ### Office.Licensing.Nul.Validation.FullValidation 
 
-This is collected on every session of a device that is running on the modern licensing stack. It reports the licensing state of the machine and reports the errors that the user is seeing due to which they are not able to use the app This event indicates if the user's machine is healthy on the modern licensing stack. We have anomaly detection set up for this event to indicate if a regression is causing bad user behavior. This is also critical when diagnosing user issues and for monitoring system health.
+This is collected on every session of a device that is running on the modern licensing stack. It reports the licensing state of the machine and reports the errors that the user is seeing due to which they are not able to use the app. This event indicates if the user's machine is healthy on the modern licensing stack. We have anomaly detection set up for this event to indicate if a regression is causing bad user behavior. This is also critical when diagnosing user issues and for monitoring system health.
 
 The following fields are collected:
 
@@ -3060,7 +3628,7 @@ The following fields are collected:
 
 *[This event has been removed from current builds of Office, but might still appear in older builds.]*
 
-We have an experiment that gives the user an option to try and setup autopay for Office directly from an app without ever leaving the context of the app. This reports the success or failure of that experiment along with the error code It is critical in detecting if the user is in a good state and not missing functionality, used for system health and used for diagnostic purposes if a user reports an issue with their machine.
+We have an experiment that gives the user an option to try and set up autopay for Office directly from an app without ever leaving the context of the app. This reports the success or failure of that experiment along with the error code It is critical in detecting if the user is in a good state and not missing functionality, used for system health and used for diagnostic purposes if a user reports an issue with their machine.
 
 The following fields are collected:
 
@@ -3068,7 +3636,7 @@ The following fields are collected:
 
 ### Office.Licensing.SearchForSessionToken
 
-If the user is running under shared computer activation mode, we try to search for a session token on the machine which allows the user to use the app. This event reports the success or failure of the scenario along with the error code It is critical in detecting if the user is in a good state and not missing functionality, used for system health and used for diagnostic purposes if a user reports an issue with their machine.
+If the user is running under shared computer activation mode, we try to search for a session token on the machine which allows the user to use the app. This event reports the success or failure of the scenario along with the error code. It is critical in detecting if the user is in a good state and not missing functionality, used for system health and used for diagnostic purposes if a user reports an issue with their machine.
 
 The following fields are collected:
 
@@ -3132,11 +3700,13 @@ The following fields are collected:
 
 ### Office.Licensing.TelemetryFlow.SearchForBindingResult
 
-OEMs sell machines that come with Office (one-year subscriptions or perpetual).  These Office products are paid for when the customer purchases their machine. Machines that are setup with a specific regkey (OOBEMode: OEMTA) might have an Office binding associated with it.  When we boot Office on such machines, we perform service checks to see if an Office binding corresponding to the machine is found.
+OEMs sell machines that come with Office (one-year subscriptions or perpetual).  These Office products are paid for when the customer purchases their machine. Machines that are set up with a specific regkey (OOBEMode: OEMTA) might have an Office binding associated with it.  When we boot Office on such machines, we perform service checks to see if an Office binding corresponding to the machine is found.
 
 This telemetry activity tracks the success and failure points in searching for a binding so that we can ensure that machines that do have a binding can successfully fetch them, and that our services are healthy.  This activity does not track machines that turn out to not have any bindings associated with them after we check with our services.
 
 The following fields are collected:
+
+- **DexShouldRetry** - Signal that we’ve hit a retryable issue (no internet or servers are down)
 
 - **GenuineTicketFailure** - Tells us the failure HRESULT when trying to get the machine's Windows genuine ticket/product key (WPK).
 
@@ -3157,7 +3727,7 @@ The following fields are collected:
 
 - **Tag** - Tells us at which step we stopped searching for a binding. Possible tags:
   - 0x03113809    No internet/service error while validating pin
-   - 0x0311380a    Pin validation failure, sent with PinValidationFailure field
+  - 0x0311380a    Pin validation failure, sent with PinValidationFailure field
   - 0x0310410f    Success, sent with Success field
   - 0x0311380d    Retry-able errors (internet issues, unknown errors)
   - 0x0311380e    Non-retry-able errors (binding offer expired)
@@ -3172,13 +3742,27 @@ After successfully obtaining a valid Office pin bound to a machine pre-bundled w
 
 The following fields are collected:
 
-- **ActionCreateAccount** - User chose to create an account.
+- **ActionActivate** - Signal that user clicked the “Activate” button.
 
-- **ActionSignIn** - User chose to sign-in.
+- **ActionChangeAccount** -  Signal that user clicked the “Use a different account” hyperlink.
 
-- **DialogRedemption** - Showing the AFO redemption dialog.
+- **ActionCreateAccount** - Signal that user clicked the “Create account” button.
 
-- **DialogSignIn** - Showing the AFO sign-in dialog.
+- **ActionSignIn** - Signal that user clicked the “Sign in” button.
+
+- **CurrentView** - The type of dialog the user closed.
+
+- **DialogEULA** -  Signal that we showed the ‘Accept EULA’ dialog. 
+
+- **DialogRedemption** - Signal that we showed the AFO redemption dialog.
+
+- **DialogSignIn** - Signal that we showed the AFO sign-in dialog.
+
+- **EmptyRedemptionDefaults** - Signal that we failed to fetch default redemption information.
+ 
+- **GetRedemptionInfo** - Signal that we’re fetching demographic information for pin redemption.
+
+- **MalformedCountryCode** - Signal that the country code needed for pin redemption is malformed.
 
 - **OExDetails** - The error details we get back when identity's sign-in dialog was dismissed.
 
@@ -3194,6 +3778,14 @@ The following fields are collected:
     - 0x03113811    User closed the sign-in/redemption dialog
     - 0x03113812    User closed the accept EULA dialog
     - 0x03113808    User accepted the EULA
+    - 0x03113811	  User closed a dialog
+    - 0x2370e3a0	  User closed a dialog
+    - 0x2370e3c1	  Go to web for pin redemption
+    - 0x2370e3a1 	  Go to web for pin redemption
+    - 0x2370e3c0	  Dialog sequence looped caused by user going back and forth in the dialog flow
+    - 0x2370e3a3	  User clicked “Not now” hyperlink which skips the AFO offer for that session
+    - 0x2370e3a2	  User clicked on “Never show this to me” hyperlink which disables the AFO offer
+
 
 - **UseInAppRedemption** - Tells us if we're keeping users in-app for redemption or sending them to the web to redeem their fetched pin (pre-populated).
 
@@ -3225,7 +3817,7 @@ The following fields are collected:
 
 - **HasConnectivity** - Tells if the user has internet connectivity and in case there isn't the user might have to use a grace license for five days or may be in reduced functionality mode
 
-- **InAppTrialPurchase** - Tells if the flight is enabled for launching the Store Purchase SDK to capture PI and purchase a trial from within the application
+- **InAppTrialPurchase** - Tells if the flight is enabled for launching the Store Purchase SDK to capture PI and purchase a trial from within the application *[This field has been removed from current builds of Office, but might still appear in older builds.]*
 
 - **IsRS1OrGreater** - Tells if the OS Version is greater than RS1 or not since the Store Purchase SDK should be used only if the OS Version is greater that RS1
 
@@ -3233,15 +3825,15 @@ The following fields are collected:
 
 - **OEMSendToWebForTrial** - Tells if the flight is enabled to send users to the web to redeem a trial
 
-- **StoreErrorConditions** - Tells the various conditions under which the Store Purchase SDK could have failed
+- **StoreErrorConditions** - Tells the various conditions under which the Store Purchase SDK could have failed *[This field has been removed from current builds of Office, but might still appear in older builds.]*
 
-- **StoreErrorHResult** - Tells the error code returned from the Store Purchase SDK
+- **StoreErrorHResult** - Tells the error code returned from the Store Purchase SDK *[This field has been removed from current builds of Office, but might still appear in older builds.]*
 
-- **StorePurchaseStatusResult** - Tells the result of calling the Store Purchase SDK and if the user made a purchase or not which will help determine if the user should get licensed to use Office
+- **StorePurchaseStatusResult** - Tells the result of calling the Store Purchase SDK and if the user made a purchase or not which will help determine if the user should get licensed to use Office *[This field has been removed from current builds of Office, but might still appear in older builds.]*
 
 - **Tag** - Used for telling where in the code the event was sent from
 
-- **UserSignedInExplicitly** - Tells if the user signed in explicitly in which case, we would re-direct users to the web for the trial
+- **UserSignedInExplicitly** - Tells if the user signed in explicitly in which case, we would re-direct users to the web for the trial *[This field has been removed from current builds of Office, but might still appear in older builds.]*
 
 ### Office.Licensing.UseGraceKey
 
@@ -3263,7 +3855,45 @@ The following fields are collected:
 
 ## Microsoft AutoUpdate (MAU) events
 
-### appdelegate_launch
+### additionalappinfo.invalidpreference
+
+This event reports on invalid preference set to display more information with respect to End of Service for a product. We use this information to advise customers to set correct preferences in order to see additional information.
+ 
+The following fields are collected:
+
+- **App** – The application process sending the event
+
+- **AppInfo_Language** – The language the application is running under
+
+- **AppVersionLong** – The application version
+
+- **Channel** – The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, Wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **Reason** - Details on the invalid entry in preferences
+
+- **SessionId** - The identifier for the session
+
+### appdelegate.launch
 
 This event denotes that an attempt to launch the app occurred. We log its result (failure or success). We use this event to identify cases in which MAU fails to launch
 
@@ -3287,7 +3917,7 @@ The following fields are collected:
 
 - **DeviceInfo_OsBuild** - The version of the Operating System
 
- - **Event_ReceivedTime** - The time at which telemetry was received
+- **Event_ReceivedTime** - The time at which telemetry was received
 
 - **EventInfo_Name** - The name of the telemetry event being logged
 
@@ -3304,7 +3934,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### appdelegate_terminate
+### appdelegate.terminate
 
 This event denotes that a graceful Application Exit occurred. We use this event to distinguish Graceful Application Exits from ungraceful ones.
 
@@ -3345,7 +3975,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### appinstall_connecttoxpc
+### appinstall.connecttoxpc
 
 This event denotes that errors occurred connecting to MAU Helper (a component that performs application installation).  This event denotes a potential corruption of the MAU application. The device will not be able to install updates.
 
@@ -3385,8 +4015,87 @@ The following fields are collected:
 
 - **SessionId** - The identifier for the session
 
+### appinstall.logscanned
 
-### appregistry_info
+This event is used to determine if log file was successfully processed. We use this event to detect and address any issues arise during application installation. 
+ 
+The following fields are collected:
+
+- **App** – The application process sending the event
+
+- **AppInfo_Language** – The language the application is running under
+
+- **AppVersionLong** – The application version
+
+- **Channel** – The preference for audience
+
+- **Device_NetworkCountry** – The device country (based on IP address)
+
+- **DeviceID** – The device identifier
+
+- **DeviceInfo_Model** – The hardware model of the device
+
+- **DeviceInfo_NetworkType** – The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** – The version of the operating system
+
+- **Event_ReceivedTime** – The time at which telemetry was received
+
+- **EventInfo_Name** – The name of the telemetry event being logged
+
+- **EventInfo_Time** – The time at which the logged event took place 
+
+- **HowTocheck** – The preference for checking of updates
+
+- **Payload** – Reports on errors found during application install and/or scan completion status 
+
+- **PipelineInfo_ClientCountry** – The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** – The first three octets of the IP address
+
+- **SessionId** – The identifier for the session
+
+### appregistry.config
+
+This event reports on any errors encountered while loading application registry information. We use this report to advise IT Admins on the correct format of setting up client application registrations.
+ 
+The following fields are collected:
+
+- **App** – The application process sending the event
+
+- **AppInfo_Language** – The language the application is running under
+
+- **AppVersionLong** – The application version
+
+- **Channel** – The preference for audience
+
+- **Device_NetworkCountry** – The device country (based on IP address)
+
+- **DeviceID** – The device identifier
+
+- **DeviceInfo_Model** – The hardware model of the device
+
+- **DeviceInfo_NetworkType** – The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** – The version of the operating system
+
+- **Event_ReceivedTime** – The time at which telemetry was received
+
+- **EventInfo_Name** – The name of the telemetry event being logged
+
+- **EventInfo_Time** – The time at which the logged event took place 
+
+- **HowTocheck** – The preference for checking of updates
+
+- **Payload** – Contains information on the nature of error encountered with application registration.
+
+- **PipelineInfo_ClientCountry** – The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** – The first three octets of the IP address
+
+- **SessionId** – The identifier for the session
+
+### appregistry.info
 
 This event denotes that the application launched. We use this event to list the applications for which MAU can control updates, the number of copies available as well as their version and install location (default or other).
 
@@ -3427,7 +4136,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### appregistry_remove
+### appregistry.remove
 
 This event denotes that an attempt to remove an App from the list of applications Managed by MAU took place. We use this event to confirm that only MAU-released applications are managed via MAU (no AppStore apps should appear here).
 
@@ -3468,7 +4177,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### catalog_errorsignature
+### catalog.errorsignature
 
 This event denotes that a failure while performing code sign validation on an update collateral file occurred.  Any collateral failing code sign verification should be considered invalid.
 
@@ -3508,8 +4217,50 @@ The following fields are collected:
 
 - **SessionId** - The identifier for the session
 
+### cloningtask.begin
 
-### cloningtask_helpertoolconnection
+This event indicates start of cloning task prior to application update. We use this event in conjunction with cloningtask.status event to determine volume of cloning failures in order to determine whether cloning feature should be throttled on different audience channels.
+ 
+The following fields are collected:
+
+- **App** – The application process sending the event
+
+- **AppID** – The application identifier.
+
+- **AppInfo_Language** – The language the application is running under
+
+- **AppVersionLong** – The application version
+
+- **Channel** – The preference for audience
+
+- **Device_NetworkCountry** – The device country (based on IP address)
+
+- **DeviceID** – The device identifier
+
+- **DeviceInfo_Model** – The hardware model of the device
+
+- **DeviceInfo_NetworkType** – The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** – The version of the operating system
+
+- **Event_ReceivedTime** – The time at which telemetry was received
+
+- **EventInfo_Name** – The name of the telemetry event being logged
+
+- **EventInfo_Time** – The time at which the logged event took place 
+
+- **HowTocheck** – The preference for checking of updates
+
+- **PipelineInfo_ClientCountry** – The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** – The first three octets of the IP address
+
+- **SessionId** – The identifier for the session
+
+- **UpdateID** – The identifier for update.
+
+
+### cloningtask.helpertoolconnection
 
 This event records issues with install on clone (i.e. either we fail to connect to the helper to apply an update, or we connect but the helper is unable to apply the update). If we ever get a record reported, this means install on clone has failed and will now have to fallback to an in-place update.
 
@@ -3549,8 +4300,94 @@ The following fields are collected:
 
 - **SessionId** - The identifier for the session
 
+### cloningtask.status
 
-### configuration_channel
+This event indicates status of cloning process for the application to be updated. We use this event to determine success rate as well as types of errors encountered causing failures. This event is used to determine whether cloning feature should be throttled on different audience channels.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - The application identifier.
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Error** - The string contains error information if error occurred during cloning task.
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowTocheck** - The preference for checking of updates
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **Success** - The string representation of a Boolean variable.
+
+- **UpdateID** - The identifier for update.
+
+### cloningtask.status.finish
+
+This event reports on the completion of “cloning” task. This event forms part of the update funnel report and we use it to determine health of application updates.
+ 
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - The application identifier
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, Wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **UpdateID** - The update identifier.
+
+
+### configuration.channel
 
 This event records attempts to switch Channels (Audience Group) in MAU.  We use this to log attempts and their results (success or failure).
 
@@ -3591,7 +4428,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### configuration_metadata
+### configuration.metadata
 
 This event is logged whenever MAU is initializing. It is a MAU heartbeat type of event
 
@@ -3631,8 +4468,47 @@ The following fields are collected:
 
 - **SessionId** - The identifier for the session.
 
+### configuration.systemVersion
 
-### controller_alertmanager_reinstallresponse
+This event indicates an attempt to retrieve system version has failed. This also contains information on the information Microsoft Auto Update (MAU) was able to collect from the system. We use this event to determine whether MAU should cater for failures. Note that system version is used to determine whether an update can be applied to the client device.
+ 
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowTocheck** - The preference for checking of updates
+
+- **Payload** - Contains information on error encountered while retrieving macOS system version string.
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### controller.alertmanager.reinstallresponse
 
 This event denotes that MAU fell into an unusable/unrecoverable state and needs to be reinstalled. This event denotes an unrecoverable error and user intervention is required.
 
@@ -3673,7 +4549,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### controller_alertmanager_tmpdiskfull
+### controller.alertmanager.tmpdiskfull
 
 This event denotes that insufficient disk space was detected. We will not be able to install updates due to insufficient disk space.
 
@@ -3714,7 +4590,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### controller_alertmanager_tmpdiskfullretry
+### controller.alertmanager.tmpdiskfullretry
 
 This event denotes that a retry attempt to install an update was initiated after Insufficient disk space was detected. We retry the installation after not being able to install updates due to insufficient disk space.
 
@@ -3755,7 +4631,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
     
 
-### controller_alertmanager_tmpdiskfullretrycancel
+### controller.alertmanager.tmpdiskfullretrycancel
 
 This event denotes that a cancellation on an install-retry attempt after Insufficient disk space was detected. We use this event to determine if our fallback mechanism was enough to guide the user thru the update process when insufficient disk was detected.
 
@@ -3796,9 +4672,9 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### controller_checkwindow_noupdatefoundok
+### controller.checkwindow.noupdatefoundok
 
-This event denotes that a check for updates resulted in no updates found We use this event for ensuring updates are offered correctly, optimizing service loads, and define how frequent our updates checks should be. We also want to optimize our release cadence based on user expectation of updates.
+This event denotes that a check for updates resulted in no updates found. We use this event for ensuring updates are offered correctly, optimizing service loads, and define how frequent our updates checks should be. We also want to optimize our release cadence based on user expectation of updates.
 
 The following fields are collected:
 
@@ -3838,7 +4714,7 @@ The following fields are collected:
 
     
 
-### controller_checkwindow_updatecheck
+### controller.checkwindow.updatecheck
 
 This event denotes that a check for updates was performed. We use this event for ensuring updates are offered correctly, optimizing service loads, and define how frequent our updates checks should be. We also want to optimize our release cadence based on user expectation of updates.
 
@@ -3879,7 +4755,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### controller_checkwindow_updatecheckcancel
+### controller.checkwindow.updatecheckcancel
 
 This event denotes that the process of checking for updates was canceled (either by the user or by the system). We use this event for ensuring updates are offered correctly, optimizing service loads, and define how frequent our updates checks should be. We also want to optimize our release cadence based on user expectation of updates.
 
@@ -3920,7 +4796,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### controller_checkwindow_updatecheckcanceluser
+### controller.checkwindow.updatecheckcanceluser
 
 This event denotes that the process of checking for updates was canceled by the user.  We use this event for ensuring updates are offered correctly, optimizing service loads, and define how frequent our updates checks should be. We also want to optimize our release cadence based on user expectation of updates.
 
@@ -3961,7 +4837,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### controller_checkwindow_updatesfound
+### controller.checkwindow.updatesfound
 
 This event denotes that the process of checking for updates resulted in updates found.  We use this event for ensuring updates are offered correctly.
 
@@ -4002,7 +4878,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### controller_checkwindow_uptodate
+### controller.checkwindow.uptodate
 
 This event denotes that the process of checking for updates resulted no updates because apps in the device are up to date.  We use this event for ensuring updates are offered correctly.
 
@@ -4043,7 +4919,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### controller_downloadwindow_applaunchwithpendingupdate
+### controller.downloadwindow.applaunchwithpendingupdate
 
 This event denotes that an app that is in the process of getting updates was launched. We use this event for ensuring updates are offered correctly. We should prevent opened apps from getting updates. Apps must be closed prior to update.
 
@@ -4084,7 +4960,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### controller_downloadwindow_closeapplicationdialog
+### controller.downloadwindow.closeapplicationdialog
 
 This event denotes that an app that is in the process of getting updates was launched. We use this event for ensuring updates are offered correctly. We should prevent opened apps from getting updates. Apps must be closed prior to update.
 
@@ -4125,7 +5001,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### controller_downloadwindow_curtasknull
+### controller.downloadwindow.curtasknull
 
 This event denotes that an unexpected error occurred while attempting to apply an update. We use this event for ensuring updates are offered correctly.
 
@@ -4166,7 +5042,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### controller_downloadwindow_downloadcancel
+### controller.downloadwindow.downloadcancel
 
 This event denotes that the download process was canceled by user.  We use this event for ensuring updates are offered correctly.
 
@@ -4207,7 +5083,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### controller_downloadwindow_downloadfailed
+### controller.downloadwindow.downloadfailed
 
 This event denotes that a failure occurred when downloading an update. We use this event for ensuring updates are offered and downloaded correctly.
 
@@ -4248,7 +5124,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### controller_downloadwindow_downloadfailedok
+### controller.downloadwindow.downloadfailedok
 
 This event denotes that a failure occurred when downloading an update and the user was notified. We use this event for ensuring updates are offered and download correctly, and that in case of failure, a notification is served to the user.
 
@@ -4289,7 +5165,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### controller_downloadwindow_downloadpathmissing
+### controller.downloadwindow.downloadpathmissing
 
 This event denotes that a failure occurred when downloading an update. We use this event for ensuring updates are offered and downloaded correctly. This event indicates a download URL is missing.
 
@@ -4330,7 +5206,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### controller_downloadwindow_downloadtasknull
+### controller.downloadwindow.downloadtasknull
 
 This event denotes that a failure occurred when downloading an update. We use this event for ensuring updates are offered and downloaded correctly. This event indicates that Microsoft Autoupdate was asked to pause/resume a download but could not find corresponding download manager.
 
@@ -4371,7 +5247,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### controller_downloadwindow_filesignaturenotverified
+### controller.downloadwindow.filesignaturenotverified
 
 This event denotes that a failure occurred when downloading an update. This event indicates that Microsoft Autoupdate was unable to verify that this update was published by Microsoft. We use this event for ensuring updates are offered and downloaded correctly. 
 
@@ -4412,7 +5288,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### controller_downloadwindow_installcomplete
+### controller.downloadwindow.installcomplete
 
 This event denotes that the installation of all updates offered by Microsoft Autoupdate completed. We use this event for ensuring updates are offered and downloaded correctly. 
 
@@ -4453,7 +5329,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### controller_downloadwindow_networkunavailablealert
+### controller.downloadwindow.networkunavailablealert
 
 This event denotes that network connectivity was lost while downloading updates.  We use this event for ensuring the update process works as expected and to help troubleshoot errors.
 
@@ -4494,7 +5370,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### controller_downloadwindow_networkunavailablealertok
+### controller.downloadwindow.networkunavailablealertok
 
 This event denotes that network connectivity was lost while downloading updates. It also denotes that the user was notified of this error. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
 
@@ -4535,7 +5411,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### controller_downloadwindow_noconnectionok
+### controller.downloadwindow.noconnectionok
 
 This event denotes that network connectivity was lost while downloading updates. It also denotes that the user was notified of this error. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
 
@@ -4576,7 +5452,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### controller_downloadwindow_repairrequired
+### controller.downloadwindow.repairrequired
 
 This event denotes that the update process failed. It also denotes that an update was completed but Microsoft Autoupdate found a problem with updated application and repair is required. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
 
@@ -4616,7 +5492,7 @@ The following fields are collected:
 
 - **SessionId** - The identifier for the session
 
-### controller_downloadwindow_updateaborted
+### controller.downloadwindow.updateaborted
 
 This event denotes that the update process was aborted. It also denotes that an update was already in progress by Daemon and user clicked OK to abort download. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
 
@@ -4657,7 +5533,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### controller_downloadwindow_updatefailed
+### controller.downloadwindow.updatefailed
 
 This event denotes that one or more updates from the current batch failed. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
 
@@ -4698,7 +5574,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### controller_downloadwindow_updatesuccessful
+### controller.downloadwindow.updatesuccessful
 
 This event denotes that all updates from the current batch were successful. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
 
@@ -4739,7 +5615,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### controller_downloadwindow_userpaused
+### controller.downloadwindow.userpaused
 
 This event denotes that all updates from the current batch were successful. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
 
@@ -4780,7 +5656,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### controller_downloadwindow_userresumed
+### controller.downloadwindow.userresumed
 
 This event denotes that the download updates process was resumed successfully after going into pause. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
 
@@ -4821,7 +5697,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### controller_mainwindow_setautomaticdownloadinstall
+### controller.mainwindow.setautomaticdownloadinstall
 
 This event denotes that the device was enrolled into Automatic Update mode. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
 
@@ -4862,7 +5738,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### controller_mainwindow_setmanualchecking
+### controller.mainwindow.setmanualchecking
 
 This event denotes that the device was enrolled into Manual Update mode. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
 
@@ -4903,7 +5779,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### controller_templateawindow_cancel
+### controller.templateawindow.cancel
 
 This event denotes that the user chose to cancel or ignore a provided warning message. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
 
@@ -4944,7 +5820,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### controller_templateawindow_enroll
+### controller.templateawindow.enroll
 
 This event denotes that the user chose to follow a provided warning recommendation. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
 
@@ -4986,7 +5862,7 @@ The following fields are collected:
 
 
 
-### controller_templateawindow_install
+### controller.templateawindow.install
 
 This event denotes that the user chose to follow a provided warning recommendation related to initiating a software installation action. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
 
@@ -5027,7 +5903,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### controller_updatewindow_begindownloadingapps
+### controller.updatewindow.begindownloadingapps
 
 This event denotes that the download for updates was started via Update Window. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
 
@@ -5068,7 +5944,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### controller_updatewindow_networkretry
+### controller.updatewindow.networkretry
 
 This event denotes that a retry was triggered at the Update Sheet due to network failure. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
 
@@ -5109,7 +5985,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### controller_updatewindow_networkretrycancel
+### controller.updatewindow.networkretrycancel
 
 This event denotes that a retry could not be triggered at the Update Sheet due to network failure. This event indicates user elected to cancel updates after being alerted of network becoming unavailable. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5150,7 +6026,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### controller_updatewindow_networkunavailable
+### controller.updatewindow.networkunavailable
 
 This event denotes that network connectivity was suddenly lost. This event indicates server is not reachable when attempting to download an update package. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5191,7 +6067,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### controller_updatewindow_noupdateavailable
+### controller.updatewindow.noupdateavailable
 
 This event denotes that there was a search for updates that resulted in no updates being available. This event indicates no available updates were found by Microsoft Autoupdate. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5232,7 +6108,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### controller_updatewindow_noupdatestoselect
+### controller.updatewindow.noupdatestoselect
 
 This event denotes that an error occurred resulting in an empty list of updates. This event indicates Microsoft Autoupdate is showing an empty update sheet. This should not happen. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5273,7 +6149,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### Controller_UpdateWindow_UpdateAvailable
+### Controller.UpdateWindow.UpdateAvailable
 
 This event denotes that there was a search for updates that resulted in updates being offered. We use this even to determine whether updates are being offered for the user to see, whether the proper updates are being shown, or whether update blocking is working as expected. We use this event to ensure the update process works as expected and to help troubleshoot errors.
  
@@ -5314,7 +6190,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### controller_updatewindow_updateavailablecancel
+### controller.updatewindow.updateavailablecancel
 
 This event denotes that a user canceled after we displayed the update sheet listing updates. We use this even to explain reasons for not updating (i.e. user willingly cancels). We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5355,7 +6231,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### downloadactor_pause
+### downloadactor.pause
 
 This event denotes that the user issued a request to pause the download. We use this even to explain reasons for updates apparently not completing. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5396,7 +6272,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### downloadactor_redirect
+### downloadactor.redirect
 
 This event denotes that the downloader agent is pointed to an endpoint that issues a URL redirect for the download request. We use this even to explain reasons for download failure and diagnose proxy issues. It can also help diagnose reasons why users are observed to install older builds. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5437,7 +6313,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### downloadactor_resume
+### downloadactor.resume
 
 This event denotes the user issues a request to resume a paused download. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5478,7 +6354,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### downloadactor_resumeerror
+### downloadactor.resumeerror
 
 This event denotes the user issues a request to resume a paused download. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5519,7 +6395,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### downloadactor_status
+### downloadactor.status
 
 This event logs that there are attempts to fetch collateral files and their result (Success or Failure). We want to know the collaterals and packages being fetched. A wrong file being fetched can indicate a build/collateral issue. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5560,7 +6436,46 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### downloadmanifest_downloadcatalogfail
+### downloadmanifest.configuration
+
+This event reports an error with Microsoft Auto Update (MAU) configuration - either with Custom Server setup in preferences or in endpoint definitions in Update Assistant in installed MAU components. We use this event to advise IT Admins to set correct Manifest Server endpoints.
+ 
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **Payload** -Indicates whether error lies with custom server setup, or installed MAU components
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+
+### downloadmanifest.downloadcatalogfail
 
 This event a download failure occurred. The file that failed to download is logged. We want to know the collaterals and packages being fetched. A failure to download a manifest can point to either a build collateral generation failure, a CDN configuration error, a client configuration error, a network error. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5601,7 +6516,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### downloadmanifest_downloadcatalogsuccess
+### downloadmanifest.downloadcatalogsuccess
 
 This event denotes that a file was successfully downloaded. A failure to download a manifest can point to either a build collateral generation failure, a CDN configuration error, a client configuration error, a network error. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5642,7 +6557,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### downloadmanifest_downloadfail
+### downloadmanifest.downloadfail
 
 This event denotes that a download error occurred. The manifest or package file that failed to download as well as error details are logged. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5683,7 +6598,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### downloadmanifest_downloadfromurl
+### downloadmanifest.downloadfromurl
 
 This event denotes that the downloading of a catalog file has started. We log the URL from which the catalog file is being downloaded. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5724,7 +6639,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### downloadmanifest_downloading
+### downloadmanifest.downloading
 
 This event denotes that the downloading of a catalog file has started. We log the URL from which the catalog file is being downloaded. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5765,7 +6680,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### downloadmanifest_downloadsuccess
+### downloadmanifest.downloadsuccess
 
 This event denotes that the downloading of an XML and package file has succeeded. We log the URL from which the file is being downloaded. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5806,7 +6721,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### downloadmanifest_downloadurl
+### downloadmanifest.downloadurl
 
 This event denotes that a request to download a file occurred. We log the URL from which the file is being downloaded. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5847,7 +6762,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### downloadmanifest_filenameerror
+### downloadmanifest.filenameerror
 
 This event denotes that an unexpected error occurred. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5888,7 +6803,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### downloadmanifest_invalidhash
+### downloadmanifest.invalidhash
 
 This event denotes a security validation of our files failed. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5929,7 +6844,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### downloadmanifest_missingdaemon
+### downloadmanifest.missingdaemon
 
 This event denotes a user attempted to check for updates and we discovered that MAU was missing a core component (daemon). We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -5970,7 +6885,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### downloadmanifest_signatureerror
+### downloadmanifest.signatureerror
 
 This event denotes that the code signature verification failed for a package. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6011,7 +6926,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### downloadmanifest_status
+### downloadmanifest.status
 
 This event logs a summarized aggregation of attempts/failures hit during the download process for manifest and package files. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6052,7 +6967,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### downloadmgr_downloadend
+### downloadmgr.downloadend
 
 This event logs a marker that indicates the download process completed on its own. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6093,7 +7008,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### downloadmgr_downloadstart
+### downloadmgr.downloadstart
 
 This event logs the update that is about to be downloaded. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6133,8 +7048,56 @@ The following fields are collected:
 
 - **SessionId** - The identifier for the session
 
+### downloadtask.downloadbegin
 
-### downloadtask_downloadfailure
+This event indicates start of download activity for an application update. This forms part of update funnel and we use this to determine health of application updates.
+ 
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **BundleVersion** - Version of the application being updated
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, Wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **PreviousUpdateID** - Identifier for an application update
+
+- **SessionId** - The identifier for the session
+
+- **UpdateID** - Identifier for an application update
+
+- **UpdatePkg** - Name of the update package being applied
+
+- **UpdateVersion** - Version of the application after the update
+
+
+### downloadtask.downloadfailure
 
 This event logs that an error occurred downloading a package file. We log the update path and the error. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6181,7 +7144,7 @@ The following fields are collected:
 - **UpdateID** – The identifier of the update being downloaded.
 
 
-### downloadtask_downloadsuccess
+### downloadtask.downloadsuccess
 
 The successful downloading a package file. We log the update path used. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6225,8 +7188,132 @@ The following fields are collected:
 
 - **UpdateID** – The identifier of downloaded update.
 
+### downloadtask.updatertypeerror
 
-### fba_checkforupdate
+This event reports on an updater type error in the downloaded manifest file. We use this event to notify owner of the manifest file so that the error can be corrected.
+ 
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, Wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **UpdateID** - Identifier for an application update
+
+- **UpdaterType** - Type of updater specified in the downloaded manifest file
+
+- **UpdateURL** - URL of update package that need to be applied
+
+### downloadtask.urlerror
+
+This event reports on an error in the URL specified in downloaded manifest file. We use this event to notify owner of the manifest file so that the error can be corrected.
+ 
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **Error** - Indicates nature of error being encountered
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **UpdateID** - Identifier for an application update
+
+- **UpdateURL** - URL of update package that need to be applied
+
+### fba.changelastupdate
+
+This event reports on when Microsoft Auto Update (MAU) has checked for updates. We use this event to debug when a particular device has not been offered an update for an extended period of time.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, Unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **Payload** - Contains date time of when MAU checked for updates
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+
+### fba.checkforupdate
 
 This event denotes that a background process is checking for updates. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6267,7 +7354,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fba_checkforupdateskip
+### fba.checkforupdateskip
 
 This event denotes that a background process skipped update due to MAU GUI being opened. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6308,7 +7395,326 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fba_launchstatus
+### fba.forceinstallmsgsent
+
+This event indicates that a forced update is initiated from the user interface. This event forms part of funnel and is used to determine health of force update feature.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **Payload** - Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### fba.forceupdatecheck
+
+This event indicates update check is forced. We use this event to determine volume of forced update checks which happen outside normal update check cycle.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the Operating System
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### fba.guiappopen
+
+This event indicates that the user interface is being launched under Automatic Check mode, as an application with applicable update is currently open. This event is used to determine volume of user interface launches from Automatic Check mode for future feature development.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The Hardware Model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The Version of the Operating System
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** -	The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** -	Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### fba.installpending
+
+This event indicates Microsoft Auto Update (MAU) sent a notification regarding pending updates. This event is used to determine volume of updates that are initiated from user notifications and is used to enhance user experience by minimizing interruption to the user in the future releases.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** -	The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** -	 Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### fba.launch
+
+This event indicates start of Microsoft Update Assistant with the method of being launched. This event is used to determine whether Microsoft Update Assistant is being launched in incorrect context.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### fba.launchbyagent
+
+This event indicates that the Microsoft Update Assistant has been launched via Launch Agent. This event is used to determine volume of Microsoft Update Assistant being launched from user interface for future development.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** -	 The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** -	 Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### fba.launchfromprotocol
+
+This event indicates that the Microsoft Update Assistant has been launched via URL protocol. This event is used to determine volume of Microsoft Update Assistant being launched via URL for future development.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Contains information about URL scheme and URL Host
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### fba.launchgui
+
+This event indicates that the Microsoft Update Assistant is attempting to launch Graphical User Interface (GUI). This event is used to determine volume of UI launches initiated from Microsoft Update Assistant, to help with future development, including minimizing user interruption from frequent UI launch.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** -	 The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** -	 Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+
+### fba.launchstatus
 
 This event logs MAU's daemon failures while attempting to launch. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6352,7 +7758,251 @@ The following fields are collected:
 
 - **Success** – The string Boolean indicating whether MAU daemon process was successfully launched.
 
-### fba_silentupdateoptin
+
+### fba.mausilentupdate
+
+This event indicates Microsoft Update Assistant is initiating silent updates. This event is used to determine volume of updates that are applied without user intervention, to help drive enhancements in user experience.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+ 
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** -	 The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** -	 Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### fba.moreinfofromappnotification
+
+This event reports on information that a registered application is routing through Microsoft Auto Update (MAU). For example, end-of-service messages are pushed through MAU notification. We use this event to determine the volume of devices that are displaying this particular notification, to determine the success of information dissemination.
+
+The following fields are collected:
+
+- **AdditionalInfoID** - Uniquely identifies “More Info” being pushed through MAU.
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** -	The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **NotificationEvent** - Static text indicating what type of notification is being applied.
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### fba.multipledaemon
+
+This event indicates that another instance of Microsoft Update Assistant has been detected and current instance will be terminated. We will be using this event to determine volume of devices that attempt to run multiple instances of Update Assistant and design a workaround if need arises.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** -	 The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** -	 Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### fba.nofifyappclosed
+
+This event indicates that the Microsoft Update Assistant is sending a notification for pending updates because there are no registered applications open and updates can proceed without interrupting the user. We use this event to determine volume of updates that can be applied but need user action to do so. This event is used to help drive enhancement in user experience.
+
+The following fields are collected: 
+	
+- **App** - The application process sending the event
+	
+- **AppInfo_Language** - The language the application is running under
+	
+- **AppVersionLong** - The application version
+	
+- **Channel** - The preference for audience
+	
+- **Device_NetworkCountry** - The device country (based on IP address)
+	
+- **DeviceID** - The device identifier
+	
+- **DeviceInfo_Model** - The hardware model of the device
+	
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+	
+- **DeviceInfo_OsBuild** - The version of the operating system
+	
+- **Event_ReceivedTime** - The time at which telemetry was received
+	
+- **EventInfo_Name** - The name of the telemetry event being logged
+	
+- **EventInfo_Time** -	 The time at which the logged event took place 
+	
+- **HowToCheck** - How to check setting
+	
+- **Payload** -	 Static text
+	
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+	
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+	
+- **SessionId** - The identifier for the session
+
+### fba.nofifyappopen
+
+This event indicates that the Microsoft Update Assistant is sending a notification for pending updates because there are registered applications open and updates will require the applications closed to proceed.  We use this event to determine volume of updates that require user intervention.  This event is used to help drive enhancement in user experience.
+
+The following fields are collected:  
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+	
+- **AppVersionLong** - The application version
+	
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** -	 The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** -	 Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### fba.settimerfail  
+
+This event indicates an attempt to set up timer to trigger a future update has failed. This event is critical, and we use this event to determine volume of failures to develop work-around if needed.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** -	 The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** -	 Contains information about last update time and calendar being used
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+
+### fba.silentupdateoptin
 
 This event denotes that the user is Opting into silent updates. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6392,8 +8042,7 @@ The following fields are collected:
 
 - **SessionId** - The identifier for the session
 
-
-### fba_skipforcedupdate
+### fba.skipforcedupdate
 
 This event indicates forced update check is being skipped due to open applications. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6434,7 +8083,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fba_startforcedupdate
+### fba.startforcedupdate
 
 This event indicates that an attempt to apply a forced update has occurred. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6475,7 +8124,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fba_terminate
+### fba.terminate
 
 This event indicates that the MAU daemon terminated normally. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6516,7 +8165,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fba_updatefound
+### fba.updatefound
 
 This event indicates that the MAU daemon has found available updates to offer. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6557,7 +8206,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### fba_updatetimer
+### fba.updatetimer
 
 This event indicates Microsoft Autoupdate Daemon process became active to check for updates after sleeping for set amount of time. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6598,9 +8247,9 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fbasilentupdate_allappsclosed
+### fbasilentupdate.allappsclosed
 
-This event logs if all apps were closed prior an install. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
+This event logs if all apps were closed prior to an install. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
 The following fields are collected:
 
@@ -6639,7 +8288,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fbasilentupdate_applaunchafterupdate
+### fbasilentupdate.applaunchafterupdate
 
 This event logs an attempt to relaunch the app after a silent update and the update mode (clone or not). We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6684,7 +8333,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fbasilentupdate_applaunchwileinstalling
+### fbasilentupdate.applaunchwileinstalling
 
 We log when an app launch was made while installing an update. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6725,7 +8374,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fbasilentupdate_appneedtoclose
+### fbasilentupdate.appneedtoclose
 
 We log when an update process was kicked off and we find that the application to update was opened. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6766,7 +8415,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fbasilentupdate_appterminationeventreceived
+### fbasilentupdate.appterminationeventreceived
 
 This event indicates Microsoft Autoupdate has received an Apple event informing the application has been terminated. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6813,7 +8462,48 @@ The following fields are collected:
 - **UpdateID** – The identifier of the application update.
 
 
-### fbasilentupdate_codesignfailure
+### FBASilentUpdate.ClientSession
+
+This event is used to calculated critical update health metric for Microsoft Auto Update (MAU). This event allows us to indicate which update session (download or install) the backend is currently handling.
+ 
+The following fields are collected:
+
+- **App** – The application process sending the event
+
+- **AppInfo_Language** – The language the application is running under
+
+- **AppVersionLong** – The application version
+
+- **Channel** – The preference for audience
+
+- **Device_NetworkCountry** – The device country (based on IP address)
+
+- **DeviceID** – The device identifier
+
+- **DeviceInfo_Model** – The hardware model of the device
+
+- **DeviceInfo_NetworkType** – The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** – The version of the operating system
+
+- **Event_ReceivedTime** – The time at which telemetry was received
+
+- **EventInfo_Name** – The name of the telemetry event being logged
+
+- **EventInfo_Time** – The time at which the logged event took place 
+
+- **HowTocheck** – The preference for checking of updates
+
+- **Payload** – Indicates which update session (download or install) the backend is currently handling.
+
+- **PipelineInfo_ClientCountry** – The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** – The first three octets of the IP address
+
+- **SessionId** – The identifier for the session
+
+
+### fbasilentupdate.codesignfailure
 
 This event logs the result of codesign verification after applying an update. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6854,7 +8544,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fbasilentupdate_download
+### fbasilentupdate.download
 
 This event denotes that an update is being downloaded. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6892,10 +8582,12 @@ The following fields are collected:
 
 - **PipelineInfo_ClientIp** - The first 3 octets of the IP address
 
+- **ScreenLocked** – Indication whether download is initiated behind locked screen
+
 - **SessionId** - The identifier for the session
 
 
-### fbasilentupdate_downloadfailed
+### fbasilentupdate.downloadfailed
 
 This event denotes that a failure occurred while downloading an update. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6944,7 +8636,7 @@ The following fields are collected:
 - **UpdateName** – The name of the application update.
 
 
-### fbasilentupdate_downloadinbackground
+### fbasilentupdate.downloadinbackground
 
 This event denotes that we are starting the download a set of updates in the background (we log the number of updates being concurrently downloaded). We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -6985,7 +8677,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fbasilentupdate_downloadingrepairupdate
+### fbasilentupdate.downloadingrepairupdate
 
 This event denotes that we have initiated an attempt to download a repair for a failed update. We log the version and the update. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7023,10 +8715,12 @@ The following fields are collected:
 
 - **PipelineInfo_ClientIp** - The first 3 octets of the IP address
 
+- **ScreenLocked** – Indication whether download is initiated behind locked screen
+
 - **SessionId** - The identifier for the session
 
 
-### fbasilentupdate_duplicatedownloadattempted
+### fbasilentupdate.duplicatedownloadattempted
 
 This event denotes that an error occurred. We should only be downloading one update for a given app at a time. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7067,7 +8761,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fbasilentupdate_installattemptfailed
+### fbasilentupdate.installattemptfailed
 
 This event denotes that an installation attempt for an update (version) failed. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7108,7 +8802,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fbasilentupdate_installcomplete
+### fbasilentupdate.installcomplete
 
 This event denotes that all updates on the batch finished installing. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7149,7 +8843,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fbasilentupdate_installed
+### fbasilentupdate.installed
 
 This event denotes that an individual update was installed successfully. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7190,7 +8884,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### fbasilentupdate_installing
+### fbasilentupdate.installing
 
 This event denotes that an individual update was initiated. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7230,8 +8924,103 @@ The following fields are collected:
 
 - **SessionId** - The identifier for the session
 
+### fbasilentupdate.installstatus
 
-### fbasilentupdate_notificationremoved
+This event reports on the status of the application update task. This event forms part of the application update funnel and we use it to monitor the health of application updates.
+
+The following fields are collected: 
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** -	 The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** -	 Contains information whether progress view is shown
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **Success** -	 Indication whether application update was successful
+
+- **UpdateID** - Identifier for an application update
+
+- **UpdateName** - Name of the update as it appears in the downloaded manifest file
+
+- **UpdatePkg** - Name of the update package being applied
+
+### fbasilentupdate.notificationerror
+
+This event reports on an error encountered while trying to send user notification. This event will be used to debug cause of error and take corrective actions.
+
+The following fields are collected:  
+
+- **App** - The application process sending the event
+ 
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **ErrType** -	Indicates nature of error encountered
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** -	 The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Message** - Content of notification
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **Title** - Title of the notification
+
+- **Type** - Type of notification
+
+### fbasilentupdate.notificationremoved
 
 This event denotes that an update that was blocked is no longer blocked. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7272,7 +9061,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fbasilentupdate_queueinstall
+### fbasilentupdate.queueinstall
 
 This event denotes that an update will be queued for silent installation. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7313,7 +9102,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fbasilentupdate_requiredappsclosed
+### fbasilentupdate.requiredappsclosed
 
 We log when an application that has a pending update has been closed. This indicates the time at which the actual install can proceed. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7353,8 +9142,47 @@ The following fields are collected:
 
 - **SessionId** - The identifier for the session
 
+### FBASilentUpdate.TimerForAppTermination
 
-### fbasilentupdate_updateavailablenotification
+This event is used to calculated critical update health metric for Microsoft Auto Update (MAU). This event allows us to keep track of the termination event of the opened application and the duration of its opened state.
+ 
+The following fields are collected:
+
+- **App** – The application process sending the event
+
+- **AppInfo_Language** – The language the application is running under
+
+- **AppVersionLong** – The application version
+
+- **Channel** – The preference for audience
+
+- **Device_NetworkCountry** – The device country (based on IP address)
+
+- **DeviceID** – The device identifier
+
+- **DeviceInfo_Model** – The hardware model of the device
+
+- **DeviceInfo_NetworkType** – The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** – The version of the operating system
+
+- **Event_ReceivedTime** – The time at which telemetry was received
+
+- **EventInfo_Name** – The name of the telemetry event being logged
+
+- **EventInfo_Time** – The time at which the logged event took place 
+
+- **HowTocheck** – The preference for checking of updates
+
+- **Payload** – Indicates whether a timer was set for an open application when its update installation was triggered. 
+
+- **PipelineInfo_ClientCountry** – The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** – The first three octets of the IP address
+
+- **SessionId** – The identifier for the session
+
+### fbasilentupdate.updateavailablenotification
 
 This event indicates an update available notification is triggered. We must ensure the flow to prompt for updates is triggered when an update is detected. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7395,7 +9223,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fbasilentupdate_userclicknotification
+### fbasilentupdate.userclicknotification
 
 This event indicates user clicked content section of the update available notification and Microsoft Autoupdate GUI is being launched. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7436,7 +9264,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fbasilentupdate_userselectinstalllater
+### fbasilentupdate.userselectinstalllater
 
 This event indicates user opted to install later after shown update available notification. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7477,7 +9305,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### fbasilentupdate_userselectinstallnow
+### fbasilentupdate.userselectinstallnow
 
 This event indicates user opted to install now after shown update available notification. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7517,8 +9345,693 @@ The following fields are collected:
 
 - **SessionId** - The identifier for the session
 
+### gui.dashboardview.appisopendialog.display 
 
-### installdata_checkrunning
+This event indicates that the UI has shown a dialog to close an open application to proceed with application update. This event is used to determine volume of updates being delayed in order to provide future enhancements to minimize user interruption.
+
+The following fields are collected: 
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** -	 The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **UpdateID** - Identifier for an application update
+
+- **UpdateName** - Name of the update as it appears in the downloaded manifest file
+
+### gui.dashboardview.appisopendialogbutton.clicked
+
+This event indicates whether application update is skipped, or another attempt is being made after showing an open application dialog. This event is used to determine volume of updates that are being skipped and used for future enhancements to minimize user interruption.
+
+The following fields are collected:   
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **ButtonType** - Skip or Retry
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier 
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** -	 The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **UpdateID** - Identifier for an application update
+
+- **UpdateName** - Name of the update as it appears in the downloaded manifest file
+
+### gui.dashboardview.updateinprogressdialog.display
+
+This event logs whether a dialog was displayed to users indicating update is already in progress.
+ 
+The following fields are collected:
+
+- **App** – The application process sending the event
+
+- **AppInfo_Language** – The language the application is running under
+
+- **AppVersionLong** – The application version
+
+- **Channel** – The preference for audience
+
+- **Device_NetworkCountry** – The device country (based on IP address)
+
+- **DeviceID** – The device identifier
+
+- **DeviceInfo_Model** – The hardware model of the device
+
+- **DeviceInfo_NetworkType** – The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** – The version of the operating system
+
+- **Event_ReceivedTime** – The time at which telemetry was received
+
+- **EventInfo_Name** – The name of the telemetry event being logged
+
+- **EventInfo_Time** – The time at which the logged event took place 
+
+- **HowTocheck** – The preference for checking of updates
+
+- **PipelineInfo_ClientCountry** – The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** – The first three octets of the IP address
+
+- **SessionId** – The identifier for the session
+
+### gui.dashboardview.updatemodebutton.clicked
+
+This event indicates update mode changed from UI control. This event is used to determine volume of devices that transition from one mode to another and is used to help determine why customers are moving away from automatic updates. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+ 
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** -	 The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** -	 Indication whether automatic download is turned OFF
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### gui.feedbackwindow.buttonclicked
+
+This event reports on whether feedback is submitted or canceled before submission. This event is used to help determine volume of feedback sent on a particular release version. This helps to isolate potential issues early.
+
+The following fields are collected: 
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **ButtonType** - Indication whether feedback is sent or canceled
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+ 
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### gui.preferenceview.consentsheet.display
+
+This event indicates that a consent sheet for a given channel is displayed, if available. This event is used to determine volume of devices that newly enroll into applicable audience channel (Insider Fast / Insider Slow). We also use this event to ensure consent dialog display is functioning to show terms of usage to users.
+ 
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **ChannelName** - Channel for which the consent dialog is displayed for
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** -	 The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### gui.preferenceview.consentsheet.licenseerror
+
+This event reports on the error encountered while attempting to show consent dialog. This event is critical and is used to correct any issues caused by a change in product, if applicable.
+
+The following fields are collected: 
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **ErrorCode** - Error code encountered
+
+- **ErrorDomain** - Error domain
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** -	 The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### gui.preferenceview.switchchannel
+
+This event reports on transition between user selected channels. This event is used to help determine why customers are opting out of Insiders channels.  
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** -	 The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **PickedFrom** - Old channel
+
+- **PickedTo** - New channel
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### gui.updatemanager.applaunchduringupdate
+
+This event reports that an application was launched while it was being updated, and Microsoft AutoUpdate is terminating the launched application. Note that launching an application while being updated may result in application corruption. We use this event to ensure update process is not impacted by launched application before it is ready to be used.
+ 
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - The identifier of application that was launched during updates.
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowTocheck** - The preference for checking of updates
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **Success** - The string Boolean value indicating whether application was successfully terminated.
+
+- **UpdateID** - The identifier of application update.
+
+### gui.updatemanager.downloadupdateforapp
+
+This event reports on download completion status for an update. We use this event to ensure health of update process and track/address failure point.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - The application identifier.
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowTocheck** - The preference for checking of updates
+
+- **IsRepair** - The string Boolean indicates whether particular update is a repair download.
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **isRepair** - Indication whether the download was for a repair download for a previously failed update.
+
+- **UpdateID** - The update identifier.
+
+- **UpdateName** - The update name.
+
+
+### gui.updatemanager.error
+
+This event reports back on any errors encountered during application updates. This may indicate error in Microsoft Auto Update (MAU) execution sequence.  We use this report to apply updates to MAU to cater for common error scenarios.
+
+The following fields are collected:
+
+- **App** – The application process sending the event
+
+- **AppInfo_Language** – The language the application is running under
+
+- **AppVersionLong** – The application version
+
+- **Channel** – The preference for audience
+
+- **Device_NetworkCountry** – The device country (based on IP address)
+
+- **DeviceID** – The device identifier
+
+- **DeviceInfo_Model** – The hardware model of the device
+
+- **DeviceInfo_NetworkType** – The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** – The version of the operating system
+
+- **Event_ReceivedTime** – The time at which telemetry was received
+
+- **EventInfo_Name** – The name of the telemetry event being logged
+
+- **EventInfo_Time** – The time at which the logged event took place 
+
+- **HowTocheck** – The preference for checking of updates
+
+- **Payload** – Contains information on error encountered during an application update.
+
+- **PipelineInfo_ClientCountry** – The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** – The first three octets of the IP address
+
+- **SessionId** – The identifier for the session
+
+- **Success** – The string Boolean value indicating whether application was successfully terminated.
+
+### gui.updatemanager.installcleanupforapp
+
+This event indicates temporary files created during application installation were successfully cleaned up. This forms part of update funnel used to determine application update health.
+ 
+The following fields are collected:
+
+- **App** – The application process sending the event
+
+- **AppID** – The application identifier.
+
+- **AppInfo_Language** – The language the application is running under
+
+- **AppState** – The integer indicates the state of application after update attempt.
+
+- **AppVersionLong** – The application version
+
+- **Channel** – The preference for audience
+
+- **Device_NetworkCountry** – The device country (based on IP address)
+
+- **DeviceID** – The device identifier
+
+- **DeviceInfo_Model** – The hardware model of the device
+
+- **DeviceInfo_NetworkType** – The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** – The version of the operating system
+
+- **Event_ReceivedTime** – The time at which telemetry was received
+
+- **EventInfo_Name** – The name of the telemetry event being logged
+
+- **EventInfo_Time** – The time at which the logged event took place 
+
+- **HowTocheck** – The preference for checking of updates
+
+- **PipelineInfo_ClientCountry** – The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** – The first three octets of the IP address
+
+- **SessionId** – The identifier for the session
+
+- **UpdateID** – The update identifier.
+
+
+### gui.updatemanager.installsuccessforapp
+
+This event indicates successful application update. This event forms part of the update funnel which we use to determine update health.
+ 
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - The application identifier.
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowTocheck** - The preference for checking of updates
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **Success** - The string Boolean indicates whether updates were successfully installed.
+
+- **UpdateID** - The update identifier.
+
+### gui.updatemanager.installupdateforapp
+
+This event indicates start of actual install process for an application update. This event forms part of application update funnel which we use to determine update health.
+ 
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - The application identifier.
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowTocheck** - The preference for checking of updates
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **UpdateID** - The update identifier.
+
+### gui.updatemanager.queueinstallforapp
+
+This event indicates start of actual install process for an application update. This event forms part of application update funnel which we use to determine update health.
+ 
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - The application identifier.
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowTocheck** - The preference for checking of updates
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **UpdateID** - The update identifier.
+
+### gui.updatemanager.relaunchapp
+
+This event logs whether applications were successfully relaunched after updates.
+ 
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - The application identifier.
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowTocheck** - The preference for checking of updates
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **Success** - The string Boolean value indicating whether application was successfully terminated.
+
+- **UpdateID** - The update identifier.
+
+- **UpdateName** - The update name.
+
+### installdata.checkrunning
 
 This event logs the result of a check between the apps to be installed and whether the installation attempt will proceed based on the app being opened. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7559,7 +10072,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### installdata_cleanup
+### installdata.cleanup
 
 Package files should be removed after installation. This event records instances in which we fail to remove them. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7600,7 +10113,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### installedapp_invalidbundle
+### installedapp.invalidbundle
 
 This event indicates Microsoft Autoupdate could not retrieve bundle information for the registered application at given path. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7641,7 +10154,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### installedapp_invalidpreference
+### installedapp.invalidpreference
 
 This event logs cases in which the user preference contains an invalid application entry. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7682,7 +10195,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### installedapp_nilbundleid
+### installedapp.nilbundleid
 
 This event logs cases in which the bundle ID was missing for an app. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7723,7 +10236,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### installedapp_nilbundlename
+### installedapp.nilbundlename
 
 This event logs cases in which the bundle name was missing for an app. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7763,8 +10276,59 @@ The following fields are collected:
 
 - **SessionId** - The identifier for the session
 
+
+### installedapp.sendcoreappleevent
+
+This event indicates Microsoft Auto Update (MAU) is sending an Apple event to a registered application to terminate the application in order to proceed with pending application update. This event is currently being used to help develop future enhancement to minimize user interruption during application updates. 
+
+The following fields are collected:
+
+- **Acknowledged** - Indicates whether the subject application has acknowledged receipt of the event
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppleEventClass** - Indicates type of event being sent/acknowledged
+
+- **AppleEventID** - Unique identifier for the event being sent/acknowledged
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** -	 The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Contains retry count
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **Success** -	Indicates whether the subject application has reported success of operation
+
     
-### installstatus_codesign
+### installstatus.codesign
 
 This event logs the status of the OS codesign binary. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7805,9 +10369,9 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### installstatus_daemon
+### installstatus.daemon
 
-This event logs the status of the status of the Microsoft AutoUpdate daemon. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
+This event logs the status of the Microsoft AutoUpdate daemon. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
 The following fields are collected:
 
@@ -7846,9 +10410,9 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### installstatus_helper
+### installstatus.helper
 
-This event logs the status of the status of the Microsoft AutoUpdate helper tool. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
+This event logs the status of the Microsoft AutoUpdate helper tool. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
 The following fields are collected:
 
@@ -7887,7 +10451,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### installupdatestask_applaunched
+### installupdatestask.applaunched
 
 This event indicates Microsoft Autoupdate has detected application launch for a blocked update but could not find matching installer. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7928,7 +10492,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### installupdatestask_applaunchwithpendingupdate
+### installupdatestask.applaunchwithpendingupdate
 
 This event indicates Microsoft Autoupdate detected application launch for an application with a pending update. Launched application will be terminated. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -7969,7 +10533,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### installupdatestask_codesignverificationfail
+### installupdatestask.codesignverificationfail
 
 This event denotes that CodeSign verification failed for an app update. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8010,7 +10574,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### installupdatestask_codesignverificationstart
+### installupdatestask.codesignverificationstart
 
 This event denotes that CodeSign verification started for an app update. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8051,7 +10615,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### installupdatestask_codesignverificationsuccess
+### installupdatestask.codesignverificationsuccess
 
 This event denotes CodeSign verification success for an app update. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8092,7 +10656,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### installupdatestask_failsilentinstall
+### installupdatestask.failsilentinstall
 
 This event logs failures while applying silent updates and whether this was a cloned or regular install. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8133,7 +10697,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### installupdatestask_multiplerelocatablepackage
+### installupdatestask.multiplerelocatablepackage
 
 This event indicates Microsoft Autoupdate has found multiple instances of application entry for a given update package in downloaded manifest. We use this event to ensure the update process works as expected and to help troubleshoot errors.
  
@@ -8174,7 +10738,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### installupdatestask_removeclone
+### installupdatestask.removeclone
 
 This event denotes that a clone was removed. We remove a clone when either the Install On clone process completed, or when a new process starts, and an older cloned version is found in the machine. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8215,7 +10779,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### installupdatestask_retryfail
+### installupdatestask.retryfail
 
 This event denotes that errors were encountered during the installation retry process. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8256,7 +10820,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### installupdatestask_retryproxyerror
+### installupdatestask.retryproxyerror
 
 This event logs intra-process communication errors (communication with MAU helper tool). We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8297,7 +10861,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### installupdatestask_retryproxyerror
+### installupdatestask.retryproxyerror
 
 This event logs intra-process communication errors (communication with MAU helper tool). We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8339,7 +10903,7 @@ The following fields are collected:
 
     
 
-### installupdatestask_retryresponse
+### installupdatestask.retryresponse
 
 This event logs that a retry did not work. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8380,7 +10944,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### installupdatestask_retrysuccess
+### installupdatestask.retrysuccess
 
 This event logs a successful update installation after a retry. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8421,7 +10985,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### installupdatestask_setreopengui
+### installupdatestask.setreopengui
 
 This event indicates whether setting preference to reopen GUI after install was successful. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8462,7 +11026,155 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### msupdate_cli_eventhandler_applyupdates_appids
+### installupdatestask.updatestatus
+
+This event reports on status of installation task. This event forms part of the update funnel and is used to determine health of application updates.
+
+The following fields are collected: 
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Error** - Indicates any errors encountered during update process, if populated
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** -	 The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **IOC** - Indicates whether Install on Clone feature was used
+
+- **Payload** - Static text to indicate beginning of install process if present
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **Success** -	 Indicates whether the install process has successfully completed
+
+- **UpdateID** - Identifier for an application update
+
+- **UpdateName** - Name of the update as it appears in the downloaded manifest file
+
+- **UpdatePkg** - Name of the update package being applied
+
+### Lifecycle.periodiccheck
+
+This event reports on status of MicrosoftAutoUpdate process periodically. Specifically, it reports on what remaining tasks process is waiting on for completion for Update Assistant, and in the case of UI it reports on whether process is terminating due to user inaction.  We use this event to determine what is preventing Update Assistant from completing updates and terminating and, whether the UI is terminating due to user inaction.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application Version
+
+- **Channel** - The preference for audience
+
+- **dataCollectionDialog** - Boolean indicating whether the process is waiting for user response on Data Collection Dialog
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The Hardware Model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, Wired, Unknown)
+
+- **DeviceInfo_OsBuild** - The Version of the Operating System
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **forcedUpdateDialog** - Boolean indicating whether the process is waiting for user response on Forced Update Dialog
+
+- **HowToCheck** - How To Check setting
+
+- **isBusy** - Boolean indicating whether the process is busy with active update
+
+- **isInactive** - Boolean indicating whether the process has been waiting for user action for prolonged period of time
+
+- **isWaiting** - Boolean indicating whether the process is waiting for user response on notification
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first 3 octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **SessionLength** - Length of current process session in seconds
+
+
+### msupdate.cli.eventhandler
+
+This event is used to calculate the usage of various types of Microsoft Auto Update (MAU) Command Line Interface API.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - The identifier of application that sends command line interface API to MAU.
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry got received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **EventType** - The type of event that is sent by application to MAU’s command line interface API.
+
+- **HowTocheck** - The preference for checking of updates
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+
+### msupdate.cli.eventhandler.applyupdates.appids
 
 This event indicates a CLI (client-line interface) command was issued to apply an update. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8503,7 +11215,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### msupdate_cli_eventhandler_config
+### msupdate.cli.eventhandler.config
 
 This event indicates Microsoft Autoupdate Command Line Interface module received an Apple event to configure. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8544,7 +11256,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### msupdate_cli_eventhandler_updates
+### msupdate.cli.eventhandler.updates
 
 This event indicates Microsoft Autoupdate Command Line Interface module received an Apple event to list updates. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8585,7 +11297,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### msupdate_monitor_progress_downloaded
+### msupdate.monitor.progress.downloaded
 
 This event indicates that updates were downloaded. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8626,7 +11338,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### msupdate_monitor_progress_failure
+### msupdate.monitor.progress.failure
 
 This event logs a list of queued updates that failed to be applied. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8667,7 +11379,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### msupdate_monitor_progress_finished
+### msupdate.monitor.progress.finished
 
 This event logs a list of queued updates that completed install. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8708,7 +11420,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### msupdate_monitor_progress_queued
+### msupdate.monitor.progress.queued
 
 This event logs a list of queued updates. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8790,6 +11502,609 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
+### sauforcedupdate.autodismiss
+
+This event indicates displayed force update dialog is being dismissed due to user inactivity. This event is used to determine volume of forced updates that proceed without users providing any input to the displayed notification. This event is used to enhance user interface to minimize interruption.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+  
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** -The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### sauforcedupdate.close
+
+This event indicates user has chosen to close forced update dialog. This event is used to determine volume of forced updates that are postponed by user action. This event is used to enhance user interface to minimize interruption. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### sauforcedupdate.completeautodismiss
+
+This event indicates that displayed forced update dialog from deadline feature is being dismissed due to user inactivity. This event is used to determine volume of forced updates that proceed without users providing any input to the displayed notification. This event is used to enhance user interface to minimize interruption for deadline feature.
+
+The following fields are collected: 
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### sauforcedupdate.completeclose
+
+This event indicates successful completion of a forced update. This event is used to help determine health of the forced update feature. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### sauforcedupdate.display
+
+This event indicates that a forced update dialog has been displayed.  This event forms part of a forced update funnel and is used to determine the health of the forced update feature.
+
+The following fields are collected: 
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### sauforcedupdate.displayfinalhour
+
+This event indicates that a forced update final hour dialog has been displayed. This event forms part of forced update funnel and is used to determine health of forced update feature.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### sauforcedupdate.done
+
+This event indicates that a forced update has successfully completed. This event forms part of forced update funnel and is used to determine health of forced update feature. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### sauforcedupdate.enabled
+
+This event is triggered when Microsoft Auto Update (MAU) determines forced update is applicable.  This event is used to determine health of forced update feature. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Enabled** - Indicates whether forced update is enabled
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **InvalidUpdates** - Count of forced updates set with invalid update versions
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### sauforcedupdate.forcedupdatedismiss
+
+This event indicates that the displayed force update final hour dialog is being dismissed due to user inactivity. This event is used to determine volume of forced updates that proceed without users providing any input to the displayed notification. This event is used to enhance the user interface to minimize interruption. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### sauforcedupdate.forcequitandupdatenow
+
+This event indicates start of user initiated forced update. This event forms part of funnel and is used to determine health of forced update feature. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session 
+
+### sauforcedupdate.forceterminate
+
+This event indicates start of the forced update with application being terminated forcefully.  This event forms part of the funnel and is used to determine health of forced update feature.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application Version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The Hardware Model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Contains count of applications to be terminated
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### sauforcedupdate.quitandupdatenow
+
+This event indicates that the user has elected to close the application and apply update. This event forms part of a funnel and is used to determine the health of the forced update feature. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### sauforcedupdate.snooze
+
+This event indicates user has elected to postpone forced update. This event forms part of funnel and is used to determine health of forced update feature. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### sauforcedupdate.terminate
+
+This event indicates start of the forced update with application being terminated. This event forms part of the funnel and is used to determine health of forced update feature.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Contains count of applications to be terminated
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### sauforcedupdate.updatenow
+
+This event indicates user has elected to update application now.  This event forms part of funnel and is used to determine health of forced update feature.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+
 ### sauupdateinfoprovider
 
 This event logs whenever a manifest key is missing from a collateral. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
@@ -8831,7 +12146,790 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### updatecore_appregistration
+### update.applaunchdetected
+
+This event indicates an application was launched while an update was in progress. This event is used to determine the volume of applications that are launched during update and is used for enhancing user experience in future releases.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **Success** - Indicates whether launched app has successfully terminated
+
+- **UpdateID** - Identifier for an application update
+
+### update.appterminationreceived
+
+This event indicates that an application with blocked update has been terminated and whether Microsoft Auto Update (MAU) can continue with the update. This event forms part of a funnel and is used to determine the health of application updates.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Error** - Indicates whether there are other instances of application still running, preventing MAU from continuing
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Static text to indicate MAU is continuing with update
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **UpdateID** - Identifier for an application update
+
+### update.blockedappclosed
+
+This event indicates Microsoft Auto Update (MAU) has detected an application with blocked update has closed and can continue with update. This event forms part of funnel and is used to determine health of application updates. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received.
+
+- **EventInfo_Name** - The name of the telemetry event being logged.
+
+- **EventInfo_Time** - The time at which the logged event took place. 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **UpdateID** - Identifier for an application update
+
+### update.blockedinstallskip
+
+This event logs an error encountered when trying to skip an application update. This event is critical and is used to investigate reported errors.  
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Contains information on error encountered
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### update.clientsession
+
+This event is reported when the status of client device changes, causing Microsoft Update Assistant to pause or resume update process. This event forms part of funnel and is used to determine health of application updates. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Indicates whether Microsoft Auto Update (MAU) is resuming or pausing
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### update.download.begin 
+
+This event indicates start of the application update process. This event forms part of the update funnel and is used to determine the health of application updates. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **IsRepair** - Indicates whether the update is to repair failed update
+
+- **Payload** - Indicates whether a download was attempted previously
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **UpdateName** - Name of the update as it appears in the downloaded manifest file
+
+### update.download.finish
+
+This event indicates completion of the download phase for application update. This event forms part of the update funnel and is used to determine the health of application updates.  
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **IsRepair** - Indicates whether the update is to repair failed update
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **UpdateID** - Identifier for an application update
+
+- **UpdateName** - Name of the update as it appears in the downloaded manifest file
+
+### update.downloadresume
+
+This event reports an error encountered while attempting to resume a paused download task. This event is critical and is used to investigate on reported errors. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Error** - Indicates nature of error encountered
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **UpdateID** - Identifier for an application update
+
+### update.error
+
+This event reports an error encountered while attempting to update registered application.  This event is critical and is used to investigate on reported errors. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Error** - Contains information on nature of error encountered
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Contains information on nature of error encountered
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### update.installcleanupforapp
+
+This event indicates update install has completed and Microsoft Auto Update (MAU) is cleaning up.  This event forms part of update funnel and is used to determine health of application updates.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppState** - State of registered application. May indicate error, pending repair, etc.
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **UpdateID** - Identifier for an application update
+
+### update.installupdateforapp
+
+This event is used to report on start of application update install process. This event forms part of update funnel and is used to determine health of application updates. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Error** - Encountered errors if any
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **UpdateID** - Identifier for an application update
+
+- **UpdateName** - Name of the update as it appears in the downloaded manifest file
+
+### update.installupdateforapp.success
+
+This event reports on the status of install task. This event forms part of update funnel and is used to determine health of application updates. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Indicates whether progress view has been displayed during install process
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **Success** - Success indication returned from install task
+
+- **UpdateID** - Identifier for an application update
+
+### Update.InstallVariance
+
+This event is used to calculate critical update health metric for MAU. This event allows us to determine the success metrics of install priority feature and verify the integrity of the feature.
+ 
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowTocheck** - The preference for checking of updates
+
+- **Payload** - Contains the list of Application IDs and their corresponding install priority represented in numbers.
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### update.multipleappupdates 
+
+This event indicates multiple application updates are in progress in background. This event forms part of update funnel and is used to determine health of application updates.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier 
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Contains information on number of applications being updated
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### update.previousidnil
+
+This event indicates a repair update package is being downloaded but there is no previous download information. This event is critical and is used to investigate reported errors. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Error** - Indicates nature of error encountered
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### update.queueinstallforapp 
+
+This event indicates that a downloaded update package has been placed in a queue for install.  This event forms part of update funnel and is used to determine health of application updates.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Static text to indicate application needs to close, if present
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **UpdateID** - Identifier for an application update
+
+- **UpdateName** - Name of the update as it appears in the downloaded manifest file
+
+### update.relaunchafterupdate 
+
+This event indicates application update has completed and is being re-launched. This event forms part of update funnel and is used to determine health of application updates. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Error** - Contains information on any errors encountered while attempting to relaunch application
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **UpdateID** - Identifier for an application update
+
+### update.timerforapptermination 
+
+This event indicates start/end of timer for checking on the status application. This event comes in a pair and is used to determine all timer objects are removed when application update progresses.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Indicates whether the timer was added or removed
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+
+### updatecore.appregistration
 
 This event logs attempts to register an app and the result/reason. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8872,7 +12970,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### updatecore_loadinglaunchagent
+### updatecore.loadinglaunchagent
 
 This event indicates Launch Agent is being loaded. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8912,8 +13010,47 @@ The following fields are collected:
 
 - **SessionId** - The identifier for the session
 
+### updatecore.runnstaskcommand
 
-### updatecore_server_connectionfail
+This event reports on an error while attempting to launch a task. This event is critical and is used to investigate reported errors.  
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Contains path to the command being executed
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### updatecore.server.connectionfail
 
 This event logs errors hit while reaching out to the CDN. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8953,8 +13090,47 @@ The following fields are collected:
 
 - **SessionId** - The identifier for the session
 
+### updatecore.server.nullurl
 
-### updatefilterhelper_cannotretrievebuilddate
+This event reports an error indicating that a given server could not be reached. This event is used to determine update failure rate caused by network issue. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### updatefilterhelper.cannotretrievebuilddate
 
 We can filter updates via MAU Service only when the update being offered is not older than certain amount of days. Here we log that we could not retrieve the date from the app metadata. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -8995,7 +13171,87 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### updatefilterhelper_invalidresponsefromupdatefiltering
+### updatefilterhelper.invalidappid
+
+This event reports an error indicating that no matching manifest files could be found with application id retrieved from web response. This event is used to investigate reported error.
+
+The following fields are collected: 
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Contains application ID in the web response
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### updatefilterhelper.invalidappidfromwebservices
+
+This event reports an error indicating that application ID retrieved from web response is not in expected format. This event is used to investigate reported error.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Static text
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### updatefilterhelper.invalidresponsefromupdatefiltering
 
 We can filter updates via MAU Service only when the update being offered is not older than certain amount of days. Here we log the date is missing from the app metadata. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9036,7 +13292,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### updatefilterhelper_missingbuilddate
+### updatefilterhelper.missingbuilddate
 
 We can filter updates via MAU Service only when the update being offered is not older than certain amount of days. Here we log the date is missing from the app metadata. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9077,7 +13333,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### updatefilterhelper_updatebypassedoldage
+### updatefilterhelper.updatebypassedoldage
 
 We can filter updates via MAU Service only when the update being offered is not older than certain amount of days. Here we log the service is bypassed due to old update date. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9118,7 +13374,50 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### updatefinder_check_start
+### updatefinder.check.error
+
+This event reports an error encountered while checking for updates. This event is critical and is used to investigate reported error. 
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Code** - Error code 
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Domain** - Error domain
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+ 
+### updatefinder.check.start
 
 This event logs whenever we initiate a check for updates operation. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9159,7 +13458,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### updatefinder_check_status
+### updatefinder.check.status
 
 This event aggregates the status of the check for update operations (the funnel from searching until downloading). We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9200,7 +13499,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### updatefinder_check_updatefound
+### updatefinder.check.updatefound
 
 We log whenever a check for updates results in updates found. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9241,7 +13540,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### updatefinder_check_updatenotfound
+### updatefinder.check.updatenotfound
 
 We log whenever a check for updates results in no updates offered due to no updates being found. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9282,7 +13581,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### updatefinder_check_uptodate
+### updatefinder.check.uptodate
 
 We log whenever a check for updates results in no updates offered due to all apps being already up to date. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9323,7 +13622,49 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### updatefinder_offerupdates_minoscheckfail
+### updatefinder.offerupdates.invalidappid
+
+This event reports an error while trying to assess whether an update is applicable. This event is critical and is used to investigate reported error.  
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **CatalogID** - Identifier for the accessed catalog
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **IsNullID** - Indicates whether ID is null
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### updatefinder.offerupdates.minoscheckfail
 
 We log whenever we blocked an update due to not meeting OS requirements. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9363,8 +13704,49 @@ The following fields are collected:
 
 - **SessionId** - The identifier for the session
 
+### updatefinder.offerupdates.missingtrigger
 
-### updatefinder_offerupdates_nullbundleforappid
+This event reports an error while attempting to evaluate triggers from downloaded application update manifest. This critical and is used to investigate reported error.  
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **TriggerKey** - Trigger key found in manifest
+
+- **Triggers** - Dictionary of triggers found in manifest
+
+### updatefinder.offerupdates.nullbundleforappid
 
 This event indicates Microsoft Autoupdate was unable to load bundle information for the application ID specified in downloaded manifest file. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9405,7 +13787,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### updatefinder_offerupdates_updaterulematched
+### updatefinder.offerupdates.updaterulematched
 
 This event denotes that an update was found for an app and baseline. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9446,7 +13828,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### updatefinder_registeredapps
+### updatefinder.registeredapps
 
 We log the apps that are installed/registered/Controlled by MAU. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9486,8 +13868,90 @@ The following fields are collected:
 
 - **SessionId** - The identifier for the session
 
+### updatefinder.suite.invalidsuiteversion
+
+This event reports on a suite version error while assessing whether an update is applicable. This event is critical and is used to investigate reported error.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **Suite** - Name of suite under consideration
+
+### updatefinder.suite.keyvaluemissing
+
+This event reports an error while attempting to add an application to suite. This event is critical and is used to investigate reported error.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session 
+
+- **Suite** - Name of suite application is to be added
+
     
-### updatefinder_suite_missingcollateral
+### updatefinder.suite.missingcollateral
 
 Suite Update - We log whenever a suite update is not applicable due to collateral missing. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9528,7 +13992,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### updatefinder_suite_staleversion
+### updatefinder.suite.staleversion
 
 Suite Update - We log whenever a suite update is not applicable due to baseline version being too old. We log the baseline version and the Suite AppId. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9569,7 +14033,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### updatefinder_suite_updateapplicable
+### updatefinder.suite.updateapplicable
 
 Suite Update - We log whenever a suite update is applicable. We log the baseline version and the Suite AppId. We log the baseline version and the Suite AppId. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9610,7 +14074,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### updatefinder_suite_updatenotapplicabledefaultpath
+### updatefinder.suite.updatenotapplicabledefaultpath
 
 Suite Update - We log whenever a suite update is not offered due not all suite apps being install under the default path. We log the baseline version and the Suite AppId. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9651,7 +14115,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### updatefinder_suite_updatenotapplicableversion
+### updatefinder.suite.updatenotapplicableversion
 
 Suite Update - We log whenever a suite update is not offered due not all suite apps being in the same baseline version. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9692,7 +14156,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### updatefinder_suite_updatenotoffered
+### updatefinder.suite.updatenotoffered
 
 Suite Update - We log whenever a suite update is not offered due to suite size being larger than individual updates. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9733,7 +14197,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### updatefinder_suite_updateoffered
+### updatefinder.suite.updateoffered
 
 Suite Update - We log whenever a suite update is offered. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9774,7 +14238,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### updatemanager_checkupdate
+### updatemanager.checkupdate
 
 This event logs number of updates found by Microsoft Autoupdate while checking for available updates. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9815,7 +14279,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### updatemanager_updatespending
+### updatemanager.updatespending
 
 This event denotes that updates were found and are pending install. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9855,8 +14319,97 @@ The following fields are collected:
 
 - **SessionId** - The identifier for the session
 
-    
-### webservices_checkforsilentupdates
+### UpdateStatus.Codesign
+
+This event reports the status from codesign verification Microsoft Update Assistant runs after installing client application updates. We use this event to ensure that we provide packages that are valid and will update the installed application to newest version.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppID** - Identifier for the application being updated
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Error** - Any errors that were seen during codesign verification process
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowTocheck** - The preference for checking of updates
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+- **Success** - Indicates whether codesign verification was successful
+
+- **UpdateID** - Uniquely identifies applied update 
+
+- **UpdateName** - Name of the update as described in update manifest
+
+- **UpdatePkg** - Name of the update package applied
+
+### urlutilities.getmauinfo
+
+This event reports an error encountered while accessing Microsoft Auto Update (MAU) application bundle. This event is critical and is used to investigate reported error.
+
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Contains information on error encountered
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+   
+### webservices.checkforsilentupdates
 
 This event denotes that silent-update candidates were found. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9897,7 +14450,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### webservices_deltaupdater
+### webservices.deltaupdater
 
 This event logs interactions between the client code and the feature gate that controls whether the client should allow for Delta updates. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9938,7 +14491,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### webservices_serviceaction
+### webservices.serviceaction
 
 We log any errors resulting from an unexpected webservice response. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -9979,7 +14532,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### webservices_serviceaction
+### webservices.serviceaction
 
 We log any errors resulting from an unexpected webservice response. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -10020,7 +14573,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
 
-### webservices_serviceresponse
+### webservices.serviceresponse
 
 This event logs requests to MAU Service, response times and Errors. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -10061,7 +14614,7 @@ The following fields are collected:
 - **SessionId** - The identifier for the session
 
     
-### webservices_silentupdate
+### webservices.silentupdate
 
 We log requests to check for any "force update" applicability rules, i.e. we must take a user from build N to build N+1 due to some major issue. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -10101,9 +14654,47 @@ The following fields are collected:
 
 - **SessionId** - The identifier for the session
 
+### webservices.updatefiltering
 
+This event indicates filtering performed on the list of applicable updates via web-services. We use this event to ensure application blocks are working correctly if we have to block an update.
 
-### webservices_webcontent
+The following fields are collected:
+
+- **App** - The application process sending the event
+
+- **AppInfo_Language** - The language the application is running under
+
+- **AppVersionLong** - The application version
+
+- **Channel** - The preference for audience
+
+- **Device_NetworkCountry** - The device country (based on IP address)
+
+- **DeviceID** - The device identifier
+
+- **DeviceInfo_Model** - The hardware model of the device
+
+- **DeviceInfo_NetworkType** - The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** - The version of the operating system
+
+- **Event_ReceivedTime** - The time at which telemetry was received
+
+- **EventInfo_Name** - The name of the telemetry event being logged
+
+- **EventInfo_Time** - The time at which the logged event took place 
+
+- **HowToCheck** - How to check setting
+
+- **Payload** - Contains information on number of updates blocked via web-services
+
+- **PipelineInfo_ClientCountry** - The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** - The first three octets of the IP address
+
+- **SessionId** - The identifier for the session
+
+### webservices.webcontent
 
 We log requests and responses received into webservices. We use this event for ensuring the update process works as expected and to help troubleshoot errors.
  
@@ -10142,6 +14733,46 @@ The following fields are collected:
 - **PipelineInfo_ClientIp** - The first 3 octets of the IP address
 
 - **SessionId** - The identifier for the session
+
+### webservices.whatsnew
+
+This event is triggered when Microsoft Auto Update (MAU) queries web-services on the “what’s new” feature for registered applications. This event is used to determine health of the “what’s new” feature. 
+
+The following fields are collected:
+
+- **App** -The application process sending the event
+
+- **AppInfo_Language** -The language the application is running under
+
+- **AppVersionLong** -The application version
+
+- **Channel** -The preference for audience
+
+- **Device_NetworkCountry** -The device country (based on IP address)
+
+- **DeviceID** -The device identifier
+
+- **DeviceInfo_Model** -The hardware model of the device
+
+- **DeviceInfo_NetworkType** -The type of network (Wi-Fi, wired, unknown)
+
+- **DeviceInfo_OsBuild** -The version of the operating system
+
+- **Event_ReceivedTime** -The time at which telemetry was received
+
+- **EventInfo_Name** -The name of the telemetry event being logged
+
+- **EventInfo_Time** -The time at which the logged event took place 
+
+- **HowToCheck** -How to check setting
+
+- **Payload** -Contains information on number of applications with what’s new information
+
+- **PipelineInfo_ClientCountry** -The device country (based on IP address)
+
+- **PipelineInfo_ClientIp** -The first three octets of the IP address
+
+- **SessionId** -The identifier for the session
 
 ## OneNote sync events
 
@@ -10380,11 +15011,145 @@ The following fields are collected
 
 ### OneNote.App.Provisioning.MoveLocalNotebookToOnlineNotebookFailed
  
-This event is logged when move of local notebook to drive fails.  This scenario is specific to delayed sign-in user. When the user signs-in, their local notebook is transferred to their OneDrive storage. 
+This event is logged when move of local notebook to drive fails.  This scenario is specific to delayed sign-in user. When the user signs in, their local notebook is transferred to their OneDrive storage. 
  
 The following fields are collected:
  
 - **ErrorMsg** - The error message corresponding to the failure.
+
+### OneNote.Storage.ConnectivityChanged
+
+The event logs if a user has internet connectivity or not. This is used to correlate the other sync health performance metrics by allowing us to ignore events that occur while a user does not have internet connectivity as we do not expect our service latency to be acceptable without internet connectivity. This allows us to calculate an accurate session count for our metrics across slices of customers (per-tenant, per-sector). We also use it to filter error reports as there are numerous sync errors that we expect to occur without network connectivity but that warrant investigation otherwise.
+
+If we do not receive this data, we will not be able to accurately monitor our products performance or determine if errors experienced by a user are expected or require further investigation.
+
+The following fields are collected:
+
+- **InternetConnectivityNowAvailable** -  If the connectivity state has been changed so it is now Internet
+
+### OneNote.Storage.LegacyInboundLatency
+
+The critical signal used to track the performance of inbound sync operations that communicate directly with SharePoint including correlating information allowing us to monitor and investigate the performance of uploading data to our service. This signal is only collected for the worst performing download in the last 300 seconds (the number of seconds is configurable by Microsoft depending on service performance and condition).
+
+This is used to ensure service health by allowing us to see which tenants are experiencing an unacceptably slow inbound of data to our service, information about the data they are uploading when they experienced the slow inbound and how widespread within a tenant that latency issue is. It is also used to report service health and performance across our customers to measure trends over time and alert on issues automatically for engineering mitigation. If we do not have this data it will prevent us from ensuring adequate download performance when a user syncs changes from SharePoint to their computer.
+
+The following fields are collected: 
+
+- **IsEducationNotebook** - A bool indicating if the notebook is an education notebook
+
+- **NotebookId** - The ID of the notebook that this upload is part of
+
+- **TimeToConfirmSyncedWithServerInMs** - The time in milliseconds it took to perform the upload
+
+### OneNote.Storage.LegacyOutboundLatency
+
+The critical signal used to track the performance of outbound sync operations that communicate directly with SharePoint including correlating information allowing us to monitor and investigate the performance of uploading data to our service. This signal is only collected for the worst performing download in the last 300 seconds (the number of seconds is configurable by Microsoft depending on service performance and condition).
+
+This is used to ensure service health by allowing us to see which tenants are experiencing an unacceptably slow outbound of data to our service, information about the data they were uploading when they experienced the slow outbound and how widespread within a tenant that latency issue is. It is also used to report service health and performance across our customers to measure trends over time and alert on issues automatically for engineering mitigation. If we do not have this data, it will prevent us from ensuring adequate performance when syncing users changes up to SharePoint. 
+
+The following fields are collected: 
+
+- **IsEducationNotebook** - A bool indicating if the notebook is an education notebook
+
+- **NotebookId** - The ID of the notebook that this upload is part of
+
+- **TimeToConfirmSyncedWithServerInMs** - The time in milliseconds it took to perform the upload
+
+### OneNote.Storage.RealTime.FileDataObjectDownload 
+
+The critical signal used to track performance when a user inbounds a file data object (i.e. an embedded file or image) which is downloaded directly from our service and not as part of a sync operation on a page, section or notebook. This signal is only collected for the worst performing download in the last 300 seconds (the number of seconds is configurable by Microsoft depending on service performance and condition).
+
+This is used to ensure service health and performance by allowing us to see which tenants are experiencing an unacceptably slow download of data from our service, and how widespread within a tenant that latency issue is, and report our behavior over time allowing us to measure service performance trends. If we see an unacceptable latency for a file object, we will also use this data to correlate that with other signals from the client and service regarding the object to make improvements to our download process. We also split the data based on the extension of the file object downloaded as we have different expectations based on whether the file is presented inline in our canvas (e.g. an image) or is a non-inline file (such as a text document). If we do not receive this data, it will prevent us from monitoring the performance of these downloads
+
+The following fields are collected: 
+
+- **FileSizeInBytes** - The size of the file being downloaded in bytes 
+
+- **IsImage** - A bool determining if the file being downloaded has an extension that matches a pre-determined list of common image formats (.bmp, .emf, .gif, .jpe, .jpeg, .jpg, .png) that we display inline in the canvas
+
+- **TimeToDownload** - The length of time it took to successfully download the FDO from our blob storage to the device 
+
+### OneNote.Storage.RealTime.WebSocketDownload
+
+The critical signal used to track performance of inbound sync operations including correlating information allowing us to monitor and investigate the performance of downloading data from our service (onenote.com). This signal is only collected for the worst performing download in the last 300 seconds (the number of seconds is configurable by Microsoft depending on service performance and condition).
+
+This is used to ensure service health by allowing us to see which tenants are experiencing an unacceptably slow inbound of data from our service, information about the data they were downloading when they experienced the slow inbound and how widespread within a tenant that latency issue is. It is also used to report service health and performance across our customers to measure trends over time and alert on issues automatically for engineering mitigation. 
+
+If we see an unacceptable latency for a section or notebook we will also use this data to correlate that with other signals from the client and service regarding the same document to identify client side performance regressions allowing us to deliver a more performant service.
+
+If we do not receive this data, we will be unable to monitor the performance of this aspect of our service, or the impact of server side changes we may find necessary due to usage or other factors.
+
+The following fields are collected:
+
+- **DeviceSessionId** -  The ID of the device session
+
+- **IsEducationNotebook** - A bool indicating if the notebook is an education notebook
+
+- **IsHierarchyResource** - A bool indicating if the resource is a hierarchy resource
+
+- **NotebookId** - The ID of the notebook that this upload is part of
+
+- **ResourceId** - The ID of the resource that we are uploading
+
+- **SectionId** - The ID of the section that this upload is part of
+
+- **ServerSessionId** - The ID of the server session that this upload is part of
+
+- **TimeToConfirmSyncedWithServerInMs** - The time in milliseconds between a user navigating to a page and the replication stack confirming that page is in sync with the server.
+
+- **TimeToFirstUpdateInMs** - The time in milliseconds between the sync engine beginning inbound replication of a page and that replication operation reaching the in sync with the server state.
+
+### OneNote.Storage.RealTime.WebSocketUpload
+
+The critical signal used to track the performance of outbound sync operations including correlating information allowing us to monitor and investigate the performance of uploading data to our service (onenote.com)
+
+This is used to ensure service health by allowing us to see which tenants are experiencing an unacceptably slow outbound of data to our service, information about the data they were uploading when they experienced the slow outbound and how widespread within a tenant that latency issue is. It is also used to report service health and performance across our customers to measure trends over time and alert on issues automatically for engineering mitigation. We will also use this data to track the impact and effectiveness of improvements we make to our clients and services. 
+
+If we see an unacceptable latency for a section or notebook we will also use this data to correlate that with other signals from the client and service regarding the same document to identify performance regressions allowing us to deliver a more performant experience.
+
+If we do not receive this data, we will be unable to monitor the performance of this aspect of our service, or the impact of server side changes we may find necessary due to usage or other factors.
+
+The following fields are collected: 
+
+- **DeviceSessionId** - The ID of the device session
+
+- **IsEducationNotebook** - A bool indicating if the notebook is an education notebook
+
+- **IsHierarchyResource** - A bool indicating if the resource is a hierarchy resource
+
+- **IsWorstTime** - A bool indicating if the time is a regular upload event, or the worst time we saw on this client in the last 300 seconds (the number of seconds is configurable by Microsoft depending on service performance and condition).
+
+- **NotebookId** - The ID of the notebook that this upload is part of
+
+- **RecommendedPutIntervalInMs** - The time the service has communicated to the client as its recommended put interval
+
+- **ResourceId** - The ID of the resource that we are uploading
+
+- **SectionId** - The ID of the section that this upload is part of
+
+- **SenderRequestId** - The ID of the sender performing the upload
+
+- **ServerSessionId** - The ID of the server session that this upload is part of
+
+- **UploadNonSuspendedTimeInMs** - The time in milliseconds it took to perform the upload excluding the time when the application was suspended
+
+- **UploadTimeInMs** - The time in milliseconds it took to actually perform the upload
+
+- **WaitTimeInMs** - The time in milliseconds between an upload being requested and an upload starting
+
+- **WebUrl** - The WebUrl of the upload (Logged as a PiiWz)
+
+### OneNote.Storage.SyncHealth
+
+The critical signal used to track errors and exceptions that have occurred inside the sync stack in the OneNote client allowing us to monitor and mitigate these unexpected conditions.
+
+This is used to ensure service health by allowing us to see error reports from the clients in near real-time, which lets us respond to sync issues as they arise. It is also used to identify how widespread an issue is, and how severe by cross-referencing the error tag with the client code to identify the source of failure. We also aggregate this data to get information on our performance over time and the impact and effectiveness of improvements we make to our clients and services. If we do not have this data, we won’t be able to proactively respond to error conditions in our sync service without customer escalation.
+
+The following fields are collected: 
+
+- **Service** - The sync service the client was using when the error occurred (Legacy or Modern Sync)
+
+- **Tag** - The tag (an identifying value) representing the error that the client encountered during the sync operation
 
 ### OneNote.Sync.CreateNotebookFailed
  
@@ -10408,18 +15173,104 @@ The following fields are collected:
 
 ## Services Configuration events
 
-No required service diagnostic data events are collected by Services Configuration.
+No required service data events are collected by Services Configuration.
 
 ## Telemetry events
 
-### Office_FirstRun_Apple_TelemetryOptIn
+### Office.Android.DocsUI.Views.PaywallOperationMetrics
+
+Microsoft uses this to get the health of the feature, success, or error rates for the user for purchases, to ensure appropriate investments to improve the customers’ purchase experience across mobile platforms.
+
+The following fields are collected:
+
+- **OperationTimeInMs** - Time taken for the purchase operation to complete (long – milliseconds)
+
+- **PaywallOperationResult** - Success / Error Code / User Canceled (Enum / int – finite)
+
+- **PaywallOperationType** - Kind of Paywall operation (enum/ int - finite)
+
+### Office.Android.DocsUI.Views.PaywallSessionData
+
+Session based metadata when Paywall UI is shown to the user. Microsoft uses this to get the user journey, and understand the device and OS versions the user is using, to help make decisions on investments in improving the experience in these areas.
+
+The following fields are collected:
+
+- **App Version** - Version code of the consuming application
+
+- **ClientId** - Anonymous non PII unique device identifier (guid / string)
+
+- **Entry Point** - Unique identifier for contextual or constant entry points from the consuming application
+
+- **isTablet** - Whether the device is showing tablet UX
+
+- **OSVersion** - Android OS version of the device
+
+- **SessionId** - Guid: Unique Paywall session identifier
+
+
+### Office.FirstRun.Apple.TelemetryOptIn
 
 This event is collected for Office applications running under Apple platforms. The event is used to monitor the health of our telemetry opt-in flow in First Run Experience. We collect a code that denotes what type of diagnostic data collection option was selected by the user.
 
 The following fields are collected:
 
- - **Data_EventId** – A code indicating the diagnostic data collection preference selected by the user.
+- **Data_EventId** – A code indicating the diagnostic data collection preference selected by the user.
 
+### Office.iOS.Paywall.Provisioning.Response
+
+Product telemetry used for reconciliation of purchase transaction information with the Microsoft commerce system to enable associated subscription benefits. Used to facilitate the transaction logging and subscription provisioning for future reference and internal reconciliation.
+
+The following fields are collected:
+
+- **entryPoint** - String – The Button/Flow from which Paywall was displayed. Like “Premium Upgrade Button” or “First Run Flow”.
+
+- **failureReason** - String – Only added when status is “failure”. Indicating the error response given by the RFS Provisioning response.
+
+- **productId** - String – App Store ID of the product the request was made for
+
+- **status** - String – Success or Failure, indicating if the request succeeded or failed
+
+
+### Office.iOS.Paywall.StoreKit.Response
+
+The data is collected as critical engineering telemetry to log the result of purchase attempt triggered manually by user. The product telemetry is used for reconciliation of purchase transaction information with the Microsoft commerce system to enable associated subscription benefits.
+
+The following fields are collected:
+
+- **entryPoint** - String – The Button/Flow from which Paywall was displayed. Like “Premium Upgrade Button” or “First Run Flow”.
+
+- **failureReason** - String – Only added when status is “failure”. Indicating the error response given by the App-store response
+
+- **productId** - String – Only for “MakePurchase”, “PendingPurchase”, the app-store ID of the product for which the request was made.
+
+- **productsCount** - Int – Only for “ProductsFetch”, the number of products returned by Store.
+
+- **requestType** - String – Type of StoreKit request. Like “ProductsFetch”, “PendingPurchase”
+
+- **status** - String – Success or Failure, indicating success or failure of the request
+
+
+### Office.System.GracefulExit.GracefulAppExitDesktop
+
+The event is triggered by a graceful application termination for Office client applications such as, but not limited to, Word, Excel, PowerPoint, and Outlook. We use Graceful Exit to measure the health of Office client products. It is intended to be a business-critical signal used by Office engineers to infer product stability.
+
+The following fields are collected:
+
+- **AppBuild** - Build version identifier for the affected process.
+- **AppMajor** - Major version identifier for the affected process.
+- **AppMinor** - Minor version identifier for the affected process.
+- **AppRevision** - Build version identifier for the affected process.
+- **BootCompleted** – Did Office process complete boot.
+- **DetectionTime** - The time when the unexpected exit was detected.
+- **EcsETag** - An experiment identifier for the process.
+- **HasEdit** – Was document editing occurring during the Office process.
+- **HasOpen** – Was document opened during the Office process.
+- **InstallMethod** - Whether the current build of Office was upgraded from, rolled back to, or a fresh install.
+- **OfficeUILang** – Language of the Office process.
+- **PreviousBuild** - Previously installed build version.
+- **SafeMode** – Was Office process in safe mode.
+- **SessionId** - A unique identifier of the process.
+- **SessionInitTime** - The time when the affected process started.
 
 ### Office.System.IdentityChanged
 
@@ -11069,7 +15920,7 @@ The following fields are collected:
 
   - **CID -** Pseudonymized user identity
 
-  - **CollectibleClassifications -** Data classifications that can be collected according the client privacy settings
+  - **CollectibleClassifications -** Data classifications that can be collected according to the client privacy settings
 
   - **CollectionTime -** The time this event was queued for upload
 

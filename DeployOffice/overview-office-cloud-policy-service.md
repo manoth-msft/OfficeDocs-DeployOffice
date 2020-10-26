@@ -10,15 +10,16 @@ localization_priority: Normal
 ms.collection: 
 - Ent_O365
 - M365-modern-desktop
+- m365initiative-coredeploy
 ms.custom: Ent_Office_ProPlus
 description: "The Office cloud policy service lets you enforce policy settings for Microsoft 365 Apps for enterprise on a user's device, even if the device isn't domain joined or otherwise managed."
 ---
 
 # Overview of the Office cloud policy service for Microsoft 365 Apps for enterprise
 
-The [Office cloud policy service](https://aka.ms/o365clientmgmt) lets you enforce policy settings for Microsoft 365 Apps for enterprise (previously named Office 365 ProPlus) on a user's device, even if the device isn't domain joined or otherwise managed. When a user signs into Microsoft 365 Apps for enterprise on a device, the policy settings roam to that device. You can also enforce some policy settings for Office for the web, both for users who are signed in and for users who access documents anonymously.
+The [Office cloud policy service](https://config.office.com/) lets you enforce policy settings for Microsoft 365 Apps for enterprise (previously named Office 365 ProPlus) on a user's device, even if the device isn't domain joined or otherwise managed. When a user signs into Microsoft 365 Apps for enterprise on a device, the policy settings roam to that device. You can also enforce some policy settings for Office for the web, both for users who are signed in and for users who access documents anonymously.
 
-The Office cloud policy service is part of a [portal](https://aka.ms/o365clientmgmt) for managing Microsoft 365 Apps for enterprise. The service includes many of the same user-based policy settings that are available in Group Policy. You can also use the Office cloud policy service directly in the [Microsoft Endpoint Manager admin center](https://go.microsoft.com/fwlink/p/?linkid=2109431).  
+The Office cloud policy service is part of a [portal](https://config.office.com/) for managing Microsoft 365 Apps for enterprise. The service includes many of the same user-based policy settings that are available in Group Policy. You can also use the Office cloud policy service directly in the [Microsoft Endpoint Manager admin center](https://go.microsoft.com/fwlink/p/?linkid=2109431).  
 
 When you create policy configurations, you can review and apply policies that are recommended by Microsoft as security baseline policies. These recommendations are marked as "Security Baseline" when selecting policies. You can also use Security Policy Advisor to receive and implement security policy recommendations. These recommendations are based on Microsoft best practices and information about your existing environment. For more information, see [Overview of Security Policy Advisor](overview-of-security-policy-advisor.md).
 
@@ -33,13 +34,15 @@ The following are the requirements for using the Office cloud policy service wit
 - To create a policy configuration, you must be assigned one of the following roles in Azure Active Directory (AAD): Global Administrator, Security Administrator, or Office Apps Admin.
 
 > [!IMPORTANT]
-> The Office cloud policy service isn't available to customers who have the following plans: Office 365 operated by 21Vianet, Office 365 Germany, Office 365 GCC, or Office 365 GCC High and DoD.
+> - The Office cloud policy service isn't available to customers who have the following plans: Office 365 operated by 21Vianet, Office 365 Germany, Office 365 GCC, or Office 365 GCC High and DoD.
+> - A policy configuration can't be applied to other commercial versions of Office that use Click-to-Run, such as Office Professional Plus 2019 or Office Standard 2019.
+> - You can create a policy configuration for Microsoft 365 Apps for business, but only policy settings related to privacy controls are supported. For more information, see [Use policy settings to manage privacy controls for Microsoft 365 Apps for enterprise](privacy/manage-privacy-controls.md).
 
 ## Steps for creating a policy configuration
 
 The following are the basic steps for creating a policy configuration.
 
-1. Sign into the [portal](https://aka.ms/o365clientmgmt), review the terms, and then choose **Accept**.
+1. Sign into the [portal](https://config.office.com/), review the terms, and then choose **Accept**.
 2. Under **Customization**, choose **Policy Management**.
 3. On the **Policy configurations** page, choose **Create**.
 4. On the **Create policy configuration** page, do the following:
@@ -81,8 +84,7 @@ Also, policy settings implemented by using Office cloud policy service take prec
 - Not all user-based policy settings are available. Only user-based policy settings that configure a single value are available currently. Work is being done to make more user-based policy settings available.
 - As new user-based policy settings are made available for Office, the Office cloud policy service will automatically add them. There is no need to download updated Administrative Templates files (ADMX/ADML).
 - You can also create policy configurations to apply policy settings for Version 1808 or later of the subscription versions of the Project and Visio desktop apps.
-- Version 1808 of Microsoft 365 Apps for enterprise (and for the subscription versions of the Project and Visio desktop apps) are available in Current Channel, Monthly Enterprise Channel, Semi-Annual Enterprise Channel (Preview), and Semi-Annual Enterprise Channel. For Microsoft 365 Apps for enterprise release information, see [Update history for Microsoft 365 Apps](https://docs.microsoft.com/officeupdates/update-history-microsoft365-apps-by-date).
-- A policy configuration can't be applied to other commercial versions of Office that use Click-to-Run, such as Microsoft 365 Apps for business, Office Professional Plus 2019, or Office Standard 2019.
+- Version 1808 of Microsoft 365 Apps for enterprise (and for the subscription versions of the Project and Visio desktop apps) is available in Current Channel, Monthly Enterprise Channel, Semi-Annual Enterprise Channel (Preview), and Semi-Annual Enterprise Channel. For Microsoft 365 Apps for enterprise release information, see [Update history for Microsoft 365 Apps](https://docs.microsoft.com/officeupdates/update-history-microsoft365-apps-by-date).
 - If users are located in nested groups and the parent group is targeted for policies in OCPS, the users in the nested groups will receive the policies.
 
 

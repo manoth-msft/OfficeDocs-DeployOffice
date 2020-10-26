@@ -428,14 +428,14 @@ In the following screenshot of the **Deployments** worksheet, you can see how ma
   
 You can see that there are still 32-bit computers that are running Office 2003. You may want to contact these users to understand if they have any concerns about how to upgrade. You can also create a custom report to show more information about these users, such as their computer hardware.
   
-Also, you should be aware that Windows 8 is now supported on ARM-based architectures. If your organization has users who have Office on these computers, you can now keep track of that information in the **Deployments** worksheet. You can create custom reports to obtain richer information about who is using these computers, what issues they may be experiencing, and so on. 
+Also, you should be aware that Windows 8.1 is now supported on ARM-based architectures. If your organization has users who have Office on these computers, you can now keep track of that information in the **Deployments** worksheet. You can create custom reports to obtain richer information about who is using these computers, what issues they may be experiencing, and so on. 
   
 
 ## Custom report worksheet
 
-When you select the **Create custom report** button on the **Custom report** worksheet, Telemetry Dashboard connects to multiple tables and creates relationships for you to use in a PivotTable. If you have never used a PivotTable before, you can learn more in [Use multiple tables to create a PivotTable](https://support.office.com/article/b5e3ff48-2921-4e29-be15-511e09b5cf2d). 
+When you select the **Create custom report** button on the **Custom report** worksheet, Telemetry Dashboard connects to multiple tables and creates relationships for you to use in a PivotTable. If you have never used a PivotTable before, you can learn more in [Use multiple tables to create a PivotTable](https://support.microsoft.com/office/b5e3ff48-2921-4e29-be15-511e09b5cf2d). 
   
-## Related topics
+## Related articles
 
 - [Guide to Office Telemetry Dashboard resources](compatibility-and-telemetry-in-office.md)
 - [Deploy Office Telemetry Dashboard](deploy-telemetry-dashboard.md)

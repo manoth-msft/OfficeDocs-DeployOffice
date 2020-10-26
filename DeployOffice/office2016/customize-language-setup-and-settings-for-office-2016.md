@@ -22,7 +22,7 @@ description: "Learn how to customize languages for Office 2016."
 To customize and deploy language setup and settings for Office 2016, follow the steps that are described in this article.
 
 > [!NOTE]
-> - If you're a user trying to install a language pack for a personal copy of Office at home, see [Language Accessory Pack for Office](https://support.office.com/article/82ee1236-0f9a-45ee-9c72-05b026ee809f) instead of reading this article.
+> - If you're a user trying to install a language pack for a personal copy of Office at home, see [Language Accessory Pack for Office](https://support.microsoft.com/office/82ee1236-0f9a-45ee-9c72-05b026ee809f#ID0EAACAAA=Office_2016) instead of reading this article.
 > - This article describes methods of deploying and managing language packs for versions of Office 2016 that use the Windows Installer (MSI) installation technology, which are available for enterprises through volume licensing. If you have an Office subscription and you're deploying Microsoft 365 Apps, which uses the Click-to-Run installation technology, see [Overview of deploying languages for Microsoft 365 Apps](../overview-deploying-languages-microsoft-365-apps.md). 
 
 <a name="BKMK_Overview"> </a>  
@@ -284,9 +284,9 @@ If you are not enforcing language settings by policy, users who work in Office a
 
 1. Depending on your operating system, do one of the following:
     
-   - If you are running Windows 8, open **All Apps** (right-click the desktop), and then under **Microsoft Office 2016**, choose **Office 2016 Language Preferences**. Or, 
+   - If you are running Windows 8.1, open **All Apps** (right-click the desktop), and then under **Microsoft Office 2016**, choose **Office 2016 Language Preferences**. Or, 
     
-   - If you are running Windows 10 or Windows 7, choose **Start**, choose **All Programs**, choose **Microsoft Office**, choose **Microsoft Office 2016 Tools**, and then choose **Office 2016 Language Preferences**. 
+   - If you are running Windows 10, choose **Start**, choose **All Programs**, choose **Microsoft Office**, choose **Microsoft Office 2016 Tools**, and then choose **Office 2016 Language Preferences**. 
     
 2. Under **Choose Editing Languages**, in the language list, choose the language that you want to be available for editing, and then choose **Add**. Repeat this step for each editing language that you want to add.
     
@@ -478,6 +478,7 @@ If you have only one or two users who want proofing tools, you can install proof
     
 5. Choose **Install**.
     
-## Related topics
-[Plan for multilanguage deployment of Office 2016](plan-for-multilanguage-deployment-of-office-2016.md)
+## Related articles
+
+- [Plan for multilanguage deployment of Office 2016](plan-for-multilanguage-deployment-of-office-2016.md)
 

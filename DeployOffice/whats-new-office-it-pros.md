@@ -7,7 +7,9 @@ audience: ITPro
 ms.topic: get-started-article
 ms.service: o365-administration
 localization_priority: Normal
-ms.collection: Ent_O365
+ms.collection: 
+- Ent_O365
+- m365initiative-coredeploy
 ms.custom: Ent_Office_ProPlus
 description: "This article lists the new tools, content, and processes for IT Pros deploying Office."
 ---
@@ -15,6 +17,21 @@ description: "This article lists the new tools, content, and processes for IT Pr
 # What's new in Office deployment for IT Pros
 
 This article lists new features, tools, and articles for IT Pros who deploy Office in the enterprise. For a list of Office deployment articles that have been changed over the last several weeks, see [Content updates](deploy-office-content-updates.md). For details on Office announcements and plans, see the [Microsoft 365 Roadmap](https://products.office.com/business/office-365-roadmap).
+
+## July 2020
+
+### End of support resources
+
+We've published the following new articles to provide information about end of support events related to Office.
+
+- [End of support resources for Office](endofsupport/resources.md)
+- [Office versions and connectivity to Office 365 services](endofsupport/office-365-services-connectivity.md)
+- [Windows Server end of support and Microsoft 365 Apps](endofsupport/windows-server-support.md)
+- [Windows 8 end of support and Microsoft 365 Apps](endofsupport/windows-8-support.md)
+
+You can download and print the [Office configuration support matrix](https://go.microsoft.com/fwlink/p/?linkid=2111390) to use as a reference.
+
+To discuss or learn more about end of support for Office versions, visit [Microsoft Office End of Support](https://techcommunity.microsoft.com/t5/microsoft-office-end-of-support/ct-p/OfficeEOS) on the Microsoft Tech Community.
 
 ## June 2020
 
@@ -65,7 +82,7 @@ For more information, see this [blog post](https://techcommunity.microsoft.com/t
 ### Windows 7 end of support and Microsoft 365 Apps
 ***Support for Windows 7 ended on January 14, 2020.*** Using Microsoft 365 Apps on older, unsupported operating systems may cause performance and reliability issues over time. Therefore, if your organization is using Microsoft 365 Apps on devices running Windows 7, we strongly recommend your organization move those devices to [Windows 10](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support?rtc=1#office-ContentAreaHeadingTemplate-s9f0ou1).
 
-Even though Windows 7 is longer supported, we've decided to continue to provide you with security updates for Microsoft 365 Apps for the next three years, until January 2023. For more information, see [Windows 7 end of support and Microsoft 365 Apps](windows-7-support.md).
+Even though Windows 7 is longer supported, we've decided to continue to provide you with security updates for Microsoft 365 Apps for the next three years, until January 2023. For more information, see [Windows 7 end of support and Microsoft 365 Apps](endofsupport/windows-7-support.md).
 
 ### Delivery Optimization and Microsoft 365 Apps
 Delivery Optimization is a peer-to-peer distribution technology available in Windows 10 that allows devices to share content, such as updates, that the devices have downloaded from Microsoft over the internet. Delivery Optimization can help reduce network bandwidth because a device can get portions of the update from another device on its local network instead of having to download the update completely from Microsoft. 

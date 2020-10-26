@@ -21,7 +21,7 @@ This article shows how to assign Microsoft 365 Apps licenses to users and how to
   
 Before deploying Microsoft 365 Apps to users in your organization, you must first assign licenses to those users. Each license allows a user to install Microsoft 365 Apps on up to five desktops, five tablets, and five mobile devices. Each installation is activated and kept activated automatically by cloud-based services associated with Office 365 (or Microsoft 365). This automatic activation means you don’t have to keep track of product keys and you don’t have to figure out how to use other activation methods such as Key Management Service (KMS) or Multiple Activation Key (MAK). All you have to do is purchase enough licenses, keep your Office 365 (or Microsoft 365) subscription current, and make sure your users can connect to the Office Licensing Service via the internet at least once every 30 days. When single sign-on is enabled, Microsoft 365 Apps detects the user’s credentials and is activated automatically.
 
-If you remove a user's license (for example, if the user leaves your organization), any installations of Microsoft 365 Apps that the user had go into [reduced functionality mode](overview-of-licensing-and-activation-in-office-365-proplus.md#BKMK_ReducedFunctionalityMode). The Office Licensing Service, a part of Microsoft 365, keeps track of which users are licensed and how many computers they've installed Office on.
+If you remove a user's license (for example, if the user leaves your organization), any installations of Microsoft 365 Apps that the user had go into [reduced functionality mode](overview-licensing-activation-microsoft-365-apps.md#what-is-reduced-functionality-mode). The Office Licensing Service, a part of Microsoft 365, keeps track of which users are licensed and how many computers they've installed Office on.
      
 ## Assign and manage licenses
 
@@ -29,7 +29,7 @@ To use Microsoft 365 Apps, your users will need the appropriate license. To assi
 
 - Assign a license to a user directly in the Office 365 portal by selecting a check box on the licenses page for the user’s account. 
 
-- Use Office 365 PowerShell. For more information, see [Assign licenses to user accounts with Office 365 PowerShell](https://docs.microsoft.com/office365/enterprise/powershell/assign-licenses-to-user-accounts-with-office-365-powershell).
+- Use Office 365 PowerShell. For more information, see [Assign Microsoft 365 licenses to user accounts with PowerShell](https://docs.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell).
 
 - If you have a subscription for Azure AD Premium P1 and above, or an edition of Office 365 Enterprise E3 or Office 365 A3 or Office 365 GCC G3 and above, you can use group-based licensing with Azure AD. You can assign one or more product licenses to a group, and Azure AD ensures that the licenses are assigned to all members of the group. Any new members who join the group are assigned the appropriate licenses. When they leave the group, those licenses are removed. For more information, see  [Group-based licensing in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal). 
 
@@ -40,7 +40,7 @@ After a user is assigned a license, you can deploy Office to your users or your 
 As part of the installation process, Microsoft 365 Apps communicates with the Office Licensing Service and the Activation and Validation Service to obtain and activate a product key. Each day, or each time the user logs on to their computer, the computer connects to the Activation and Validation Service to verify the license status and extend the product key. As long as the computer can connect to the internet at least once every 30 days, Microsoft 365 Apps remains fully functional. If the computer goes offline for more than 30 days, Microsoft 365 Apps enters reduced functionality mode until the next time a connection can be made. To get Microsoft 365 Apps fully functional again, the user can connect to the internet and let the Activation and Validation Service reactivate the installation, though in some cases the user may have to sign back in first.
   
 > [!IMPORTANT]
-> Because of its online activation features, Microsoft 365 Apps won't work on computers that are completely cut off from the internet. For those computers, we recommend installing Office Professional Plus 2019 and using a [traditional activation method](https://docs.microsoft.com/DeployOffice/vlactivation/plan-volume-activation-of-office) such as Key Management Service (KMS) or Active Directory Domain Services.
+> Because of its online activation features, Microsoft 365 Apps won't work on computers that are completely cut off from the internet. For those computers, we recommend installing Office Professional Plus 2019 and using a [traditional activation method](vlactivation/plan-volume-activation-of-office.md) such as Key Management Service (KMS) or Active Directory Domain Services.
   
 ### Managing activated installations
 

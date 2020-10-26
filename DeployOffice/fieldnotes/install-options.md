@@ -49,10 +49,12 @@ Advantages:
 - Reduces the amount of content required to download each month if you have chosen to keep installation packages always up to date.
 
 Consideration:
-- Network optimization features like Configuration Peer Cache, Microsoft Connected Cache, and Delivery Optimization require configuration review to ensure they are optimally configured.
+- Network optimization features like [Configuration Peer Cache](https://docs.microsoft.com/mem/configmgr/core/plan-design/hierarchy/client-peer-cache), [Microsoft Connected Cache](https://docs.microsoft.com/mem/configmgr/core/plan-design/hierarchy/microsoft-connected-cache), and [Delivery Optimization](../delivery-optimization.md) require configuration review to ensure they are optimally configured.
 
 Disadvantages:
-- Hybrid workflow is not currently built into the Configuration Manager wizard. The IT Pro must manually update the configuration.xml to support AllowCDNFallback + MatchPreviousMSI or MatchInstalled. 
+- Hybrid workflow is not currently built into the Configuration Manager wizard. The IT Pro must manually update the configuration.xml to support AllowCDNFallback + MatchPreviousMSI or MatchInstalled.
+
+To learn more about how to decide which content to include/exclude and implement this approach, have a look at [Right-sizing your initial deployment of Microsoft 365 Apps](right-sizing-initial-deployment.md).
 
 ## Configuration Manager on-premises – full content
 
@@ -104,7 +106,7 @@ Disadvantages:
 - Customer may need to adopt other technologies like DFS-R and DFS-N to replicate content to file shares globally to remote sites.
 - No caching technology available to reduce network impact.
 
-## Self-install from the portal 
+## Self-install from the portal
 
 Advantages:
 - The most direct and simple method of installing Microsoft 365 Apps.
@@ -112,3 +114,8 @@ Advantages:
 Disadvantages:
 - Requires end-user administrator permissions to install.
 - Does not permit advanced customization of the installation with the configuration file.
+
+## Related topics
+
+[Build dynamic collections for Microsoft 365 Apps with Configuration Manager](build-dynamic-lean-configuration-manager.md)
+[Right-sizing your initial deployment](right-sizing-initial-deployment.md)

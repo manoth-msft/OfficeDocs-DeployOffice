@@ -29,7 +29,7 @@ This article helps you deploy the five components of Office Telemetry Dashboard:
 
 ## Office Telemetry Dashboard
 
-Office Telemetry Dashboard is an Excel workbook that is configured to connect to a database. Office Telemetry Dashboard is installed together with Microsoft 365 Apps for enterprise, Office Professional Plus 2019, Office Professional Plus 2016, and Office Standard 2016. To view Office Telemetry Dashboard, you must have Excel 2019 or Excel 2016 installed.
+Office Telemetry Dashboard is an Excel workbook that is configured to connect to a database. Office Telemetry Dashboard is installed together with Microsoft 365 Apps for enterprise, Office Professional Plus 2019, Office Professional Plus 2016, and Office Standard 2016. To view Office Telemetry Dashboard, you must have Excel installed from Microsoft 365 Apps for enterprise, Office 2019, or Office 2016.
 
 After Office is installed, you can start Office Telemetry Dashboard by using one of the procedures in the following table: 
 
@@ -37,12 +37,15 @@ After Office is installed, you can start Office Telemetry Dashboard by using one
 
 |**Operating system**|**How to start Office Telemetry Dashboard**|
 |:-----|:-----|
-|Windows 10, Windows Server 2008 R2, Windows Server 2008, or Windows 7 with Service Pack 1  <br/> |From the **Start** menu, choose **All Programs**, then **Microsoft Office 2016 Tools**, then **Telemetry Dashboard for Office 2016**.  <br/> |
-| Windows 8.1 or Windows 8  <br/> |On the **Start** screen, type **Telemetry Dashboard** and then choose it from the search results.  <br/> |
+|Windows 10, Windows Server 2008 R2, or Windows 7 with Service Pack 1  <br/> |From the **Start** menu, choose **All Programs**, then **Microsoft Office 2016 Tools**, then **Telemetry Dashboard for Office 2016**.  <br/> |
+| Windows 8.1 <br/> |On the **Start** screen, type **Telemetry Dashboard** and then choose it from the search results.  <br/> |
 | Windows Server 2012 R2 or Windows Server 2012  <br/> |Swipe in from the right edge to show the charms and then choose **Search** to see all the apps that are installed on the computer. Next, choose **Telemetry Dashboard for Office 2016**.  <br/> |
 
 For Microsoft 365 Apps for enterprise and Office 2019, look for **Telemetry Dashboard for Office** under **Microsoft Office Tools**.
 
+> [!NOTE]
+> - Support for Windows 7 and Windows Server 2008 R2 ended on January 14, 2020.
+> - Microsoft 365 Apps for enterprise isn’t supported on Windows Server 2012 or Windows Server 2012 R2, as of January 14, 2020. 
 
 <a name="SQL"> </a>
 
@@ -61,6 +64,9 @@ SQL Server must be deployed before you can configure Office Telemetry Dashboard.
 - SQL Server 2008 or SQL Server 2008 Express Edition
 
 - SQL Server 2005 or SQL Server 2005 Express Edition
+
+> [!NOTE]
+> To check which versions of SQL Server are currently supported, go to [Search Product and Services Lifecycle Information](https://docs.microsoft.com/lifecycle/products/) page.
 
 The **Getting started** worksheet in Office Telemetry Dashboard provides a link to download SQL Server 2014 Express. If you don't have SQL Server already installed, follow the steps in [To download and install SQL Server 2014 Express](deploy-telemetry-dashboard.md#installsql). Be sure to review the following guidelines before you install SQL Server 2014 Express. 
 
@@ -103,23 +109,13 @@ Office Telemetry Processor runs on one or more computers and collects inventory,
 
 The processor generates error logs in a file that is named dperrorlog.txt. It is located in a hidden folder at %systemroot%\ServiceProfiles\NetworkService\AppData\Local\Temp.
 
-Each computer on which you install the processors and database must also run the latest version of the Universal C Runtime (CRT) for the version of Windows running on the computer. For information, see [Update for Universal C Runtime in Windows](https://support.microsoft.com/kb/2999226).
+Each computer on which you install the processors and database must also run the latest version of the Universal C Runtime (CRT) for the version of Windows running on the computer. For information, see [Update for Universal C Runtime in Windows](https://support.microsoft.com/help/2999226).
 
 We recommend the following operating systems for computers that run the processor:
 
- **For production environments:** For best performance, we recommend these operating systems: 
+ **For production environments:** For best performance, we recommend you use a supported version of Windows Server, such as Windows Server 2019.
 
-- Windows Server 2016
-
-- Windows Server 2012 R2
-
-- Windows Server 2012
-
-- Windows Server 2008 R2
-
-- Windows Server 2008
-
-**For test or small production environments:** You can use computers that run Windows 10, Windows 8.1, Windows 8, and Windows 7 with Service Pack 1 in test environments and in small production environments. There is a limit of 20 concurrent connections for client operating systems, but in small environments, the agent randomization setting should minimize any chance of more than 20 agents connecting at one time. 
+**For test or small production environments:** You can use computers that run Windows 10 or Windows 8.1 in test environments and in small production environments. There is a limit of 20 concurrent connections for client operating systems, but in small environments, the agent randomization setting should minimize any chance of more than 20 agents connecting at one time. 
 
 Ensure that you have the following available before you run the wizard to set up the processor.
 
@@ -135,7 +131,7 @@ Ensure that you have the following available before you run the wizard to set up
 
 ### To install the Office Telemetry Processor
 
-1. On the computer where you want to install the processor, install the latest version of the CRT. For more information, see [Update for Universal C Runtime in Windows](https://support.microsoft.com/kb/2999226).
+1. On the computer where you want to install the processor, install the latest version of the CRT. For more information, see [Update for Universal C Runtime in Windows](https://support.microsoft.com/help/2999226).
 
 2. In Office Telemetry Dashboard, on the **Getting started** worksheet, choose the installation link under **2. Install Telemetry Processor**. Select the x86 or x64 version that's the same as the Windows operating system architecture where the processor will run.
 
@@ -213,6 +209,9 @@ The agent is built into Microsoft 365 Apps for enterprise, Office 2019, Office 2
 
 - Office 2010
 
+> [!NOTE]
+> Office 2003, Office 2007, and Office 2010 are no longer supported.
+
 For computers that are running Office 2013 and you have the Office 2013 agent installed on the computer, there are several additional considerations:
 
 - You can monitor computers running Office 2013 from the Office 2019 or Office 2016 Office Telemetry Dashboard. In order for this to work, the computer must also be running the Office 2013 agent. The agent must be configured to point to the Office 2019 or Office 2016 Office Telemetry Dashboard.
@@ -231,8 +230,6 @@ For computers that are running Office 2013 and you have the Office 2013 agent in
 
 - Windows 8.1
 
-- Windows 8
-
 - Windows 7 with Service Pack 1
 
 - Windows Server 2016
@@ -245,9 +242,14 @@ For computers that are running Office 2013 and you have the Office 2013 agent in
 
 - Windows Server 2008
 
-The agent might not work correctly on Windows service packs that are no longer supported by Microsoft. We recommend that you verify that your service pack is supported on the [Microsoft Product Lifecycle Search website](https://go.microsoft.com/fwlink/p/?LinkId=286402) before you install the agent. 
+The agent might not work correctly on Windows service packs that are no longer supported by Microsoft. We recommend that you verify that your service pack is supported on [Search Product and Services Lifecycle Information](https://docs.microsoft.com/lifecycle/products/) before you install the agent. 
 
-The computer running the agent must also run the latest version of the Universal C Runtime (CRT) for the version of Windows. For information, see [Update for Universal C Runtime in Windows](https://support.microsoft.com/kb/2999226).
+> [!NOTE]
+> - Windows 7 with Service Pack 1, Windows 2008 R2, and Windows Server 2008 are no longer supported.
+> - Microsoft 365 Apps for enterprise isn’t supported on Windows Server 2012 or Windows Server 2012 R2, as of January 14, 2020. 
+
+
+The computer running the agent must also run the latest version of the Universal C Runtime (CRT) for the version of Windows. For information, see [Update for Universal C Runtime in Windows](https://support.microsoft.com/help/2999226).
 
 ### To deploy the Office 2019 or Office 2016 agent to Office 2010, Office 2007, and Office 2003 clients
 
@@ -379,9 +381,9 @@ If you want to trigger the data collection manually and see data uploaded immedi
 
 - AgentRandomRelay: 0
 
-**For computers that run Windows 8 and later**
+**For computers that run Windows 8.1 and later**
 
-Because user logon is faster in Windows 8 and later versions of Microsoft Windows, we recommend setting AgentInitWait to at least 60 seconds to ensure that the network connection is ready after the user logs on.
+Because user logon is faster in Windows 8.1 and later versions of Microsoft Windows, we recommend setting AgentInitWait to at least 60 seconds to ensure that the network connection is ready after the user logs on.
 
 - AgentInitWait: 60
 

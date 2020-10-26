@@ -10,6 +10,7 @@ localization_priority: Priority
 ms.collection:
 - Ent_O365
 - M365-modern-desktop
+- m365initiative-coredeploy
 ms.custom: Ent_Office_ProPlus
 ms.assetid: b18a9110-0d14-46ec-af54-a22793ef6b38
 description: "This article gives step-by-step instructions for how to deploy Microsoft 365 Apps to client computers from the Office Content Delivery Network (CDN) by using the Office Deployment Tool (ODT)."
@@ -25,7 +26,7 @@ Make sure your users have local admin privileges on their client devices. If tha
 
 If you haven't already, complete the [assessment](assess-microsoft-365-apps.md) and [planning](plan-microsoft-365-apps.md) phases for your Office deployment. 
 
-This article is intended for administrators in enterprise environments working with hundreds or thousands of computers. If you want to install Office on a single device or small number of devices, we recommend reviewing [Download and install or reinstall Office 365 or Office 2019 on your PC or Mac](https://support.office.com/article/Download-and-install-or-reinstall-Office-365-or-Office-2016-on-a-PC-or-Mac-4414EAAF-0478-48BE-9C42-23ADC4716658) or [Use the Office offline installer](https://support.office.com/article/Use-the-Office-2016-offline-installer-f0a85fe7-118f-41cb-a791-d59cef96ad1c). 
+This article is intended for administrators in enterprise environments working with hundreds or thousands of computers. If you want to install Office on a single device or small number of devices, we recommend reviewing [Download and install or reinstall Microsoft 365 or Office 2019 on a PC or Mac](https://support.microsoft.com/office/4414EAAF-0478-48BE-9C42-23ADC4716658) or [Use the Office offline installer](https://support.microsoft.com/office/f0a85fe7-118f-41cb-a791-d59cef96ad1c). 
 
 ## Best practices
 

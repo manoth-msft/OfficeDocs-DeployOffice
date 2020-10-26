@@ -17,14 +17,8 @@ hideEdit: true
 
 # Required diagnostic data for Office
 
-> [!IMPORTANT]
-> The information in this article applies to Version 1904 or later of the following Office client software installed on a computer running Windows:
-> - Microsoft 365 Apps for enterprise (previously named Office 365 ProPlus)
-> - Microsoft 365 Apps for business (previously named Office 365 Business)
-> - Microsoft 365 Personal, Microsoft 365 Family, or other versions of Office that are part of a Microsoft 365 subscription.
-> - Project and Visio desktop apps that come with some subscription plans, such as Project Plan 5 or Visio Plan 2.
->
-> The information also applies to Version 16.28 or later of the following Office for Mac applications: Excel, Outlook, OneNote, PowerPoint, and Word.
+> [!NOTE]
+> For a list of Office products covered by this privacy information, see [Privacy controls available for Office products](products-versions-privacy-controls.md).
 
 Diagnostic data is used to keep Office secure and up-to-date, detect, diagnose and fix problems, and also make product improvements. This data does not include a user's name or email address, the content of the user's files, or information about apps unrelated to Office.
 
@@ -37,7 +31,7 @@ Required diagnostic data helps to identify problems with Office that may be rela
 For more information about diagnostic data, see the following:
 
 - [Optional diagnostic data for Office](optional-diagnostic-data.md)
-- [Using the Diagnostic Data Viewer with Office](https://support.office.com/article/cf761ce9-d805-4c60-a339-4e07f3182855)
+- [Using the Diagnostic Data Viewer with Office](https://support.microsoft.com/office/cf761ce9-d805-4c60-a339-4e07f3182855)
 
 If you're the admin for your organization, you might also be interested in the following:
 
@@ -116,37 +110,37 @@ Information regarding the users consent for diagnostic data and connected experi
 
 This category contains the following fields:
 
-  - **UserCategory –** Identified the type of user who made the consent. One of MSAUser, AADUser or LocalDeviceUser
-
-  - **DiagnosticConsentLevel** – Indicates what level of diagnostic data consent the user has given
-
-  - **DiagnosticConsentSourceLocation** – Indicates how the user had provided the consent for diagnostic data
-
-  - **DiagnosticConsentConsentTime** – Indicates when the user provided the consent for diagnostic data. The date will appear as either a human readable date or as a machine encoded date that looks like a large number.
-
-  - **ServiceConnectionState** – Indicates whether the user has chosen to use or not use all connected experiences
-
-  - **ServiceConnectionStateSourceLocation** – Indicates how the user provided the choice whether to use all connected experiences
-
-  - **ServiceConnectionStateConsentTime** – Indicates when the user chose whether to use all connected experiences. The date will appear as either a human readable date or as a machine encoded date that looks like a large number.
+  - **ControllerConnectedServicesSourceLocation** – Indicates how the user's choice for optional connected experiences was made
 
   - **ControllerConnectedServicesState** – Indicates whether the user has access to optional connected experiences
 
-  - **ControllerConnectedServicesStateSourceLocation** – Indicates how the user's choice for optional connected experiences was made
-
   - **ControllerConnectedServicesStateConsentTime** – Indicates when the user chose the status of optional connected experiences. The date will appear as either a human readable date or as a machine encoded date that looks like a large number.
 
-  - **UserContentDependentState** – Indicates whether the user has chosen to enable or disable connected experiences that analyze content
+  - **DiagnosticConsentConsentTime** – Indicates when the user provided the consent for diagnostic data. The date will appear as either a human readable date or as a machine encoded date that looks like a large number.
 
-  - **UserContentDependentStateSourceLocation** – Indicates how the user's choice to enable or disable was made for connected experiences that analyze content
+  - **DiagnosticConsentLevel** – Indicates what level of diagnostic data consent the user has given
 
-  - **UserContentDependentStateConsentTime** – Indicates when the user chose to enable or disable connected experiences that analyze content was made. The date will appear as either a human readable date or as a machine encoded date that looks like a large number.
+  - **DiagnosticConsentLevelSourceLocation** – Indicates how the user had provided the consent for diagnostic data
+
+  - **DownloadContentSourceLocation** – Indicates how the user made the choice to enable or disable connected experiences that that download online content
 
   - **DownloadContentState** – Indicates whether the user has chosen to enable or disable connected experiences that download online content
 
-  - **DownloadContentStateSourceLocation** – Indicates how the user made the choice to enable or disable connected experiences that that download online content
-
   - **DownloadContentStateConsentTime** – Indicates when the user made the choice to enable or disable connected experiences that download online content. The date will appear as either a human readable date or as a machine encoded date that looks like a large number.
+
+  - **ServiceConnectionState** – Indicates whether the user has chosen to use or not use all connected experiences
+
+  - **ServiceConnectionStateConsentTime** – Indicates when the user chose whether to use all connected experiences. The date will appear as either a human readable date or as a machine encoded date that looks like a large number.
+
+  - **ServiceConnectionStateSourceLocation** – Indicates how the user provided the choice whether to use all connected experiences
+
+  - **UserCategoryValue –** Identified the type of user who made the consent. One of MSAUser, AADUser or LocalDeviceUser
+
+  - **UserContentDependentSourceLocation** – Indicates how the user's choice to enable or disable was made for connected experiences that analyze content
+
+  - **UserContentDependentState** – Indicates whether the user has chosen to enable or disable connected experiences that analyze content
+
+  - **UserContentDependentStateConsentTime** – Indicates when the user chose to enable or disable connected experiences that analyze content was made. The date will appear as either a human readable date or as a machine encoded date that looks like a large number.
 
 #### Device 
 
@@ -200,7 +194,15 @@ This category contains the following fields:
 
   - **MeasuresEnabled** - Flag indicating if the current sessions data is sampled or not. Allows us to determine how to statistically evaluate the data that is gathered from the given session.
 
-  - **SamplingClientId** - The id of the client used to determine if it is part of sampling. Allows us to determine why an individual session was included or excluded from sampling.
+  - **SamplingClientIdValue** - The id of the client used to determine if it is part of sampling. Allows us to determine why an individual session was included or excluded from sampling.
+  
+ - **SubAppName** - For Office Mobile app, this field represents the underlying application being used to open a document. For example, if you open a Word document in Office app, this field will report the value of “Word”.
+
+ - **VirtualizationType** - Type of virtualization if Office is running in one. The possible values are: 
+    - 0 = None
+    - 1 = Windows Virtual Desktop
+    - 2 = Windows Defender Application Guard
+    - 3 = Windows Core OS
 
 #### User
 
@@ -232,9 +234,9 @@ This category contains the following fields:
 
   - **CV** - A value that identifies the relationship between activities and sub-activities. Allows us to rebuild the relationship between nested activities.
 
-  - **Duration** - The length of time the activity took to execute. Allows us to identify performance issues that are negatively impacting the users experience.
+  - **Duration** - The length of time the activity took to execute. Allows us to identify performance issues that are negatively impacting the user's experience.
 
-  - **Result**.**Code** - An application defined code to identify a given results. Allows us to determine more specific details of a given failure such as a failure code that can be used to classify and fix issues.
+  - **Result**.**Code** - An application defined code to identify a given result. Allows us to determine more specific details of a given failure such as a failure code that can be used to classify and fix issues.
 
   - **Result.Tag** - An integer tag that identifies the location in code where the result was generated. Allows us to distinctly identify the location in code where a result was generated which enables classification of failures.
 
@@ -258,7 +260,7 @@ This category contains the following fields:
 
   - **IsClickToRunInstall** - Flag indicating if install was a click to run install. Allows us to identify issues that might be specific to the Click-To-Run install mechanism.
 
-  - **IsDebug** - Flag indicating if the Office build is a Debug build. Allows us to identify if issues are coming from Debug builds which may behave differently .
+  - **IsDebug** - Flag indicating if the Office build is a Debug build. Allows us to identify if issues are coming from Debug builds which may behave differently.
 
   - **IsInstalledOnExternalStorage** - Flag indicating if Office was installed on an external storage device. Let's us determine if issues can be traced to an external storage location.
 
@@ -350,6 +352,8 @@ This category contains the following fields:
 
   - **Id** - A unique identifier for the event. Allows us to uniquely identify the events that are being received.
 
+  - **Level** - denotes the type of event.
+
   - **Name** - The name of the event. Allows to identify the event that was being sent from the client.
 
   - **Rule** - An identifier of the rule that generated the data if it was generated by a rule. Allows us to identify the source of a piece of data so that we can validate and manage that events parameters
@@ -360,9 +364,9 @@ This category contains the following fields:
 
   - **RuleVersion** - The identifier of the rule that generated the data if it was generated by a rule. Allows us to identify the source of a piece of data so that we can validate and manage that events parameters.
 
-  - **SampleRate** - An indication of what percentage of users are sending this piece of data This allows us to do statistical analysis of the data and for very common data points not require that to be sent by all users.
+  - **SampleRate** - An indication of what percentage of users are sending this piece of data. This allows us to do statistical analysis of the data and for very common data points not require that to be sent by all users.
 
-  - **SchemaVersion** - The version of the schema used to generate diagnostic data. Required to manage data being sent form the client. This allows changes over time in what data is being sent from each client.
+  - **SchemaVersion** - The version of the schema used to generate diagnostic data. Required to manage data being sent from the client. This allows changes over time in what data is being sent from each client.
 
   - **Sequence** - A counter that identifies the order that an event was generated on the client. Allows the data being received to be ordered so that we can identify what steps may have led to an issue that is impacting clients.
 
@@ -408,25 +412,25 @@ This category contains the following fields:
 
   - **DisableTelemetry** - Flag indicating if the DisableTelemetry key is set. Allows us to know if a session was not reporting diagnostic data other than EssentialServiceMetadata.
 
-  - **SamplingKey** - The key used to determine whether the session is sampled or not. Allows us to understand how individual sessions are making their choice of whether they are sampled or not.
-
-  - **SamplingMethod** - The method used to determine sampling policy. Allows us to understand what data is coming from a session.
-
-  - **Sequence** - A unique numeric identifier for the session. Allows the ordering of sessions for analysis of then issues might have occurred.
-
-  - **Start** - The boot time of the process session. Allows us to establish when the session started.
-
-  - **TimeZoneBiasInMinutes** - The difference in minutes between UTC and the local time. Allows normalization of UTC times back to the local time.
-
   - **SamplingClientIdValue** - The value of the key used to determine sampling. Allows us to determine why a session was sampled or not.
 
   - **SamplingDeviceIdValue** - The value of the key used to determine sampling. Allows us to determine why a session was sampled or not.
+
+  - **SamplingKey** - The key used to determine whether the session is sampled or not. Allows us to understand how individual sessions are making their choice of whether they are sampled or not.
+
+  - **SamplingMethod** - The method used to determine sampling policy. Allows us to understand what data is coming from a session.
 
   - **SamplingSessionKValue** - Advanced sampling metadata. Used to help evaluate statistical meaning of data that is received.
 
   - **SamplingSessionNValue** - Advanced sampling metadata. Used to help evaluate statistical meaning of data that is received.
 
+  - **Sequence** - A unique numeric identifier for the session. Allows the ordering of sessions for analysis of the issues might have occurred.
+
+  - **Start** - The boot time of the process session. Allows us to establish when the session started.
+
   - **TelemetryPermissionLevel** - Value indicating what level of diagnostic data the user has opted into. Allows us to understand what level of diagnostic data to expect from a session.
+
+  - **TimeZoneBiasInMinutes** - The difference in minutes between UTC and the local time. Allows normalization of UTC times back to the local time.
 
 ## Data fields that are common for OneNote events
 
@@ -445,7 +449,7 @@ The following data fields are common for all events for OneNote on Mac, iOS, and
 
 - **Activity_DetachedDurationInMicroseconds** -  The length of time an activity is idle and not doing any real work, but the time is still count towards the total activity's time.
 
-- **Activity_DurationInMicroseconds** -  The length of time the activity took to execute. Allows us to identify performance issues that are negatively impacting the users experience.
+- **Activity_DurationInMicroseconds** -  The length of time the activity took to execute. Allows us to identify performance issues that are negatively impacting the user's experience.
 
 - **Activity_Expiration** -  A date in numerical format indicates when this event will be stop sending from clients
 
@@ -587,7 +591,7 @@ The following data fields are common for all events for Outlook for iOS and Andr
 
 - **eventpriority** - The priority of the telemetry event relative to other events so our systems can successfully manage events coming in
 
-- **first_launch_date** - The first time the app was launched so help us understand when an issue first began
+- **first_launch_date** - The first time the app was launched so helps us understand when an issue first began
 
 - **hashed_email** - A pseudonymous identifier that represents the current user email
 
@@ -619,6 +623,8 @@ In addition, the following fields are common for all events for Outlook for iOS.
 - **DeviceInfo.NetworkProvider** - The network provider of the device (i.e. Verizon)
 
 - **gcc_restrictions_enabled** - Tells us if GCC restrictions have been applied to the app so we can ensure our GCC customers are using our app securely
+ 
+- **multi_window_mode** – Tells us if the user on the iPad is using multiple windows to help us detect issues related to multi-window usage.
 
 - **office_session_id** - A unique id tracking the session for connected Office services to help detect issues specific an Office service integration in Outlook like Word
 
@@ -643,6 +649,13 @@ In addition, the following fields are common for all events for Outlook for Andr
 
 - **process_bitness** - Process bitness (32 or 64 bit) for the application to help detect issues specific to device bitness
 
+- **webview_kernel_version**: The Chromium kernel version of webview on the device to help us detect compatibility issues related to the version of webview.
+
+- **webview_package_name**: The package name of webview on the device to help us detect compatibility issues related to the version of webview.
+
+- **webview_package_version**: The package version of webview on the device to help us detect compatibility issues related to the version of webview.
+
+
 ## Software setup and inventory data events
 
 The following are the data subtypes in this category:
@@ -654,6 +667,20 @@ The following are the data subtypes in this category:
 
 Installed product and version and the installation status.
 
+#### add.sso.account
+
+This will alert Microsoft to the success or failure of a user adding an account through single sign-on (SSO).
+
+The following fields are collected: 
+
+- **account_type** – the type of the account added using the SSO.
+
+- **action_origin** – from where this event was generated. (e.g., values: sso_drawer, sso_add_account, sso_add_account_prompt, sso_settings, sso_oobe).
+
+- **provider** - the identifier for the provider software package for the SSO.
+
+- **state** – current state of the account, (example value: FAILED, PENDING, ADDED etc.)
+ 
 #### Office.ClickToRun.UpdateStatus
 
 Applicable to all win32 applications. Helps us understand the status of the update process of the Office suite (Success or failure with error details)
@@ -703,7 +730,7 @@ The following fields are collected:
 
 - **abFlights** - "NoNL:NoFlights" when the feature flights aren't set. Otherwise "holdoutinfo=unknown".
 
-- **AppSessionGuid** - An identifier of a particular application session starting at process creation time and persisting until process end. It is formatted as a standard 128-bit GUID but constructed of 4 parts. Those four parts in order are (1) 32 bit Process ID (2) 16 bit Session ID (3) 16 bit Boot ID (4) 64 bit Process creation time in UTC 100ns
+- **AppSessionGuid** - An identifier of a particular application session starting at process creation time and persisting until process end. It is formatted as a standard 128-bit GUID but constructed of 4 parts. Those four parts in order are (1) 32-bit Process ID (2) 16-bit Session ID (3) 16 bit Boot ID (4) 64-bit Process creation time in UTC 100ns
 
 - **appVersionBuild** - The app build version number.
 
@@ -756,13 +783,14 @@ The critical signal used to ensure new users can successfully launch and run One
 #### Office.OneNote.FirstRun.FirstRunForMSA
 
 The critical signal used to ensure new consumer users (Microsoft Account) can successfully launch and use OneNote for the first time.
-How used Telemetry used to ensure critical regression detection for OneNote app and service health. If users can't launch the app for the first time, this would trigger a high severity incident.
+
+Telemetry used to ensure critical regression detection for OneNote app and service health. If users can't launch the app for the first time, this would trigger a high severity incident.
 
 The following fields are collected:
 
 - **Attempt** - The number of times that the first run experience needs to retry.
 
-- **Error A** - OneNote's error object indicates an error during an error during the first run if any.
+- **Error A** - OneNote's error object indicates an error during the first run if any.
 
 - **FAllowAddingGuide** - Indicates whether OneNote will allow creating a guide notebook or not.
 
@@ -782,7 +810,7 @@ The following fields are collected:
 
 #### Office.OneNote.FirstRun.FirstRunForOrgId
 
-The critical signal used to ensure new enterprise users (AAD/OrgID) can successfully launch and run OneNote for the first time.  How used Telemetry used to ensure critical regression detection for OneNote app and service health. If users can't launch the app for the first time, this would trigger a high severity incident.
+The critical signal used to ensure new enterprise users (AAD/OrgID) can successfully launch and run OneNote for the first time.  Telemetry used to ensure critical regression detection for OneNote app and service health. If users can't launch the app for the first time, this would trigger a high severity incident.
 
 - **Attempt** - The number of times that the first run experience needs to retry.
 
@@ -814,7 +842,7 @@ Tracks if a package for Dynamic Canvas was downloaded. Considered a software con
 
 The following fields are collected:
 
-  - **Data\_CacheFolderNotCreated -** Boolean flag indicating if cache folder creation succeed
+  - **Data\_CacheFolderNotCreated -** Boolean flag indicating if cache folder creation succeeded
 
   - **Data\_CdnPath – source address of the package-**
 
@@ -902,7 +930,7 @@ The following fields are collected:
 
 - **Provider Package ID** - In case of Auto sign in
 
-- **Result** - Succeeded, Failed, Unknown, Cancelled
+- **Result** - Succeeded, Failed, Unknown, Canceled
 
 - **ServerType** - Returns the type of the server offering the service 
 
@@ -996,7 +1024,7 @@ The following fields are collected:
 
 #### Office.Extensibility.Catalog.ExchangeGetLastUpdate
 
-Data regarding the success for failure of retrieving the need for updated data regarding the Office 365 tenant admin assigned add-ins. Used for health metrics, charts, and analysis of customer problems. ExchangeGetLastUpdate will always run on boot as part of the host code and determine whether add-in assignments have changed for a user.  If so then osf.DLL will be loaded so we can call ExchangeGetEntitlements to get the specific assignments (and ExchangeGetManifests will called to retrieve any new manifest that are needed).  ExchangeGetEntitlements (and ExchangeGetManifests) could also be called on demand after host application has been running.  The idea is to not load the large DLL if we don't need to.  Without this event in Required, we would not be able to tell if users are failing to get add-ins assigned to them if that first service call fails.  It's also the main signal for any auth problems we face talking to our service.
+Data regarding the success for failure of retrieving the need for updated data regarding the Office 365 tenant admin assigned add-ins. Used for health metrics, charts, and analysis of customer problems. ExchangeGetLastUpdate will always run on boot as part of the host code and determine whether add-in assignments have changed for a user.  If so then osf.DLL will be loaded so we can call ExchangeGetEntitlements to get the specific assignments (and ExchangeGetManifests will be called to retrieve any new manifests that are needed).  ExchangeGetEntitlements (and ExchangeGetManifests) could also be called on demand after host application has been running.  The idea is to not load the large DLL if we don't need to.  Without this event in Required, we would not be able to tell if users are failing to get add-ins assigned to them if that first service call fails.  It's also the main signal for any auth problems we face talking to our service.
 
 The following fields are collected:
 
@@ -1048,7 +1076,7 @@ The following fields are collected:
 
   - **MSDiagnostics -** value returned from exchange
 
-  - **MsoHttpResult -** the enumerator value returned form the http API
+  - **MsoHttpResult -** the enumerator value returned from the http API
 
   - **NeedRefresh –-** This is a true or false field indicating whether the add-in data was stale and we needed to update it.
 
@@ -1078,9 +1106,9 @@ The following fields are collected:
 
   - **ManifestsRequested** – the number of manifests needed
 
-  - **ManifestsReturned** – the number of manifest returned form the server
+  - **ManifestsReturned** – the number of manifest returned from the server
 
-  - **ManifestsToRetrieve** – the number of manifests to get form the server
+  - **ManifestsToRetrieve** – the number of manifests to get from the server
 
   - **ReturnedManifestsParsed** – the number of manifests returned from the server that were successfully parsed
 
@@ -1244,6 +1272,64 @@ The following fields are collected:
 
 Document, feature, and add-in error conditions that may compromise security, including product update readiness.
 
+#### Office.AppGuard.CreateContainer
+
+We collect error codes and whether the container already existed or not. We also collect error codes for a reset event in case we fail to create the container on our first attempt. Data will be used identify the percentage of sessions we successfully create the container for launching Office Application Guard apps. Data will also allow Microsoft to identify and address error codes from the container creation.
+
+The following fields are collected:
+
+- **ErrorCode1** - Type of container setup error code.  
+
+- **ErrorCode2** - Error code from executing the creation. 
+
+- **ErrorCode3** - Additional error code. 
+
+- **Id** - A unique identifier (GUID) for the container creation.
+
+- **ResetError** - Error code from trying to reset the container after a failed attempt.
+
+- **ResetErrorCode1** - Type of Container Setup Error code after reset command. 
+
+- **ResetErrorCode2** - Error code from executing the creation after reset command.
+
+- **ResetErrorCode3** - Additional error code after reset command.
+
+- **ResetErrorType** - Type of error during reset: Creation, Preparing File or Launch.
+
+- **WarmBoot** - Identifies whether the container was already created or not.
+
+#### Office.AppGuard.LaunchFile
+
+This event denotes the result of an Application Guard launch file execution. We will be able to define the percentage of sessions we successfully launched a Word, Excel, or PowerPoint file and the error codes for the failed attempts.
+
+The following fields are collected:
+
+- **AppId** – Identifies which App is being launched.
+
+- **DetachedDuration** – Identifies the total time the merged activity took. 
+
+- **ErrorCode1** – Type of container setup error code.  
+
+- **ErrorCode2** – Error code from executing the creation. 
+
+- **ErrorCode3** - Additional error code. 
+
+- **FileId** - A unique identifier (GUID) returned from the Windows API after launching a file.
+
+- **Id** – A unique identifier (GUID) for the launching and creating a file. This ID is used to correlate events from Office and Windows.
+
+- **ResetError** - Error code from trying to reset the container after a failed attempt.
+
+- **ResetErrorCode1** – Type of container setup error code after reset command. 
+
+- **ResetErrorCode2** – Error code from executing the creation after reset command.
+
+- **ResetErrorCode3** - Additional error code after reset command.  
+
+- **ResetErrorType** - Type of error: Creation, PrepFile or Launch.
+
+
+
 #### Office.Security.ActivationFilter.CLSIDActivated
 
 Tracks when a specific Class Identifier (Flash, Silverlight etc.) is activated in Office. Used to track impact of blocking Flash, Silverlight and Shockwave controls on end users.
@@ -1294,7 +1380,7 @@ The following fields are collected:
 
 #### Office.Security.ComSecurity.ObjDetected
 
-Tracks when an OLE object is detected in a document. Used to ensure effectiveness of security .mitigation that protects end users of Office.
+Tracks when an OLE object is detected in a document. Used to ensure effectiveness of security mitigation that protects end users of Office.
 
 The following fields are collected:
 
@@ -1421,7 +1507,7 @@ The following are the data subtypes in this category:
 
 Success of application functionality. Limited to opening and closing of the application and documents, file editing, and file sharing (collaboration).​
 
-#### account_action
+#### account.action
 
 Needed to ensure account configuration is operating successfully and is used to monitor health of account creation, ability to add new email accounts, and monitor soft account resets 
 
@@ -1457,7 +1543,7 @@ The following fields are collected:
  
 - **total_file_accounts** - count of file accounts in the app at time of action
 
-#### account_lifecycle
+#### account.lifecycle
 
 This event is collected to ensure account configuration is operating successfully and is used to monitor health of account creation, ability to add new email accounts, and monitor soft account resets.
 
@@ -1465,7 +1551,7 @@ The following fields are collected:
 
 - **action** - The type of action performed on the account, such as add, remove, or reset
 
-#### add_new_account_step
+#### add.new.account.step
 
 This event lets us detect how far the user has gotten in the create new account form.  It indicates when the user has moved to another step or if they have dropped off.  We need this information to detect if any steps are failing and to ensure user account creation was successful. 
 
@@ -1473,7 +1559,7 @@ The following field is collected:
 
 - **OTAddAccountCurrentStep** - That can have the following values: profile_form, redirect_mobile_check, mobile_check_success
 
-#### app_error
+#### app.error
 
 Tracks critical app errors used so that we can prevent issues that could cause your app to crash or prevent you from reading email.
 
@@ -1493,9 +1579,9 @@ The following fields are collected:
 
 - **error_type** - The type of error that occurred. Some examples include save draft, send draft, and cloud file error.
 
-- **exrule** - the extended rule value (only applies to appointment recurrence errors)
+- **exdate** - the extended rule date (only applies to appointment recurrence errors) *[This field has been removed from current builds of Office, but might still appear in older builds.]*
 
-- **exdate** - the extended rule date (only applies to appointment recurrence errors)
+- **exrule** - the extended rule value (only applies to appointment recurrence errors) *[This field has been removed from current builds of Office, but might still appear in older builds.]*
 
 - **has_attachments** - Reflects if the draft the error occurred on has attachments, if applicable.
 
@@ -1507,19 +1593,19 @@ The following fields are collected:
 
 - **is_recoverable** - Reflects if the error can be recovered from or if it is a fatal error.
 
-- **rdate** - the date of the recurrence rule (only applies to appointment recurrence errors) 
+- **rdate** - the date of the recurrence rule (only applies to appointment recurrence errors) *[This field has been removed from current builds of Office, but might still appear in older builds.]*
 
-- **rrule** - the recurrence rule itself (only applies to appointment recurrence errors) 
+- **rrule** - the recurrence rule itself (only applies to appointment recurrence errors) *[This field has been removed from current builds of Office, but might still appear in older builds.]*
 
-- **rrule_error_message** - recurrence rule parsing error message (only applies to appointment recurrence errors)
+- **rrule_error_message** - recurrence rule parsing error message (only applies to appointment recurrence errors) *[This field has been removed from current builds of Office, but might still appear in older builds.]*
 
-- **rrule_error_type** - recurrence rule parsing error type (only applies to appointment recurrence errors)
+- **rrule_error_type** - recurrence rule parsing error type (only applies to appointment recurrence errors) *[This field has been removed from current builds of Office, but might still appear in older builds.]*
 
 - **status_code** - The status code of the error that occurred. This helps us understand the cause of the error.
 
 All characters are also possible properties. This helps us understand the characters in the body of the draft message when the error occurred. For example, "a", "b", "c" are possible properties.
 
-#### app_launch_report
+#### app.launch.report
 
 This event lets us detect and fix issues where Outlook is starting slowly or incompletely, making it difficult for users to use our app. This includes information on the specific features that were enabled and how long parts of the startup took.
 
@@ -1555,7 +1641,7 @@ The following fields are collected:
 
 - **num_mail_accounts** - Tells us the number of mail accounts in the app.
 
-#### calendar_action
+#### calendar.action
 
 Used for monitoring any possible negative impact on your ability to perform core calendar actions like creating or editing events.  The event could also include a series of property names and if they have changed or not. For example, "title_changed", "online_meeting_changed", and "description_changed" are property names that are included to help us understand if there are any issues with editing certain properties.
 
@@ -1584,6 +1670,8 @@ The following fields are collected:
 - **guest_count** - The number of guests on the meeting.  Helps us make sure that the guests are being added correctly. 
 
 - **is_all_day** - Used along with "meeting_duration" to specify if this is an all-day meeting. Helps us understand if there are any issues with actions performed on all-day meetings. 
+
+- **is_location_permission_granted** – Whether user has granted system location permission to the app. If location permission is granted, the app can show extra utility information in the user interface. Knowing if location permission is granted will allow us to know how often the extra utility information is being shown to users.
 
 - **is_organizer** - Helps us understand if meetings are able to be edited and created by the organizer correctly. 
 
@@ -1631,31 +1719,29 @@ The following fields are collected:
 
 - **value** - Action-specific detail such as alert delay length or repeat-until category. Helps us understand the context that the action was performed. 
 
-#### combined_search_use
+#### combined.search.use
 
 Used for monitoring possible negative impact on your ability to perform key search functionality such as searching for mail, contacts, or events.
 
-The following fields are collected:  
+The following fields are collected across iOS and Android: 
 
 - **account_switcher_action_type** - This action type tracks if the user used the account switcher either in simply discovery or if they decided to switch the account
 
-- **action** - the type of action that was performed for search. This identifies if a search has been started, in occurring, or ended and what actions were happening during the search, I.e. was the mic used. This is instrumental in ensuring accurate and helpful searches.
-
 - **action_type** - The type of action that was performed for search. This identifies if a search has been started, in occurring, or ended and what actions were happening during the search, I.e. was the mic used. This is instrumental in ensuring accurate and helpful searches. 
 
-- **answer_result_selected_count** - tracks how many times the search was "successful" I.e. did the user find the person they wanted? Composed an email? Bookmarked the message? 
-
-- **contact_result_in_full_list_selected_count** - tracks how many times the user asked to "see all contacts" in full list was selected during the combined search session
-
-- **contact_result_selected_count** - tracks how many contact results were selected during the combined search session
-
-- **conversation_result_selected_count** - tracks how many conversations were selecting during the combined search session
+- **conversation_id** - Unique ID for every search session (i.e. every time the user enters the search box)
 
 - **entrance_type** - This determines how the user started the search query, from the search tab, zero query, search heading, or search result. 
 
 - **has_contact_results** - Simple whether contact results are shown or not in the search query
 
 - **include_deleted** - whether the search is showing deleted options in the search results 
+
+- **is_ics_external_data** - Captures if an added event is internal (i.e added in Outlook to Outlook calendar) or external (i.e added from another email app such as Gmail to Outlook calendar).
+
+- **is_network_fully_connected** - This is to get a hint of the reason behind the offline search. If the network is connected and the search is offline, then the reason is likely to be the server timeout
+
+- **is_offline_search** - whether the search session is offline search based on search results returned by hx
 
 - **re_enter_search_tab** - Boolean to indicate whether a user has switched tabs before selecting a search result
 
@@ -1665,11 +1751,31 @@ The following fields are collected:
 
 - **search_origin** - Where did the search originate from, i.e. voice assistant, Cortana, keyboard input, etc. 
 
+- **search_scope** - A string indicating what type of account the user was searching in (I.e. Exchange, Gmail, etc.) or if it was in All Accounts. 
+
+- **search_suggestion_type** - indicates what is behind the search suggestion, I.e. is a spell correction? Based on history? Autocomplete?
+
 - **search_request_reason** - Indicates the reason a search request was sent from the app, in effect indicating the component or user action which invoked a search.
 
 - **search_result_filter_type** - Indicates what type of filter was applied to search, show all or attachments only
 
-- **search_scope** - A string indicating what type of account the user was searching in (I.e. Exchange, Gmail, etc.) or if it was in All Accounts. 
+The following fields are collected across iOS applications of Outlook Mobile: 
+
+- **action** - the type of action that was performed for search. This identifies if a search has been started, in occurring, or ended and what actions were happening during the search, I.e. was the mic used. This is instrumental in ensuring accurate and helpful searches.
+
+- **answer_result_selected_count** - tracks how many times the search was "successful" I.e. did the user find the person they wanted? Composed an email? Bookmarked the message? 
+
+- **contact_result_in_full_list_selected_count** - tracks how many times the user asked to "see all contacts" in full list was selected during the combined search session
+
+- **contact_result_selected_count** - tracks how many contact results were selected during the combined search session
+
+- **conversation_result_selected_count** - tracks how many conversations were selecting during the combined search session
+
+- **mail_paging_gesture_count** - tracks how many mail search paging gestures were performed within the combined search session
+
+- **mail_requests_count** - tracks how many mail search requests were sent within the combined search session
+
+- **people_filter_selected_contacts_count** - tracks how many contacts were selected in the people filter
 
 - **search_session_ended_type** - Indicates where a search ended because it was canceled or the updated was the query
 
@@ -1679,9 +1785,17 @@ The following fields are collected:
 
 - **subtab_type** -  tracks where the user has selected the result from which result tab
 
-- **top_mail_result_selected_count** - tracks how many times a user selects the top results provided to them. 
+- **top_mail_result_selected_count** - tracks how many times a user selects the top results provided to them.
 
-#### compose_mail_accessory
+- **ui_reload_result_count** - records the times of reloading UI because of result set update (during the corresponding query)
+
+- **ui_reload_result_time** - records the total time spent on reloading UI because of result set update (during the corresponding query)
+
+- **ui_reload_status_count** - records the times of reloading UI because of status update (during the corresponding query)
+
+- **ui_reload_status_time** - records the total time spent on reloading UI because of status update (during the corresponding query)
+
+#### compose.mail.accessory
 
 This event lets us detect and fix issues with key mail compose actions to prevent you from running into issues with attaching a file, taking a photo as an attachment, or sending your availability.
 
@@ -1690,8 +1804,13 @@ The following fields are collected:
 - **action** - Tells us the action that was attempted when the action is logged. Some examples include attaching a file and presenting more options.
 
 - **icon_name** - Tells us the name of the icon that is being shown when the action is logged.
+ 
+- **origin** – Tells us the origin of the action. Possible values are quick_reply and full_screen.
 
-#### conversation_view_action
+- **toolbar_type** – Tell us the toolbar type which is presenting on compose page. Possible values are compose_actions and formatting.
+
+
+#### conversation.view.action
 
 Used for monitoring possible negative impact on your ability to view and reply to email messages
 
@@ -1701,13 +1820,19 @@ The following fields are collected:
 
 - **conversation_type** - Tells us what type of email message view was rendered, such as a single message view or multiple message views. Helps us detect issues related to a specific message type in our email conversation view.
 
+- **reaction_origin** – Tells us origin from where the user reacted 
+
+- **reaction_type** – Tells us the reaction type of the user
+
 - **suggested_reply_char_count** - Tells us how many characters the suggested replies we offer (if available) to help us detect anomalies and issues related to our suggestions
 
 - **suggested_reply_click_pos** - Tells us which position the suggested reply (if available) is rendered so we can detect issues with a specific suggestion
 
+- **suggested_reply_type** - indicates type of suggested reply for this action. Possible values are text, send_avail, and create_meeting.
+
 - **use_default_quick_reply_mode** - Tells us if the default quick reply mode was used to help us detect issues related to the quick reply experience for email
 
-#### draft_action
+#### draft.action
 
 Used for monitoring possible negative impact on your ability to create and save mail drafts.
 
@@ -1733,9 +1858,9 @@ The following fields are collected:
  
 - **thread_id** - thread ID of the conversation draft is associated with
 
-#### drag_and_drop
+#### drag.and.drop
 
-This event lets us detect the if the drag and drop action was successful or not.  It is used to ensure that drag-and-drop experiences are working correctly across applications both as a drop event into Outlook and a drag event that leaves Outlook.  With this data we are able to ensure that the end-to-end experience with other applications is working as expected.
+This event lets us detect if the drag and drop action was successful or not.  It is used to ensure that drag-and-drop experiences are working correctly across applications both as a drop event into Outlook and a drag event that leaves Outlook.  With this data we are able to ensure that the end-to-end experience with other applications is working as expected.
 
 The following fields are collected: 
 
@@ -1745,7 +1870,7 @@ The following fields are collected:
 
 - **source** – In the case of a drop action, this will let us know from which location the user started the drag. This helps us better discover issues with a specific source like OneDrive or Files into a specific drop location, such as a new email.
 
-#### drawer_event
+#### drawer.event
 
 Used for monitoring possible negative impact on your ability to access folders in your inbox
 
@@ -2262,7 +2387,7 @@ The following fields are collected:
 - **RMS.StatusCode** - Scenario Id defined by the API
 
 
-#### link_clicked_action
+#### link.clicked.action
 
 The event is used to track users' success in viewing a URL in the Edge web view and completing standard web scenarios in that web view without facing errors
 
@@ -2295,7 +2420,7 @@ The following fields are collected:
 - **txp_component** - if the Edge web view was launched from a TXP card, UI component type for that card
 
 
-#### mail_action
+#### mail.action
 
 Used for monitoring possible negative impact on your ability to perform critical mail actions (like running mail threaded mode, ensuring mail triage actions work) to ensure our app is functioning properly for mail.
 
@@ -2377,7 +2502,7 @@ The following fields are collected:
 
 - **time_taken_to_load_link** - time a load link action takes to complete
 
-- **time_taken_to_tap_attachment** - the time between opening the message an clicking on the attachment
+- **time_taken_to_tap_attachment** - the time between opening the message and clicking on the attachment
 
 - **time_taken_to_tap_link** - time the user took between viewing message and clicking a link
 
@@ -2385,7 +2510,7 @@ The following fields are collected:
 
 - **type** - document type being opened via link
 
-#### mail_compose
+#### mail.compose
 
 Used for monitoring possible negative impact on your ability to compose and reply to emails such as running into issues with reply-all, formatting your email, or sending your emails.
 
@@ -2409,7 +2534,7 @@ The following fields are collected:
 
 - **thread_id** - The thread id of the conversation being replied to or forwarded from to help us detect issues related to a specific thread
 
-#### meeting_call_to_action
+#### meeting.call.to.action
 
 Used for monitoring possible negative impact on your ability to perform critical meeting actions like creating, editing, and responding to meetings.
 
@@ -2437,7 +2562,7 @@ The following fields are collected:
 
 - **with_message_enabled** - Indicates whether a user can response with a message to help us detect issues with responding to meeting invites
 
-#### Office_Android_DocsUI_FileOperations_OpenDocumentMeasurements
+#### Office.Android.DocsUI.FileOperations.OpenDocumentMeasurements
 
 This event is collected for Office applications running under Android platform and records when a file open operation takes place. The event helps in keeping the file open operation secure, up- to- date and performing properly. The goal of collecting this data is to continuously improve the file open performance. 
 
@@ -2450,6 +2575,8 @@ The following fields are collected:
 - **Data_AppWarmUpGain** - The gain in application boot duration we get because of pre-booting a part of the application beforehand.
 
 - **Data_BootDuration** - The duration of application boot in process of the file open.
+
+- **Data_ClosePreviouslyOpenedMarkers** – In some file open scenarios, closing of a previously opened document takes place before the opening of the current document. This time duration between some of the operations that take place in this case is captured in a string value which has the format \<functionId>\<functionValue>\<functionId>\<functionValue>...
 
 - **Data_Doc_AccessMode** - An enumeration indicating the access mode of the file, e.g. read only, read write.
 
@@ -2517,6 +2644,10 @@ The following fields are collected:
 
 - **Data_ErrorId_Tag** - A tag in the code to help find the point of failure
 
+- **Data_FileOpenFlowMarkers** – Before the file open process begins, there is some pre-processing involved. This time taken for this pre-processing is captured in a string value which has the format \<functionId>\<functionValue>\<functionId>\<functionValue>...
+
+- **Data_FirstPartyProviderApp** - If a file open on Word, Excel, or PowerPoint or Office apps is invoked from another Microsoft app, then the name of that provider app is captured here.
+
 - **Data_InclusiveMeasurements** - A string value logging the time duration spent in some function calls, in a format with function tag and duration which includes the duration of sub- function calls. 
 
 - **Data_InitializationReason** - An enumeration indicating how the file is opened, e.g. UI element, triggered by another app, etc.
@@ -2525,11 +2656,23 @@ The following fields are collected:
 
 - **Data_OfficeMobileInitReason** - An enumeration indicating the entry point of file open. 
 
+- **Data_RenderToInSpaceDuration** – The duration between render end and the silhouette/canvas animation.
+
 - **Data_SilhouetteDuration** - The duration of rendering of the file open.
 
 - **Data_TimeSplitMeasurements** - A string value logging the time duration spent in some function calls, in a format with function tag, start timestamp and duration. 
 
-#### Office_Android_EarlyTelemetry_ExpansionFilesAvailability
+#### Office.Android.DocsUI.PaywallControl.SkuChooserToggled
+
+Usage telemetry to view how many times user switches between different SKUs before attempting a purchase. Used to understand usage of the SKU chooser and optimize the in app purchase experience in future versions.
+
+The following fields are collected:
+
+- **EventDate** – Timestamp of the event occurrence 
+
+- **SessionID** – GUID to connect events by session
+
+#### Office.Android.EarlyTelemetry.ExpansionFilesAvailability
 
 We are enabling Android Package Kit (APK) expansion files for the Office mobile app. APK Expansion files are supplementary resource files that Android app developers can publish along with their app. To understand the reliability of the expansion files, we log a flag indicating whether expansion files are available or not at every boot.
 
@@ -2537,7 +2680,7 @@ The following fields are collected:
 
 - **Data_ExpansionFilesAvailable** - A Boolean flag that indicates whether APK Expansion files are available on the device at the time of app boot.
 
-#### Office_Android_EarlyTelemetry_ExpansionFilesDownloader
+#### Office.Android.EarlyTelemetry.ExpansionFilesDownloader
 
 We are enabling Android Package Kit (APK) expansion files for the Office mobile app. APK Expansion files are supplementary resource files, that Android app developers can publish along with their app.  To understand the reliability of our expansion file download mechanism, we are logging a flag indicating whether we are successfully able to download expansion files.
 
@@ -2546,15 +2689,15 @@ The following fields are collected:
 - **Data_DownloadSuccess** - A Boolean flag that indicates whether APK Expansion files download is successful, whenever we attempt a download during app boot.
 
 
-#### Office_Android_Intune_IntuneComplianceRequest
+#### Office.Android.Intune.IntuneComplianceRequest
 
-This event is collected for Office applications running on Android, including Office mobile, Word, Excel, PowerPoint, and OneNote. The event indicates an attempt to sign-in to an Intune licensed organization account where the organization administrator has configured policy to enforce app conditional access. It is used to understand the number of end users who are attempting to use apps under this policy configuration, and is combined with another event, Office_Android_Intune_IntuneComplianceStatus, to ensure the configured policy is enforced. 
+This event is collected for Office applications running on Android, including Office mobile, Word, Excel, PowerPoint, and OneNote. The event indicates an attempt to sign-in to an Intune licensed organization account where the organization administrator has configured policy to enforce app conditional access. It is used to understand the number of end users who are attempting to use apps under this policy configuration, and is combined with another event, Office.Android.Intune.IntuneComplianceStatus, to ensure the configured policy is enforced. 
 
 No data fields are collected.
 
-#### Office_Android_Intune_IntuneComplianceStatus
+#### Office.Android.Intune.IntuneComplianceStatus
 
-This event is collected for Office applications running on Android, including Office mobile, Word, Excel, PowerPoint, and OneNote. The event indicates an attempt to sign-in to an Intune licensed organization account where the organization administrator has configured policy to enforce app conditional access. This event indicates the compliance status of the application to which the user has signed-in and is used to investigate failures. It is combined with another event, Office_Android_Intune_IntuneComplianceRequest, to ensure the configured policy is enforced.
+This event is collected for Office applications running on Android, including Office mobile, Word, Excel, PowerPoint, and OneNote. The event indicates an attempt to sign-in to an Intune licensed organization account where the organization administrator has configured policy to enforce app conditional access. This event indicates the compliance status of the application to which the user has signed-in and is used to investigate failures. It is combined with another event, Office.Android.Intune.IntuneComplianceRequest, to ensure the configured policy is enforced.
   
 The following fields are collected:
 
@@ -2667,7 +2810,800 @@ The following fields are collected:
 
   - **Data.CollectionTime** - Timestamp of when a crash event was logged
 
-#### Office_Apple_ActivatePerpetual
+#### Office.AppDocs.AppDocs.DocumentOperation
+
+This event is collected for Office applications running on Android, iOS, Universal or Windows platforms. The event records when a file operation (create/open/save/export/etc.) takes place and it is used to understand and prioritize user-experiences based on the file operation information.
+
+The following fields are collected:
+
+- **Data_AppIdForReportEndBeforeAppKnown** – App ID when not known before report end called on the operation.
+
+- **Data_CanContinueFromOnBeforeOperationBegins** – CanContinue state, before the begin handler is invoked.
+
+- **Data_DetachedDuration** – The duration of detach process of an event. 
+
+- **Data_Doc_AccessMode** – An enumeration indicating the access mode of the file, e.g. read only, read write.
+
+- **Data_Doc_AsyncOpenKind** – An enumeration indicating the type of asynchronous flow used to open the file.
+
+- **Data_Doc_ChunkingType** – An enumeration indicating the type of chunking algorithm of a file.
+
+- **Data_Doc_EdpState** – An enumeration indicating the enterprise data protection state of a file.
+
+- **Data_Doc_Ext** – The first 4 characters of the file extension of the file.
+
+- **Data_Doc_Fqdn** – The server host name of the file.
+
+- **Data_Doc_FqdnHash** – A GUID that uniquely identifies server host name.
+
+- **Data_Doc_IdentityTelemetryId** – A one-way hash of the user identity used to perform the open..
+
+- **Data_Doc_InitializationScenario** – An enumeration indicating the detailed scenario type of a file open operation.
+
+- **Data_Doc_IOFlags** – An enumeration indicating the IO flags of a file open operation, e.g. if the file is cached or not.
+
+- **Data_Doc_IsCloudCollabEnabled** – Whether or not the cloud collaboration is enabled for the file.
+
+- **Data_Doc_IsIncrementalOpen** – Whether or not the file was opened via incremental open.
+
+- **Data_Doc_IsOcsSupported** – Whether or not a file supports Office Collaboration Service.
+
+- **Data_Doc_IsOpeningOfflineCopy** – Whether or not a file is opened from an offline cached copy.
+
+- **Data_Doc_IsPrefetched** – Whether or not the file was prefetched before open operation happened.
+
+- **Data_Doc_IsSyncBacked** – Whether or not a cloud file exists locally and is synchronized with the server.
+
+- **Data_Doc_Location** – An enumeration indicating where the file is located, e.g. locally or in cloud.
+
+- **Data_Doc_ReadOnlyReasons** – An enumeration indicating the read only reason of a file.
+
+- **Data_Doc_ResourceIdHash** – A GUID that uniquely identifies server resource id of the file.
+
+- **Data_Doc_RtcType** – An enumeration indicating type of real-time channel (RTC) used by the file.
+
+- **Data_Doc_ServerDocId** – A GUID that uniquely identifies server document ID.
+
+- **Data_Doc_ServerProtocol** – An enumeration indicating the server protocol of a cloud file.
+
+- **Data_Doc_ServerType** – An enumeration indicating the server type of a cloud file.
+
+- **Data_Doc_ServerVersion** – An enumeration indicating the server version of a cloud file.
+
+- **Data_Doc_SessionId** – An integer which is incremented by 1 for each file open operation in a session.
+
+- **Data_Doc_SharePointServiceContext** – A string used to correlate client-side and server-side logs, typically it is a kind of ID.
+
+- **Data_Doc_SizeInBytes** – File size in bytes.
+
+- **Data_Doc_SpecialChars** – An enumeration indicating which kind of special character the file URL has.
+
+- **Data_Doc_UrlHash** – A GUID that uniquely identifies the file URL.
+
+- **Data_Doc_UsedWrsDataOnOpen** – Whether or not the file was opened incrementally using pre-cached WRS data.
+
+- **Data_Doc_WopiServiceId** – A string indicating which service a WOPI (Web Application Open Platform Interface Protocol) file is from.
+
+- **Data_DocumentInputCurrency** – Type of document input used by the operation.
+
+- **Data_DocumentOperation_AppId** – Enumeration value representing the ID of an app.
+
+- **Data_DocumentOperation_EndEventId** – Tag that represents where the operation ended.
+
+- **Data_DocumentOperation_EndReason** – Enumeration value representing the end reason.
+
+- **Data_DocumentOperation_IsReinitialized** – Is reinitializing a document already open.
+
+- **Data_DocumentOperation_isTargetECBeginEC** – Is the target execution context the same as the context opened from.
+
+- **Data_DocumentOperation_ParamsFlags** – Enumeration flags used to start the operation.
+
+- **Data_DocumentOperation_TelemetryReason** – Enumeration representation of the entry point for the open event. Eg- open from MRU or browse, file activation, etc.
+
+- **Data_FileIOInclusiveMeasurements** – A string value logging the time duration spent in some function calls, in a format with function tag and duration which includes the duration of sub-function calls.
+
+- **Data_FileIOMeasurements** – A string value logging the time duration spent in some function calls, in a format with function tag and duration which excludes the duration of sub-function calls.
+
+- **Data_InitializationReason** – Enumeration representation of the specific reason for the operation. Eg- open from a URL or a local file path, create with file picker, copy to file path, export to URL, etc.
+
+- **Data_IsDisambiguateCsiNetworkConnectivityErrorEnabled**.
+
+- **Data_IsNameMissingInUrl** – Indicates if the name was not parsed from the URL.
+
+- **Data_IsPathMissingForLocalFile** – Indicates if this is a local file without a path.
+
+- **Data_IsUnpackedLinkSupportedForOpen** – Indicates if unpackable link is supported for open.
+
+- **Data_LinksOpenRightScenario** – Enumeration value for the links open right scenario.
+
+- **Data_OpEndEventId** – Tag that represents where the operation ended.
+
+- **Data_OperationType** – Enumeration representation of the generic type of operation. Eg- create, open, copy, save, etc.
+
+- **Data_RelatedPrevOpTelemetryReason** – Is operation related to previous operation.
+
+- **Data_StopwatchDuration** – Total time for the event.
+
+- **Data_UnpackLinkHint** – Enumeration representing potential user action based on unpack link.
+
+- **Data_UnpackLinkPromptResult** – Enumeration representing response of unpack link prompt.
+
+#### Office.Docs.AppDocs.OperationOpenFromMruByPath
+
+This event is collected for Office applications running on Android, iOS, Universal or Windows platforms. The event records when a file open operation takes place from the path provided in the most recently used list and is used to understand and prioritize user-experience errors based on file open operation information.
+
+The following fields are collected:
+
+- **Data_AppIdForReportEndBeforeAppKnown** – App ID when not known before report end called on the operation.
+
+- **Data_CanContinueFromOnBeforeOperationBegins** – CanContinue state, before the begin handler is invoked.
+
+- **Data_DetachedDuration** – The duration of detach process of an event. 
+
+- **Data_Doc_AccessMode** – An enumeration indicating the access mode of the file, e.g. read only, read write.
+
+- **Data_Doc_AsyncOpenKind** – An enumeration indicating the type of asynchronous flow used to open the file.
+
+- **Data_Doc_ChunkingType** – An enumeration indicating the type of chunking algorithm of a file.
+
+- **Data_Doc_EdpState** – An enumeration indicating the enterprise data protection state of a file.
+
+- **Data_Doc_Ext** – First 4 characters of the extension of the file.
+
+- **Data_Doc_Fqdn** – The server host name of the file.
+
+- **Data_Doc_FqdnHash** – A GUID that uniquely identifies server host name.
+
+- **Data_Doc_IdentityTelemetryId** – A one-way hash of the user identity used to perform the open.
+
+- **Data_Doc_InitializationScenario** – An enumeration indicating the detailed scenario type of a file open operation.
+
+- **Data_Doc_IOFlags** – An enumeration indicating the IO flags of a file open operation, e.g. if the file is cached or not.
+
+- **Data_Doc_IsCloudCollabEnabled** – Whether or not the cloud collaboration is enabled for the file.
+
+- **Data_Doc_IsIncrementalOpen** – Whether or not the file was opened via incremental open.
+
+- **Data_Doc_IsOcsSupported** – Whether or not a file supports Office Collaboration Service.
+
+- **Data_Doc_IsOpeningOfflineCopy** – Whether or not a file is opened from an offline cached copy.
+
+- **Data_Doc_IsPrefetched** – Whether or not the file was prefetched before open operation happened.
+
+- **Data_Doc_IsSyncBacked** – Whether or not a cloud file exists locally and is synchronized with the server.
+
+- **Data_Doc_Location** – An enumeration indicating where the file is located, e.g. locally or in cloud.
+
+- **Data_Doc_ReadOnlyReasons** – An enumeration indicating the read only reason of a file.
+
+- **Data_Doc_ResourceIdHash** – A GUID that uniquely identifies server resource id of the file.
+
+- **Data_Doc_RtcType** – An enumeration indicating type of real-time channel (RTC) used by the file.
+
+- **Data_Doc_ServerDocId** – A GUID that uniquely identifies server document ID.
+
+- **Data_Doc_ServerProtocol** – An enumeration indicating the server protocol of a cloud file.
+
+- **Data_Doc_ServerType** – An enumeration indicating the server type of a cloud file.
+
+- **Data_Doc_ServerVersion** – An enumeration indicating the server version of a cloud file.
+
+- **Data_Doc_SessionId** – An integer which is incremented by 1 for each file open operation in a session.
+
+- **Data_Doc_SharePointServiceContext** – A string used to correlate client-side and server-side logs, typically it is a kind of ID.
+
+- **Data_Doc_SizeInBytes** – File size in bytes.
+
+- **Data_Doc_SpecialChars** – An enumeration indicating which kind of special character the file URL has.
+
+- **Data_Doc_UrlHash** – A GUID that uniquely identifies the file URL.
+
+- **Data_Doc_UsedWrsDataOnOpen** – Whether or not the file was opened incrementally using pre-cached WRS data.
+
+- **Data_Doc_WopiServiceId** – A string indicating which service a WOPI (Web Application Open Platform Interface Protocol) file is from.
+
+- **Data_DocumentInputCurrency** – Type of document input used by the operation.
+
+- **Data_DocumentOperation_AppId** – Enumeration value representing the ID of an app.
+
+- **Data_DocumentOperation_EndEventId** – Tag that represents where the operation ended.
+
+- **Data_DocumentOperation_EndReason** – Enumeration value representing the end reason.
+
+- **Data_DocumentOperation_IsReinitialized** – Is reinitializing a document already open.
+
+- **Data_DocumentOperation_ParamsFlags** – Enumeration flags used to start the operation.
+
+- **Data_DocumentOperation_TelemetryReason** – Enumeration representation of the entry point for the open event. Eg- open from MRU or browse, file activation, etc.
+
+- **Data_DocumentOperation_isTargetECBeginEC** – Is the target execution context the same as the context opened from.
+
+- **Data_FileIOInclusiveMeasurements** – A string value logging the time duration spent in some function calls, in a format with function tag and duration which includes the duration of sub-function calls.
+
+- **Data_FileIOMeasurements** – A string value logging the time duration spent in some function calls, in a format with function tag and duration which excludes the duration of sub-function calls.
+
+- **Data_IsNameMissingInUrl** – Indicates if the name was not parsed from the URL.
+
+- **Data_IsPathMissingForLocalFile** – Indicates if this is a local file without a path.
+
+- **Data_IsUnpackedLinkSupportedForOpen** – Indicates if unpackable link is supported for open.
+
+- **Data_LinksOpenRightScenario** – Enumeration value for the links open right scenario.
+
+- **Data_OpEndEventId** – Tag that represents where the operation ended.
+
+- **Data_RelatedPrevOpTelemetryReason** – Is operation related to previous operation.
+
+- **Data_StopwatchDuration** – Total time for the event.
+
+- **Data_UnpackLinkHint** – Enumeration representing potential user action based on unpack link.
+
+- **Data_UnpackLinkPromptResult** – Enumeration representing response of unpack link prompt.
+
+#### Office.Docs.AppDocs.OperationOpenFromMruByUrl
+
+This event is collected for Office applications running on Android, iOS, Universal or Windows platforms. The event records when a file open operation takes place from the URL provided in the most recently used list and is used to understand and prioritize user-experiences based on file open operation information. 
+
+The following fields are collected:
+
+- **Data_AppIdForReportEndBeforeAppKnown** – App ID when not known before report end called on the operation.
+
+- **Data_CanContinueFromOnBeforeOperationBegins** – CanContinue state, before the begin handler is invoked.
+
+- **Data_DetachedDuration** – The duration of detach process of an event. 
+
+- **Data_Doc_AccessMode** – An enumeration indicating the access mode of the file, e.g. read only, read write.
+
+- **Data_Doc_AsyncOpenKind** – An enumeration indicating the type of asynchronous flow used to open the file.
+
+- **Data_Doc_ChunkingType** – An enumeration indicating the type of chunking algorithm of a file.
+
+- **Data_Doc_EdpState** – An enumeration indicating the enterprise data protection state of a file.
+
+- **Data_Doc_Ext** – First 4 characters of the extension of the file.
+
+- **Data_Doc_Fqdn** – The server host name of the file.
+
+- **Data_Doc_FqdnHash** – A GUID that uniquely identifies server host name.
+
+- **Data_Doc_IdentityTelemetryId** – A one-way hash of the user identity used to perform the open.
+
+- **Data_Doc_InitializationScenario** – An enumeration indicating the detailed scenario type of a file open operation.
+
+- **Data_Doc_IOFlags** – An enumeration indicating the IO flags of a file open operation, e.g. if the file is cached or not.
+
+- **Data_Doc_IsCloudCollabEnabled** – Whether or not the cloud collaboration is enabled for the file.
+
+- **Data_Doc_IsIncrementalOpen** – Whether or not the file was opened via incremental open.
+
+- **Data_Doc_IsOcsSupported** – Whether or not a file supports Office Collaboration Service.
+
+- **Data_Doc_IsOpeningOfflineCopy** – Whether or not a file is opened from an offline cached copy.
+
+- **Data_Doc_IsPrefetched** – Whether or not the file was prefetched before open operation happened.
+
+- **Data_Doc_IsSyncBacked** – Whether or not a cloud file exists locally and is synchronized with the server.
+
+- **Data_Doc_Location** – An enumeration indicating where the file is located, e.g. locally or in cloud.
+
+- **Data_Doc_ReadOnlyReasons** – An enumeration indicating the read only reason of a file.
+
+- **Data_Doc_ResourceIdHash** – A GUID that uniquely identifies server resource id of the file.
+
+- **Data_Doc_RtcType** – An enumeration indicating type of real-time channel (RTC) used by the file.
+
+- **Data_Doc_ServerDocId** – A GUID that uniquely identifies server document ID.
+
+- **Data_Doc_ServerProtocol** – An enumeration indicating the server protocol of a cloud file.
+
+- **Data_Doc_ServerType** – An enumeration indicating the server type of a cloud file.
+
+- **Data_Doc_ServerVersion** – An enumeration indicating the server version of a cloud file.
+
+- **Data_Doc_SessionId** – An integer which is incremented by 1 for each file open operation in a session.
+
+- **Data_Doc_SharePointServiceContext** – A string used to correlate client-side and server-side logs, typically it is a kind of ID.
+
+- **Data_Doc_SizeInBytes** – File size in bytes.
+
+- **Data_Doc_SpecialChars** – An enumeration indicating which kind of special character the file URL has.
+
+- **Data_Doc_UrlHash** – A GUID that uniquely identifies the file URL.
+
+- **Data_Doc_UsedWrsDataOnOpen** – Whether or not the file was opened incrementally using pre-cached WRS data.
+
+- **Data_Doc_WopiServiceId** – A string indicating which service a WOPI (Web Application Open Platform Interface Protocol) file is from.
+
+- **Data_DocumentInputCurrency** – Type of document input used by the operation.
+
+- **Data_DocumentOperation_AppId** – Enumeration value representing the ID of an app.
+
+- **Data_DocumentOperation_EndEventId** – Tag that represents where the operation ended.
+
+- **Data_DocumentOperation_EndReason** – Enumeration value representing the end reason.
+
+- **Data_DocumentOperation_IsReinitialized** – Is reinitializing a document already open.
+
+- **Data_DocumentOperation_ParamsFlags** – Enumeration flags used to start the operation.
+
+- **Data_DocumentOperation_TelemetryReason** – Enumeration representation of the entry point for the open event. Eg- open from MRU or browse, file activation, etc.
+
+- **Data_DocumentOperation_isTargetECBeginEC** – Is the target execution context the same as the context opened from.
+
+- **Data_FileIOInclusiveMeasurements** – A string value logging the time duration spent in some function calls, in a format with function tag and duration which includes the duration of sub-function calls.
+
+- **Data_FileIOMeasurements** – A string value logging the time duration spent in some function calls, in a format with function tag and duration which excludes the duration of sub-function calls.
+
+- **Data_IsNameMissingInUrl** – Indicates if the name was not parsed from the URL.
+
+- **Data_IsPathMissingForLocalFile** – Indicates if this is a local file without a path.
+
+- **Data_IsUnpackedLinkSupportedForOpen** – Indicates if unpackable link is supported for open.
+
+- **Data_LinksOpenRightScenario** – Enumeration value for the links open right scenario.
+
+- **Data_OpEndEventId** – Tag that represents where the operation ended.
+
+- **Data_RelatedPrevOpTelemetryReason** – Is operation related to previous operation.
+
+- **Data_StopwatchDuration** – Total time for the event.
+
+- **Data_UnpackLinkHint** – Enumeration representing potential user action based on unpack link.
+
+- **Data_UnpackLinkPromptResult** – Enumeration representing response of unpack link prompt.
+
+
+#### Office.Docs.AppDocs.OperationOpenFromPath
+
+This event is collected for Office applications running on Android, iOS, Universal or Windows platforms. The event records when a file open operation takes place from a path and is used to understand and prioritize user-experiences based on file open operation information.
+
+The following fields are collected:
+
+- **Data_AppIdForReportEndBeforeAppKnown** – App ID when not known before report end called on the operation.
+
+- **Data_CanContinueFromOnBeforeOperationBegins** – CanContinue state, before the begin handler is invoked.
+
+- **Data_DetachedDuration** – The duration of detach process of an event. 
+
+- **Data_Doc_AccessMode** – An enumeration indicating the access mode of the file, e.g. read only, read write.
+
+- **Data_Doc_AsyncOpenKind** – An enumeration indicating the type of asynchronous flow used to open the file.
+
+- **Data_Doc_ChunkingType** – An enumeration indicating the type of chunking algorithm of a file.
+
+- **Data_Doc_EdpState** – An enumeration indicating the enterprise data protection state of a file.
+
+- **Data_Doc_Ext** – First 4 characters of the extension of the file.
+
+- **Data_Doc_Fqdn** – The server host name of the file.
+
+- **Data_Doc_FqdnHash** – A GUID that uniquely identifies server host name.
+
+- **Data_Doc_IdentityTelemetryId** – A one-way hash of the user identity used to perform the open.
+
+- **Data_Doc_InitializationScenario** – An enumeration indicating the detailed scenario type of a file open operation.
+
+- **Data_Doc_IOFlags** – An enumeration indicating the IO flags of a file open operation, e.g. if the file is cached or not.
+
+- **Data_Doc_IsCloudCollabEnabled** – Whether or not the cloud collaboration is enabled for the file.
+
+- **Data_Doc_IsIncrementalOpen** – Whether or not the file was opened via incremental open.
+
+- **Data_Doc_IsOcsSupported** – Whether or not a file supports Office Collaboration Service.
+
+- **Data_Doc_IsOpeningOfflineCopy** – Whether or not a file is opened from an offline cached copy.
+
+- **Data_Doc_IsPrefetched** – Whether or not the file was prefetched before open operation happened.
+
+- **Data_Doc_IsSyncBacked** – Whether or not a cloud file exists locally and is synchronized with the server.
+
+- **Data_Doc_Location** – An enumeration indicating where the file is located, e.g. locally or in cloud.
+
+- **Data_Doc_ReadOnlyReasons** – An enumeration indicating the read only reason of a file.
+
+- **Data_Doc_ResourceIdHash** – A GUID that uniquely identifies server resource id of the file.
+
+- **Data_Doc_RtcType** – An enumeration indicating type of real-time channel (RTC) used by the file.
+
+- **Data_Doc_ServerDocId** – A GUID that uniquely identifies server document ID.
+
+- **Data_Doc_ServerProtocol** – An enumeration indicating the server protocol of a cloud file.
+
+- **Data_Doc_ServerType** – An enumeration indicating the server type of a cloud file.
+
+- **Data_Doc_ServerVersion** – An enumeration indicating the server version of a cloud file.
+
+- **Data_Doc_SessionId** – An integer which is incremented by 1 for each file open operation in a session.
+
+- **Data_Doc_SharePointServiceContext** – A string used to correlate client-side and server-side logs, typically it is a kind of ID.
+
+- **Data_Doc_SizeInBytes** – File size in bytes.
+
+- **Data_Doc_SpecialChars** – An enumeration indicating which kind of special character the file URL has.
+
+- **Data_Doc_UrlHash** – A GUID that uniquely identifies the file URL.
+
+- **Data_Doc_UsedWrsDataOnOpen** – Whether or not the file was opened incrementally using pre-cached WRS data.
+
+- **Data_Doc_WopiServiceId** – A string indicating which service a WOPI (Web Application Open Platform Interface Protocol) file is from.
+
+- **Data_DocumentInputCurrency** – Type of document input used by the operation.
+
+- **Data_DocumentOperation_AppId** – Enumeration value representing the ID of an app.
+
+- **Data_DocumentOperation_EndEventId** – Tag that represents where the operation ended.
+
+- **Data_DocumentOperation_EndReason** – Enumeration value representing the end reason.
+
+- **Data_DocumentOperation_IsReinitialized** – Is reinitializing a document already open.
+
+- **Data_DocumentOperation_ParamsFlags** – Enumeration flags used to start the operation.
+
+- **Data_DocumentOperation_TelemetryReason** – Enumeration representation of the entry point for the open event. Eg- open from MRU or browse, file activation, etc.
+
+- **Data_DocumentOperation_isTargetECBeginEC** – Is the target execution context the same as the context opened from.
+
+- **Data_FileIOInclusiveMeasurements** – A string value logging the time duration spent in some function calls, in a format with function tag and duration which includes the duration of sub-function calls.
+
+- **Data_FileIOMeasurements** – A string value logging the time duration spent in some function calls, in a format with function tag and duration which excludes the duration of sub-function calls.
+
+- **Data_IsNameMissingInUrl** – Indicates if the name was not parsed from the URL.
+
+- **Data_IsPathMissingForLocalFile** – Indicates if this is a local file without a path.
+
+- **Data_IsUnpackedLinkSupportedForOpen** – Indicates if unpackable link is supported for open.
+
+- **Data_LinksOpenRightScenario** – Enumeration value for the links open right scenario.
+
+- **Data_OpEndEventId** – Tag that represents where the operation ended.
+
+- **Data_RelatedPrevOpTelemetryReason** – Is operation related to previous operation.
+
+- **Data_StopwatchDuration** – Total time for the event.
+
+- **Data_UnpackLinkHint** – Enumeration representing potential user action based on unpack link.
+
+- **Data_UnpackLinkPromptResult** – Enumeration representing response of unpack link prompt.
+
+#### Office.Docs.AppDocs.OperationOpenFromProtocolHandler
+
+This event is collected for Office applications running on Android, iOS, Universal or Windows platforms. The event records when a file open operation takes place from another application using the protocol handler interface and is used to understand and prioritize user-experiences based on file open operation information.
+
+The following fields are collected:
+
+- **Data_AppIdForReportEndBeforeAppKnown** – App ID when not known before report end called on the operation.
+
+- **Data_CanContinueFromOnBeforeOperationBegins** – CanContinue state, before the begin handler is invoked.
+
+- **Data_DetachedDuration** – The duration of detach process of an event. 
+
+- **Data_Doc_AccessMode** – An enumeration indicating the access mode of the file, e.g. read only, read write.
+
+- **Data_Doc_AsyncOpenKind** – An enumeration indicating the type of asynchronous flow used to open the file.
+
+- **Data_Doc_ChunkingType** – An enumeration indicating the type of chunking algorithm of a file.
+
+- **Data_Doc_EdpState** – An enumeration indicating the enterprise data protection state of a file.
+
+- **Data_Doc_Ext** – First 4 characters of the extension of the file.
+
+- **Data_Doc_Fqdn** – The server host name of the file.
+
+- **Data_Doc_FqdnHash** – A GUID that uniquely identifies server host name.
+
+- **Data_Doc_IdentityTelemetryId** – A one-way hash of the user identity used to perform the open.
+
+- **Data_Doc_InitializationScenario** – An enumeration indicating the detailed scenario type of a file open operation.
+
+- **Data_Doc_IOFlags** – An enumeration indicating the IO flags of a file open operation, e.g. if the file is cached or not.
+
+- **Data_Doc_IsCloudCollabEnabled** – Whether or not the cloud collaboration is enabled for the file.
+
+- **Data_Doc_IsIncrementalOpen** – Whether or not the file was opened via incremental open.
+
+- **Data_Doc_IsOcsSupported** – Whether or not a file supports Office Collaboration Service.
+
+- **Data_Doc_IsOpeningOfflineCopy** – Whether or not a file is opened from an offline cached copy.
+
+- **Data_Doc_IsPrefetched** – Whether or not the file was prefetched before open operation happened.
+
+- **Data_Doc_IsSyncBacked** – Whether or not a cloud file exists locally and is synchronized with the server.
+
+- **Data_Doc_Location** – An enumeration indicating where the file is located, e.g. locally or in cloud.
+
+- **Data_Doc_ReadOnlyReasons** – An enumeration indicating the read only reason of a file.
+
+- **Data_Doc_ResourceIdHash** – A GUID that uniquely identifies server resource id of the file.
+
+- **Data_Doc_RtcType** – An enumeration indicating type of real-time channel (RTC) used by the file.
+
+- **Data_Doc_ServerDocId** – A GUID that uniquely identifies server document ID.
+
+- **Data_Doc_ServerProtocol** – An enumeration indicating the server protocol of a cloud file.
+
+- **Data_Doc_ServerType** – An enumeration indicating the server type of a cloud file.
+
+- **Data_Doc_ServerVersion** – An enumeration indicating the server version of a cloud file.
+
+- **Data_Doc_SessionId** – An integer which is incremented by 1 for each file open operation in a session.
+
+- **Data_Doc_SharePointServiceContext** – A string used to correlate client-side and server-side logs, typically it is a kind of ID.
+
+- **Data_Doc_SizeInBytes** – File size in bytes.
+
+- **Data_Doc_SpecialChars** – An enumeration indicating which kind of special character the file URL has.
+
+- **Data_Doc_UrlHash** – A GUID that uniquely identifies the file URL.
+
+- **Data_Doc_UsedWrsDataOnOpen** – Whether or not the file was opened incrementally using pre-cached WRS data.
+
+- **Data_Doc_WopiServiceId** – A string indicating which service a WOPI (Web Application Open Platform Interface Protocol) file is from.
+
+- **Data_DocumentInputCurrency** – Type of document input used by the operation.
+
+- **Data_DocumentOperation_AppId** – Enumeration value representing the ID of an app.
+
+- **Data_DocumentOperation_EndEventId** – Tag that represents where the operation ended.
+
+- **Data_DocumentOperation_EndReason** – Enumeration value representing the end reason.
+
+- **Data_DocumentOperation_IsReinitialized** – Is reinitializing a document already open.
+
+- **Data_DocumentOperation_ParamsFlags** – Enumeration flags used to start the operation.
+
+- **Data_DocumentOperation_TelemetryReason** – Enumeration representation of the entry point for the open event. Eg- open from MRU or browse, file activation, etc.
+
+- **Data_DocumentOperation_isTargetECBeginEC** – Is the target execution context the same as the context opened from.
+
+- **Data_FileIOInclusiveMeasurements** – A string value logging the time duration spent in some function calls, in a format with function tag and duration which includes the duration of sub-function calls.
+
+- **Data_FileIOMeasurements** – A string value logging the time duration spent in some function calls, in a format with function tag and duration which excludes the duration of sub-function calls.
+
+- **Data_IsNameMissingInUrl** – Indicates if the name was not parsed from the URL.
+
+- **Data_IsPathMissingForLocalFile** – Indicates if this is a local file without a path.
+
+- **Data_IsUnpackedLinkSupportedForOpen** – Indicates if unpackable link is supported for open.
+
+- **Data_LinksOpenRightScenario** – Enumeration value for the links open right scenario.
+
+- **Data_OpEndEventId** – Tag that represents where the operation ended.
+
+- **Data_RelatedPrevOpTelemetryReason** – Is operation related to previous operation.
+
+- **Data_StopwatchDuration** – Total time for the event.
+
+- **Data_UnpackLinkHint** – Enumeration representing potential user action based on unpack link.
+
+- **Data_UnpackLinkPromptResult** – Enumeration representing response of unpack link prompt.
+
+#### Office.Docs.AppDocs.OperationOpenFromShell
+
+This event is collected for Office applications running on Android, iOS, Universal or Windows platforms. The event records when a file open operation takes place from the shell and is used to understand and prioritize user-experiences based on file open operation information.
+
+The following fields are collected:
+
+- **Data_AppIdForReportEndBeforeAppKnown** – App ID when not known before report end called on the operation.
+
+- **Data_CanContinueFromOnBeforeOperationBegins** – CanContinue state, before the begin handler is invoked.
+
+- **Data_DetachedDuration** – The duration of detach process of an event. 
+
+- **Data_Doc_AccessMode** – An enumeration indicating the access mode of the file, e.g. read only, read write.
+
+- **Data_Doc_AsyncOpenKind** – An enumeration indicating the type of asynchronous flow used to open the file.
+
+- **Data_Doc_ChunkingType** – An enumeration indicating the type of chunking algorithm of a file.
+
+- **Data_Doc_EdpState** – An enumeration indicating the enterprise data protection state of a file.
+
+- **Data_Doc_Ext** – First 4 characters of the extension of the file.
+
+- **Data_Doc_Fqdn** – The server host name of the file.
+
+- **Data_Doc_FqdnHash** – A GUID that uniquely identifies server host name.
+
+- **Data_Doc_IdentityTelemetryId** – A one-way hash of the user identity used to perform the open.
+
+- **Data_Doc_InitializationScenario** – An enumeration indicating the detailed scenario type of a file open operation.
+
+- **Data_Doc_IOFlags** – An enumeration indicating the IO flags of a file open operation, e.g. if the file is cached or not.
+
+- **Data_Doc_IsCloudCollabEnabled** – Whether or not the cloud collaboration is enabled for the file.
+
+- **Data_Doc_IsIncrementalOpen** – Whether or not the file was opened via incremental open.
+
+- **Data_Doc_IsOcsSupported** – Whether or not a file supports Office Collaboration Service.
+
+- **Data_Doc_IsOpeningOfflineCopy** – Whether or not a file is opened from an offline cached copy.
+
+- **Data_Doc_IsPrefetched** – Whether or not the file was prefetched before open operation happened.
+
+- **Data_Doc_IsSyncBacked** – Whether or not a cloud file exists locally and is synchronized with the server.
+
+- **Data_Doc_Location** – An enumeration indicating where the file is located, e.g. locally or in cloud.
+
+- **Data_Doc_ReadOnlyReasons** – An enumeration indicating the read only reason of a file.
+
+- **Data_Doc_ResourceIdHash** – A GUID that uniquely identifies server resource id of the file.
+
+- **Data_Doc_RtcType** – An enumeration indicating type of real-time channel (RTC) used by the file.
+
+- **Data_Doc_ServerDocId** – A GUID that uniquely identifies server document ID.
+
+- **Data_Doc_ServerProtocol** – An enumeration indicating the server protocol of a cloud file.
+
+- **Data_Doc_ServerType** – An enumeration indicating the server type of a cloud file.
+
+- **Data_Doc_ServerVersion** – An enumeration indicating the server version of a cloud file.
+
+- **Data_Doc_SessionId** – An integer which is incremented by 1 for each file open operation in a session.
+
+- **Data_Doc_SharePointServiceContext** – A string used to correlate client-side and server-side logs, typically it is a kind of ID.
+
+- **Data_Doc_SizeInBytes** – File size in bytes.
+
+- **Data_Doc_SpecialChars** – An enumeration indicating which kind of special character the file URL has.
+
+- **Data_Doc_UrlHash** – A GUID that uniquely identifies the file URL.
+
+- **Data_Doc_UsedWrsDataOnOpen** – Whether or not the file was opened incrementally using pre-cached WRS data.
+
+- **Data_Doc_WopiServiceId** – A string indicating which service a WOPI (Web Application Open Platform Interface Protocol) file is from.
+
+- **Data_DocumentInputCurrency** – Type of document input used by the operation.
+
+- **Data_DocumentOperation_AppId** – Enumeration value representing the ID of an app.
+
+- **Data_DocumentOperation_EndEventId** – Tag that represents where the operation ended.
+
+- **Data_DocumentOperation_EndReason** – Enumeration value representing the end reason.
+
+- **Data_DocumentOperation_IsReinitialized** – Is reinitializing a document already open.
+
+- **Data_DocumentOperation_ParamsFlags** – Enumeration flags used to start the operation.
+
+- **Data_DocumentOperation_TelemetryReason** – Enumeration representation of the entry point for the open event. Eg- open from MRU or browse, file activation, etc.
+
+- **Data_DocumentOperation_isTargetECBeginEC** – Is the target execution context the same as the context opened from.
+
+- **Data_FileIOInclusiveMeasurements** – A string value logging the time duration spent in some function calls, in a format with function tag and duration which includes the duration of sub-function calls.
+
+- **Data_FileIOMeasurements** – A string value logging the time duration spent in some function calls, in a format with function tag and duration which excludes the duration of sub-function calls.
+
+- **Data_IsNameMissingInUrl** – Indicates if the name was not parsed from the URL.
+
+- **Data_IsPathMissingForLocalFile** – Indicates if this is a local file without a path.
+
+- **Data_IsUnpackedLinkSupportedForOpen** – Indicates if unpackable link is supported for open.
+
+- **Data_LinksOpenRightScenario** – Enumeration value for the links open right scenario.
+
+- **Data_OpEndEventId** – Tag that represents where the operation ended.
+
+- **Data_RelatedPrevOpTelemetryReason** – Is operation related to previous operation.
+
+- **Data_StopwatchDuration** – Total time for the event.
+
+- **Data_UnpackLinkHint** – Enumeration representing potential user action based on unpack link.
+
+- **Data_UnpackLinkPromptResult** – Enumeration representing response of unpack link prompt.
+
+
+#### Office.Docs.AppDocs.OperationOpenFromUrl
+
+This event is collected for Office applications running on Android, iOS, Universal or Windows platforms. The event records when a file open operation takes place from a URL and is used to understand and prioritize user-experiences based on file open operation information.
+
+The following fields are collected:
+
+- **Data_AppIdForReportEndBeforeAppKnown** – App ID when not known before report end called on the operation.
+
+- **Data_CanContinueFromOnBeforeOperationBegins** – CanContinue state, before the begin handler is invoked.
+
+- **Data_DetachedDuration** – The duration of detach process of an event. 
+
+- **Data_Doc_AccessMode** – An enumeration indicating the access mode of the file, e.g. read only, read write.
+
+- **Data_Doc_AsyncOpenKind** – An enumeration indicating the type of asynchronous flow used to open the file.
+
+- **Data_Doc_ChunkingType** – An enumeration indicating the type of chunking algorithm of a file.
+
+- **Data_Doc_EdpState** – An enumeration indicating the enterprise data protection state of a file.
+
+- **Data_Doc_Ext** – First 4 characters of the extension of the file.
+
+- **Data_Doc_Fqdn** – The server host name of the file.
+
+- **Data_Doc_FqdnHash** – A GUID that uniquely identifies server host name.
+
+- **Data_Doc_IdentityTelemetryId** – A one-way hash of the user identity used to perform the open.
+
+- **Data_Doc_InitializationScenario** – An enumeration indicating the detailed scenario type of a file open operation.
+
+- **Data_Doc_IOFlags** – An enumeration indicating the IO flags of a file open operation, e.g. if the file is cached or not.
+
+- **Data_Doc_IsCloudCollabEnabled** – Whether or not the cloud collaboration is enabled for the file.
+
+- **Data_Doc_IsIncrementalOpen** – Whether or not the file was opened via incremental open.
+
+- **Data_Doc_IsOcsSupported** – Whether or not a file supports Office Collaboration Service.
+
+- **Data_Doc_IsOpeningOfflineCopy** – Whether or not a file is opened from an offline cached copy.
+
+- **Data_Doc_IsPrefetched** – Whether or not the file was prefetched before open operation happened.
+
+- **Data_Doc_IsSyncBacked** – Whether or not a cloud file exists locally and is synchronized with the server.
+
+- **Data_Doc_Location** – An enumeration indicating where the file is located, e.g. locally or in cloud.
+
+- **Data_Doc_ReadOnlyReasons** – An enumeration indicating the read only reason of a file.
+
+- **Data_Doc_ResourceIdHash** – A GUID that uniquely identifies server resource id of the file.
+
+- **Data_Doc_RtcType** – An enumeration indicating type of real-time channel (RTC) used by the file.
+
+- **Data_Doc_ServerDocId** – A GUID that uniquely identifies server document ID.
+
+- **Data_Doc_ServerProtocol** – An enumeration indicating the server protocol of a cloud file.
+
+- **Data_Doc_ServerType** – An enumeration indicating the server type of a cloud file.
+
+- **Data_Doc_ServerVersion** – An enumeration indicating the server version of a cloud file.
+
+- **Data_Doc_SessionId** – An integer which is incremented by 1 for each file open operation in a session.
+
+- **Data_Doc_SharePointServiceContext** – A string used to correlate client-side and server-side logs, typically it is a kind of ID.
+
+- **Data_Doc_SizeInBytes** – File size in bytes.
+
+- **Data_Doc_SpecialChars** – An enumeration indicating which kind of special character the file URL has.
+
+- **Data_Doc_UrlHash** – A GUID that uniquely identifies the file URL.
+
+- **Data_Doc_UsedWrsDataOnOpen** – Whether or not the file was opened incrementally using pre-cached WRS data.
+
+- **Data_Doc_WopiServiceId** – A string indicating which service a WOPI (Web Application Open Platform Interface Protocol) file is from.
+
+- **Data_DocumentInputCurrency** – Type of document input used by the operation.
+
+- **Data_DocumentOperation_AppId** – Enumeration value representing the ID of an app.
+
+- **Data_DocumentOperation_EndEventId** – Tag that represents where the operation ended.
+
+- **Data_DocumentOperation_EndReason** – Enumeration value representing the end reason.
+
+- **Data_DocumentOperation_IsReinitialized** – Is reinitializing a document already open.
+
+- **Data_DocumentOperation_ParamsFlags** – Enumeration flags used to start the operation.
+
+- **Data_DocumentOperation_TelemetryReason** – Enumeration representation of the entry point for the open event. Eg- open from MRU or browse, file activation, etc.
+
+- **Data_DocumentOperation_isTargetECBeginEC** – Is the target execution context the same as the context opened from.
+
+- **Data_FileIOInclusiveMeasurements** – A string value logging the time duration spent in some function calls, in a format with function tag and duration which includes the duration of sub-function calls.
+
+- **Data_FileIOMeasurements** – A string value logging the time duration spent in some function calls, in a format with function tag and duration which excludes the duration of sub-function calls.
+
+- **Data_IsNameMissingInUrl** – Indicates if the name was not parsed from the URL.
+
+- **Data_IsPathMissingForLocalFile** – Indicates if this is a local file without a path.
+
+- **Data_IsUnpackedLinkSupportedForOpen** – Indicates if unpackable link is supported for open.
+
+- **Data_LinksOpenRightScenario** – Enumeration value for the links open right scenario.
+
+- **Data_OpEndEventId** – Tag that represents where the operation ended.
+
+- **Data_RelatedPrevOpTelemetryReason** – Is operation related to previous operation.
+
+- **Data_StopwatchDuration** – Total time for the event.
+
+- **Data_UnpackLinkHint** – Enumeration representing potential user action based on unpack link.
+
+- **Data_UnpackLinkPromptResult** – Enumeration representing response of unpack link prompt.
+
+
+#### Office.Apple.ActivatePerpetual
 
 This event is collected for Office applications running under Apple platforms. The event is used to monitor the health of the perpetual activation flow as well as investigating causes of failures by reviewing the FailedAt values.
 
@@ -2675,7 +3611,7 @@ The following fields are collected:
 
 - **Data_FailedAt** - We collect a string representing where in the activate perpetual license flow we failed.
 
-#### Office_Apple_ActivateSubscription
+#### Office.Apple.ActivateSubscription
 
 This event is collected for Office applications running under Apple platforms. We collect information related to the migration from the legacy licensing code stack to the vNext licensing code tack. This is used to monitor the health of the subscription activation flow as well as tracking if this is a migration to licensing vNext and if the primary identity was used.
 
@@ -2685,7 +3621,7 @@ The following fields are collected:
 
 - **Data_NULSubscriptionLicensed** - A true/false value denoting the state of subscription
 
-#### Office_Apple_CISAuthTicketWithIdentity
+#### Office.Apple.CISAuthTicketWithIdentity
 
 This event is collected for Office applications running under Apple platforms. The event is used for capturing auth token generation failures during InAppPurchase on the Mac (the event logs the error code received).  This event is used for detecting and helping troubleshoot auth token generation failures
 
@@ -2697,7 +3633,7 @@ The following fields are collected:
 
 - **Data_ValidIdentity** - If the client has a valid identity
 
-#### Office_Apple_InAppAssociationActivity
+#### Office.Apple.InAppAssociationActivity
 
 This event is collected for Office applications running under Apple platforms. 
 We collect information related to product association after an in-app purchase. We log which subscription SKU we are associating.  This is used to monitor the health of the in-app purchase product associations.
@@ -2706,7 +3642,7 @@ The following fields are collected:
 
 - **Data_ProductID** - The subscription SKU we are trying to associate the product to.
 
-#### Office_Apple_InAppPurchaseActivity
+#### Office.Apple.InAppPurchaseActivity
 
 This event is collected for Office applications running under Apple platforms. 
 
@@ -2720,7 +3656,7 @@ The following fields are collected:
 
 - **Data_PurchaseRequestType** - The type of purchase request
 
-#### Office_Apple_InTune
+#### Office.Apple.InTune
 
 This event is collected for Office applications running under Apple platforms. We collect whether the current session is Intune-managed. This is used to pivot/filter on Intune managed sessions and allows us to investigate potential issues related to Office being run as an Intune-managed application.
 
@@ -2728,7 +3664,7 @@ The following fields are collected:
 
 - **Data_EventID** - We collect a string representing a code that indicates whether the session is intune-managed.
 
-#### Office_Apple_Licensing_Mac_LicensingState
+#### Office.Apple.Licensing.Mac.LicensingState
 
 This event is collected for Office applications running under Apple platforms. The event captures the current state of the license for a session in a machine (OLS license id, SKU being used, grace-period or not, RFM, etc.). The data collected is used for detecting errors and investigating causes of failures. 
 
@@ -2780,7 +3716,7 @@ The following fields are collected:
 
 - **Activity_DateTimeTicks** - Data Time for the activity
 
-#### Office_Docs_Apple_DocsUXiOSSaveAsThroughFileMenu 
+#### Office.Docs.Apple.DocsUXiOSSaveAsThroughFileMenu 
 
 This event is collected for Office applications running under Apple platforms. The event records when a "Save as" operation takes place and is used to understand and prioritize user-experiences based on file operation information such as location categories.  A "Save as" operation occurs whenever a user creates a new file and saves it for the first time or saves a copy of an existing file to a new location.
 
@@ -2790,7 +3726,7 @@ The following fields are collected:
 
 - **Data_ServiceType** - An abstract categorization of the new location of a file after the save is completed like "SharePoint", "OneDrive", "Local", "WOPI", etc., and explicitly not the actual location of the file.
 
-#### Office_Docs_Apple_DocsUXMacAtMentionInsertedAtMention 
+#### Office.Docs.Apple.DocsUXMacAtMentionInsertedAtMention 
 
 This event is collected for Office applications running under Apple platforms. This event records when a user "@" mentions another user and is used to understand and prioritize user-experiences based on how users collaborate with other users.
 
@@ -2798,7 +3734,7 @@ The following fields are collected:
 
 - **Data_CharactersTyped** - A numerical value that indicates the total number of characters typed in the "@" mention text.
 
-#### Office_Docs_Apple_DocsUXMacODSPSharingWebViewSharingCompleted 
+#### Office.Docs.Apple.DocsUXMacODSPSharingWebViewSharingCompleted 
 
 This event is collected for Office applications running under Apple platforms. This event records when a user chooses to share a cloud document using the OneDrive sharing experience and is used to better understand and prioritize user-experiences based on sharing documents.
 
@@ -2808,7 +3744,7 @@ The following fields are collected:
 
 - **Data_ShareWebViewMode** - A hardcoded string that indicates what kind of share mode was active when the share was completed including but not limited to "ManageAccess", "AtMentions", "Share".
 
-#### Office_DocsUI_Collaboration_CoauthorGalleryRowTapped 
+#### Office.DocsUI.Collaboration.CoauthorGalleryRowTapped 
 
 This event is collected for Office applications running under Apple platforms. This event records when a user selects to look at the list of current co-authors.  This data is used to better understand and prioritize user-experiences relating to co-authoring a document at the same time.
 
@@ -2816,7 +3752,7 @@ The following fields are collected:
 
 - **Data_CoauthorCount** - A numerical value that represents the total number of people who are currently editing the same document as the user.
 
-#### Office_DocsUI_Collaboration_CollabCornerPeopleGalleryCoauthorsUpdated 
+#### Office.DocsUI.Collaboration.CollabCornerPeopleGalleryCoauthorsUpdated 
 
 This event is collected for Office applications running under Apple platforms. The event records when the number of active co-authors in a cloud document changes.  This data is used to better understand and prioritize user-experiences relating to co-authoring a document at the same time.
 
@@ -2832,7 +3768,7 @@ The following fields are collected:
 
 - **Data_ServiceType** - An abstract categorization of the location of a file like "SharePoint", "OneDrive", "Local", "WOPI", etc., and explicitly not the actual location of the file.
 
-#### Office_DocsUI_DocStage_DocStageCreateNewFromTemplate 
+#### Office.DocsUI.DocStage.DocStageCreateNewFromTemplate 
 
 This event is collected for Office applications running under Apple platforms. The event records when a new file is created from the "New from template" experience and is used to better understand and prioritize user-experiences based on document creation information.
 
@@ -2850,7 +3786,7 @@ The following fields are collected:
 
 - **Data_TemplateType** - A classification to help distinguish the type of template like, but not limited to, "Online" templates, "Online search" templates, "Local" templates.
 
-#### Office_DocsUI_DocStage_RecommendedOpen
+#### Office.DocsUI.DocStage.RecommendedOpen
 
 This event is collected for Office applications running under Apple platforms. The event records when a file-open operation takes place from the recommended files section of the document gallery and is used to understand and prioritize user-experiences based on file open operation information.
 
@@ -2858,7 +3794,7 @@ The following fields are collected:
 
 - **Data_Success** - A Boolean value to indicate whether the operation succeeded.
 
-#### Office_DocsUI_FileOperations_DocsUIFileOpenMacRequired
+#### Office.DocsUI.FileOperations.DocsUIFileOpenMacRequired
 
 This event is collected for Office applications running under Apple platforms. The event records when a file open operation takes place and is used to understand and prioritize user-experiences based on file open operation information such as location categories "ServiceType" and the first four characters of the extension.
 
@@ -2868,7 +3804,7 @@ The following fields are collected:
 
 - **Data_ServiceType** - An abstract categorization of the location of a file like "SharePoint", "OneDrive", "Local", "WOPI", etc.
 
-#### Office_DocsUI_FileOperations_OpenDocumentMeasurements
+#### Office.DocsUI.FileOperations.OpenDocumentMeasurements
 
 This event is collected for Office applications running under iOS platform. The event records when a file open operation takes place and is used to understand and prioritize user-experiences based on file open operation information, especially performance information.
 
@@ -2972,7 +3908,7 @@ The following fields are collected:
 
 - **Data_TimeSplitMeasurements** - A string value logging the time duration spent in some function calls, in a format with function tag, start timestamp and duration.
 
-#### Office_DocsUI_FileOperations_OpenFileWithReason 
+#### Office.DocsUI.FileOperations.OpenFileWithReason 
 
 This event is collected for Office applications running under Apple platforms. The event records when a file open operation takes place and is used to understand and prioritize user-experiences based on file open operation information such as location categories "ServiceType" and from where within Application the user requested to open a file.
 
@@ -2986,7 +3922,7 @@ The following fields are collected:
 
 - **Data_ServiceType** - An abstract numerical categorization of the location of a file like "SharePoint", "OneDrive", "Local", "WOPI", etc., and explicitly not the actual location of the file.
 
-#### Office_DocsUI_FileOperations_SaveToURL
+#### Office.DocsUI.FileOperations.SaveToURL
 
 This event is collected for Office applications running under Apple platforms. The event records when a "save as" operation takes place and is used to understand and prioritize user-experiences based on file operation information such as location categories and the first four characters of the extension.  A "save as" operation occurs whenever a user creates a new file and saves it for the first time or saves a copy of an existing file to a new location.
 
@@ -3006,7 +3942,7 @@ The following fields are collected:
 
 - **Data_SaveOperationType** - A numerical value defined by Apple's NSSaveOperationType group of values.
 
-#### Office_DocsUI_SharingUI_CloudUpsellShown 
+#### Office.DocsUI.SharingUI.CloudUpsellShown 
 
 This event is collected for Office applications running under Apple platforms. This event records when a user goes through the document upsell to cloud flow.  This data is used to better understand and prioritize user-experiences relating to moving documents to cloud locations.
 
@@ -3024,7 +3960,7 @@ The following fields are collected:
 
 - **Data_IsSheetModal** - A Boolean that indicates if the upsell experience was presented modally or not.
 
-#### Office_DocsUI_SharingUI_CloudUpsellUpload 
+#### Office.DocsUI.SharingUI.CloudUpsellUpload 
 
 This event is collected for Office applications running under Apple platforms. This event records when a user chooses to upload a new or local file to the cloud and the result of that operation.  This data is used to better understand and prioritize user-experiences relating to moving documents to cloud locations.
 
@@ -3050,7 +3986,7 @@ The following fields are collected:
 
 - **Data_UploadResult** - A hard coded string that indicates the result of the attempt to upload including but not limited to ''Success", "UserCancelledUpload", and "PreAuthFailed".
 
-#### Office_DocsUI_SharingUI_CopyLinkOperation
+#### Office.DocsUI.SharingUI.CopyLinkOperation
 
 This event is collected for Office applications running under Apple platforms. This event records when a user chooses to share a document by generating a link to a cloud document and is used to better understand and prioritize user-experiences based on sharing documents.
 
@@ -3062,7 +3998,7 @@ The following fields are collected:
 
 - **Data_ShareScenario** - A hard-coded string description of where within the application's user interface the file is being shared from including but not limited to, "FileMenu", "OpenTabShareActionMenu", "RecentTabShareActionMenu".
 
-#### Office_DocsUI_SharingUI_DocsUIOneDriveShare 
+#### Office.DocsUI.SharingUI.DocsUIOneDriveShare 
 
 This event is collected for Office applications running under Apple platforms. This event records when a user chooses to share a cloud document using the OneDrive sharing experience and is used to better understand and prioritize user-experiences based on sharing documents.
 
@@ -3078,7 +4014,7 @@ The following fields are collected:
 
 - **Data_WebViewLoadTimeInMs** - A numerical value that records the amount of time it took for the web user interface to load.
 
-#### Office_DocsUI_SharingUI_InvitePeople 
+#### Office.DocsUI.SharingUI.InvitePeople 
 
 This event is collected for Office applications running under Apple platforms. This event records when a user chooses to invite people to a cloud document and is used to better understand and prioritize user-experiences based on sharing documents.
 
@@ -3094,7 +4030,7 @@ The following fields are collected:
 
 - **Data_ShareScenario** - A hard coded string description of where within the application's user interface the file is being shared from including but not limited to, "FileMenu", "OpenTabShareActionMenu", "RecentTabShareActionMenu".
 
-#### Office_DocsUI_SharingUI_SendACopyOperation
+#### Office.DocsUI.SharingUI.SendACopyOperation
 
 This event is collected for Office applications running under Apple platforms. The event records when a user chooses to send a copy of a document and is used to better understand and prioritize user-experiences based on sharing documents.
 
@@ -3114,7 +4050,7 @@ The following fields are collected:
 
 - **Data_SharingService** - A Boolean that indicates whether the file was created when the user was searching for a template.
 
-#### Office_DocsUI_SharingUI_UpsellShare 
+#### Office.DocsUI.SharingUI.UpsellShare 
 
 This event is collected for Office applications running under Apple platforms. This event records when a user goes through the document upsell to cloud flow when trying to share a document.  This data is used to better understand and prioritize user experiences relating to moving documents to cloud locations.
 
@@ -3285,7 +4221,6 @@ This event is collected when the feed is shown to the user. The event is used to
 - **hostAppRing** - The population of users to whom the application was distributed.
 
 - **properties** - Contains additional metadata properties collected for each event. *[This field has been removed from current builds of Office, but might still appear in older builds.]*
-  - **ClientTimeStamp** - Timestamp of when the event was logged in the client.
 
 - **publicEventName** - Public facing event name.  
 
@@ -3315,6 +4250,118 @@ This event is collected when the feed is shown to the user. The event is used to
 
 - **version** - The version of the feed client.
 
+
+#### Office.Feedback.Survey.FloodgateClient.SurveyTracked
+
+Tracks when a device that is eligible for a survey starts an app. Used to assess the health of the survey user selection process as well as to ensure the signal used to analyze customer issues and health is working properly.
+
+The following fields are collected:
+
+- **ExpirationTimeUTC** – date/time the survey will expire
+
+- **SurveyName** – name of survey shown
+
+- **SurveyId** – Unique instance of a campaign
+
+- **UniqueId** – Id to identify the individual piece of telemetry
+
+#### Office.Feedback.Survey.FloodgateClient.TriggerMet
+
+Tracks when a device has met the criteria to show a survey. Used to assess the health of the survey triggering process as well as to ensure the signal used to analyze customer issues and health is working properly.
+
+The following fields are collected:
+
+- **ExpirationTimeUTC** – date/time the survey will expire
+
+- **SurveyName** – name of survey shown
+
+- **SurveyId** – Unique instance of a campaign
+
+- **UniqueId** – Id to identify the individual piece of telemetry
+
+#### Office.Feedback.Survey.FloodgateClient.UserSelected
+
+Tracks when a device has been selected for a survey. Used to assess the health of the survey user selection process as well as to ensure the signal used to analyze customer issues and health is working properly.
+
+The following fields are collected:
+
+- **ExpirationTimeUTC** – date/time the survey will expire
+
+- **SurveyName** – name of survey shown
+
+- **SurveyId** – Unique instance of a campaign
+
+- **UniqueId** – Id to identify the individual piece of telemetry
+
+#### Office.Feedback.Survey.UI.Android
+
+On an Android device, it tracks when a user on a device interacts with the survey prompt and survey UI. Used to assess the health of the end-to-end survey experience as well as to ensure the signal used to analyze customer issues and health is working properly.
+
+The following fields are collected:
+
+- **ExpirationTimeUTC** – date/time the survey will expire
+
+- **SurveyName** – name of survey shown
+
+- **SurveyId** – Unique instance of a campaign
+
+- **UniqueId** – Id to identify the individual piece of telemetry
+
+#### Office.Feedback.Survey.UI.IOS
+
+On an iOS device, it tracks when a user on a device interacts with the survey prompt and survey UI. Used to assess the health of the end-to-end survey experience as well as to ensure the signal used to analyze customer issues and health is working properly.
+
+The following fields are collected:
+
+- **ExpirationTimeUTC** – date/time the survey will expire
+
+- **SurveyName** – name of survey shown
+
+- **SurveyId** – Unique instance of a campaign
+
+- **UniqueId** – Id to identify the individual piece of telemetry
+
+#### Office.Feedback.Survey.UI.Mac
+
+On a Mac device, it tracks when a user on a device interacts with the survey prompt and survey UI. Used to assess the health of the end-to-end survey experience as well as to ensure the signal used to analyze customer issues and health is working properly.
+
+The following fields are collected:
+
+- **ExpirationTimeUTC** – date/time the survey will expire
+
+- **SurveyName** – name of survey shown
+
+- **SurveyId** – Unique instance of a campaign
+
+- **UniqueId** – Id to identify the individual piece of telemetry
+
+#### Office.Feedback.Survey.UI.Win32
+
+On a Win32 device, it tracks when a user on a device interacts with the survey prompt and survey UI. Used to assess the health of the end-to-end survey experience as well as to ensure the signal used to analyze customer issues and health is working properly.
+
+The following fields are collected:
+
+- **ExpirationTimeUTC** – date/time the survey will expire
+
+- **SurveyName** – name of survey shown
+
+- **SurveyId** – Unique instance of a campaign
+
+- **UniqueId** – Id to identify the individual piece of telemetry
+
+#### Office.Feedback.Survey.UI.Win32.Toast
+
+Tracks when survey prompt is shown. Used to assess the health of the survey prompt process as well as to ensure the signal used to analyze customer issues and health is working properly.
+
+The following fields are collected:
+
+- **ExpirationTimeUTC** – date/time the survey will expire
+
+- **SurveyName** – name of survey shown
+
+- **SurveyId** – Unique instance of a campaign
+
+- **UniqueId** – Id to identify the individual piece of telemetry
 
 #### Office.FileIO.CSI.CCachedFileCsiLoadFileBasic
 
@@ -3865,7 +4912,7 @@ The following fields are collected:
 
 - **EventName** - The name of the event being logged
 
-#### Office_FirstRun_Apple_ActivationResult
+#### Office.FirstRun.Apple.ActivationResult
 
 This event is collected for Office applications running under Apple platforms. The event is used to monitor the health of our application activation flow. We collect data to figure out the outcome of the Office 365 subscription activation along with the flow used to activate (First Run Experience, In-App-Flow, Purchase, etc.).
 
@@ -3877,7 +4924,7 @@ The following fields are collected:
 
 - **Data_ActivationStatusFlowType** – A numeric value indicating the type of activation flow
 
-#### Office_FirstRun_Apple_ActivationStatus
+#### Office.FirstRun.Apple.ActivationStatus
 
 This event is collected for Office applications running under Apple platforms. The event is used to figure out the outcome of the Office 365 subscription activation along with the flow used to activate (FRE, InApp, Purchase, etc.). We collect data containing the Activation type, flow type (FRE/DocStage/Purchase) and Office Licensing Service ID.
 
@@ -3891,7 +4938,7 @@ The following fields are collected:
 
 - **Data_ActivationTypeStatus** – An activation status code.
 
-#### Office_FirstRun_Apple_FirstRunComplete
+#### Office.FirstRun.Apple.FirstRunComplete
 
 This event is collected for Office applications running under Apple platforms. The event lets us know if the user running in freemium, the flow type being run (FRE/DocStage/Purchase) and the identity type (MSA/OrgID). We use this event to figure out if the First Run-Experience (FRE) was completed and type of identity used to sign-in (MSA/OrgID).
 
@@ -3905,7 +4952,7 @@ The following fields are collected:
 
 - **Data_FirstRunCompletedIdentityType** - The type of identity of the user that completed the flow
 
-#### Office_FirstRun_Apple_FirstRunStart
+#### Office.FirstRun.Apple.FirstRunStart
 
 This event is collected for Office applications running under Apple platforms. The event lets us know a user has entered first run experience and the flow type being run (FRE/DocStage/Purchase). We use this event to figure out if the First Run-Experience (FRE) was started successfully.
 
@@ -3915,7 +4962,7 @@ The following fields are collected:
 
 - **Data_FirstRunStartedFlowType** - A code denoting the type of user flow that was completed 
 
-#### Office_FirstRun_Apple_FirstRunStartedAndCompleted
+#### Office.FirstRun.Apple.FirstRunStartedAndCompleted
 
 This event is collected for Office applications running under Apple platforms. The event lets us know if the user running in freemium, the flow type being run (FRE/DocStage/Purchase) and the identity type (MSA/OrgID). We use this event to figure out the health and effectiveness of our First-Run Experience (FRE) flow.
 
@@ -3933,7 +4980,7 @@ The following fields are collected:
 
 - **Data_FirstRunStartedFlowType** - A code denoting the type of user flow that was started
 
-#### Office_FirstRun_Apple_InAppPurchaseActivationFail
+#### Office.FirstRun.Apple.InAppPurchaseActivationFail
 
 This event is collected for Office applications running under Apple platforms. The event is used to monitor the health of our application activation flow. We collect data to figure out the outcome of the In-App purchase activation along with the flow used to activate (First Run Experience, In-App-Flow, Purchase, etc.). 
 
@@ -3947,7 +4994,7 @@ The following fields are collected:
 
 - **Data_AssoicatedSuccessfullyFlowType** - A code denoting the type of user flow that was exercised
 
-#### Office_FirstRun_Apple_InAppPurchaseActivationSuccess
+#### Office.FirstRun.Apple.InAppPurchaseActivationSuccess
 
 This event is collected for Office applications running under Apple platforms. The event is used to monitor the health of our application activation flow. We collect data to figure out the outcome of the In-App purchase activation along with the flow used to activate (First Run Experience, In-App-Flow, Purchase, etc.). 
 
@@ -3961,7 +5008,7 @@ The following fields are collected:
 
 - **Data_AssoicatedSuccessfullyFlowType** - A code denoting the type of user flow that was exercised
 
-#### Office_FirstRun_Apple_InAppPurchaseAssociationFailed
+#### Office.FirstRun.Apple.InAppPurchaseAssociationFailed
 
 This event is collected for Office applications running under Apple platforms. The event is used to monitor the health of our application activation flow. We collect data to figure out the outcome of the In-App purchase activation along with the flow used to activate (First Run Experience, In-App-Flow, Purchase, etc.). 
 
@@ -3977,7 +5024,7 @@ The following fields are collected:
 
 - **Data_AssoicationFailedResult** - A code denoting type of failure observed
 
-#### Office_FirstRun_Apple_InAppPurchaseAssociationSuccess
+#### Office.FirstRun.Apple.InAppPurchaseAssociationSuccess
 
 This event is collected for Office applications running under Apple platforms. The event is used to monitor the health of our application activation flow. We collect data to figure out the outcome of the In-App purchase activation along with the flow used to activate (First Run Experience, In-App-Flow, Purchase, etc.). 
 
@@ -3991,7 +5038,7 @@ The following fields are collected:
 
 - **Data_AssoicatedSuccessfullyFlowType** - A code denoting the type of user flow that was exercised
 
-#### Office_FirstRun_Apple_InAppPurchaseFailures
+#### Office.FirstRun.Apple.InAppPurchaseFailures
 
 This event is collected for Office applications running under Apple platforms. The event is used to monitor the health of our application activation flow. We collect data on the outcome of the In-App purchase flow.
 
@@ -4005,7 +5052,7 @@ The following fields are collected:
 
 - **Data_EventId** - A code denoting type of failure observed
 
-#### Office_FirstRun_Apple_InAppPurchasesAttempted
+#### Office.FirstRun.Apple.InAppPurchasesAttempted
 
 This event is collected for Office applications running under Apple platforms. The event is used to monitor the health of our application in-app purchase flow. We collect data to track the attempted In-App purchases and their Type of SKU being purchased (Monthly/Annual/Home/Personal).
 
@@ -4017,7 +5064,7 @@ The following fields are collected:
 
 - **Data_PurchaseSuccessfulFlowType** - A code denoting the type of user flow that was exercised
 
-#### Office_FirstRun_Apple_InAppRestoreAttempted
+#### Office.FirstRun.Apple.InAppRestoreAttempted
 
 This event is collected for Office applications running under Apple platforms. The event is used to monitor the health of our application in-app purchase flow. We collect data to track the attempted In-App restorations
 
@@ -4027,7 +5074,7 @@ The following fields are collected:
 
 - **Data_RestoreAttemptFlowType** - A code denoting the type of user flow that was exercised
 
-#### Office_FirstRun_Apple_InAppRestoreAttemptFailed
+#### Office.FirstRun.Apple.InAppRestoreAttemptFailed
 
 This event is collected for Office applications running under Apple platforms. The event is used to monitor the health of our application in-app purchase flow. We collect data to track the attempted In-App restorations and their associated flows and errors.
 
@@ -4041,7 +5088,7 @@ The following fields are collected:
 
 - **Data_RestoredFailedUnKnownResult** - Whether the attempt failed due to unknown reasons
 
-#### Office_FirstRun_Apple_MacFirstRunCompleted
+#### Office.FirstRun.Apple.MacFirstRunCompleted
 
 This event is collected for Office applications running under Apple platforms. The event lets us know a user has gone thru first run experience. We use this event to figure out if the First Run-Experience (FRE) was completed successfully.
 
@@ -4049,7 +5096,7 @@ The following fields are collected:
 
 - **Data_FirstRunCollectionTime** - A timestamp registering the time at which the flow was completed.
 
-#### Office_FirstRun_Apple_MacWXPFirstRunStarted
+#### Office.FirstRun.Apple.MacWXPFirstRunStarted
 
 This event is collected for Office applications running under Apple platforms. The event lets us know a user has entered first run experience. We use this event to figure out if the First Run-Experience (FRE) was started successfully.
 
@@ -4057,72 +5104,64 @@ The following fields are collected:
 
 - **Data_FirstRunPanelName** - The name of the panel from which the experience started
 
-#### Office.LivePersonaCard.UserActions.ClosedPersonaCard
+#### Office.iOS.Paywall.Paywall.Presented
 
-We log when the user closes a Persona Card.  The data is used to determine whether the card closed correctly. 
+This critical usage telemetry is collected when Paywall control is shown to the user, and is used to understand the in-app purchase experience for the user and optimize the same for future versions.
 
-The following fields are collected: 
+The following fields are collected:
 
-- **BatchId** - Globally unique identifier if a set of requests was made
+- **entryPoint** - String – The Button/Flow from which Paywall was displayed. Like “Premium Upgrade Button” or “First Run Flow”
 
-- **Data.appContextId** - A randomly generated id used to identify different accounts in the same app
+- **isFRE** - Boolean – Are we showing the First Run Experience or regular UI?
 
-- **Data.AppInfo.Name** - Name of the service in use (Profile card)
+#### Office.iOS.Paywall.Paywall.Stats
 
-- **Data.AppInfo_Id** - Name of the host application
+This session-based metadata is collected when the Paywall UI is shown to the user, the duration of the interaction and whether a purchase was attempted and succeeded or failed.  The data is used to understand the usage and health of the entire payment experience and debug, optimize and troubleshoot the in-app purchase experience in future versions.
 
-- **Data.AppInfo_Version** - Version of the host application
+The following fields are collected:
 
-- **Data.cardCorrelationId** - The globally unique identifier for a persona card
+- **entryPoint** - String – The Button/Flow from which Paywall was displayed. Like “Premium Upgrade Button” or “First Run Flow”.
 
-- **Data.cardPersonaCorrelationId** - The globally unique identifier for a specific persona shown in a card
+- **isFRE** - Boolean – Are we showing the First Run Experience or regular UI?
 
-- **Data.clientCorrelationId** - The globally unique identifier for the app's session
+- **status** - String – Exit status of Paywall. Like “initiated”, “paymentDone”, “provisionFailed”
 
-- **Data.clientType** - The type of device the app is run on
+- **userDuration** - Double – Duration in milliseconds the user spent on Paywall
 
-- **Data.eventId** - Name identifier of the event, e.g. "LivePersonaCardRenderedAction"
+#### Office.iOS.Paywall.SKUChooser.MoreBenefits.Stats
 
-- **Data.feature** - Used to group various events of the same feature (Profile card)
+This event collects the features and apps the user expands from “See More Benefits”, and the duration of time spent.  The data is used to understand usage of the “See all benefits” feature and further optimize the experience in future versions.
 
-- **Data.OTelJS.Version** - Version of OTel logger
+The following fields are collected:
 
-- **Data.properties** - Additional metadata collected for each event as follows:
-  - **ClientTimeStamp** - Time on the application when the event was logged
-  - **cardCorrelationId** - Duplicate of Data.appContextId above
-  - **cardPersonaCorrelationId** - Duplicate of Data.cardCorrelationId above
-  - **consumerCorrelationId** - Duplicate of Data.clientCorrelationId above
-  - **externalAppSessionCorrelationId** - A globally unique identifier for the app to identify all persona cards opened in the same sub-session
-  - **immersiveProfileCorrelationId** - A globally unique identifier for the expanded profile view session
-  - **personaCorrelationId** - A globally unique identifier for unique personas in a session
+- **appsExpanded** - String - Comma-separated list of services/apps for which the benefits were expanded.
 
-- **Data.region** -The geographical region of the profile card backend service to which user is connected
+- **productId** - String - App Store ID of the product for which user is viewing more benefits offered
 
-- **Data.tenantAadObjectId** - The tenant to which a user's subscription is tied. Allows us to classify issues and identify whether a problem is widespread or isolated to a set of users or a specific tenant
+- **userDuration** - Double - Duration in milliseconds the user spent on the Benefits Screen.
 
-- **Data.type** -Type of the logged event, e.g. Trace, Error, Event
+#### Office.iOS.Paywall.SKUChooser.Stats
 
-- **Data.userAadObjectId** -The globally unique user identifier for an enterprise Microsoft account (duplicate of Data.UserInfo.Id)
+This usage telemetry is collected to see how the user entered the SKU Chooser, how much time the user spends on the SKU Chooser screen and why they exited the SKU Chooser.  The data is used to understand usage of the SKU chooser and optimize the in-app purchase experience in future versions.
 
-- **Data.UserInfo.Id** - The globally unique user identifier for an enterprise Microsoft account
+The following fields are collected:
 
-- **Data.UserInfo.MsaId** - The globally unique user identifier for a consumer Microsoft account
+- **entryPoint** - String – The Button/Flow from which Paywall was displayed. Like “Premium Upgrade Button” or “First Run Flow”.
 
-- **Data.UserInfo.OMSTenantId** - The tenant that a user's subscription is tied to. Allows us to classify issues and identify whether a problem is widespread or isolated to a set of users or a specific tenant
+- **exitReason** - String – Exit reason of SKU Chooser. Like “BuyButton”, “CloseButton
 
-- **Data.userPuid** -The globally unique user identifier for a consumer Microsoft account (duplicate of Data.UserInfo.MsaId)
+- **isFRE** - Boolean – Are we showing the First Run Experience or regular UI?
 
-- **Data.version** -The version of the service (Profile Card)
+- **userDuration** - Double – Duration in milliseconds the user spent on the SKU chooser
 
-- **Data_hostAppRing** - The rollout ring of the persona card
 
-- **Event_ReceivedTime** - The time the event was logged in the service
-
-#### Office.LivePersonaCard.UserActions.ConfigurationSetAction
+#### Office.LivePersonaCard.ConfigurationSetAction
 
 We log when the user is in an app that loads a Persona Card in anticipation of the user opening the Live Persona Card.  The data is used to determine whether the card loaded correctly. 
 
 The following fields are collected: 
+
+- **Data.accountType** - Whether the user belongs to an organization or a consumer
 
 - **Data.appContextId** - A randomly generated ID used to identify different accounts in the same app
 
@@ -4140,47 +5179,42 @@ The following fields are collected:
 
 - **Data.clientType** - The type of device the app is run on
 
+- **Data.contextType** - What context (app) the card was launched from
+
+- **Data.ecsConfigIds** - Version identifiers for the features enabled in the card
+
+- **Data.ecsTagId** - Tag ID for features
+
 - **Data.eventId** - Name identifier of the event, e.g. "LivePersonaCardRenderedAction"
 
 - **Data.eventpriority** - An enumeration value for the priority of sending the event.
 
 - **Data.feature** - Used to group various events of the same feature (Profile card)
 
+- **Data.flights** - The features enabled in the card
+
+- **Data.fromCache** - Whether data was fetched from memory
+
+- **Data.hasFinePointer** - Whether the device has mouse-pointer capability
+
+- **Data.hasHoverEvents** - Whether the device has mouse-hover capability
+
+- **Data.immersiveProfileCorrelationId** - A globally unique identifier for the expanded profile view session
+
+- **Data.offlineResolved** - Whether data was fetched while offline
+
 - **Data.OTelJS.Version** - Version of OTel logger
 
-- **Data.properties** - Additional metadata collected for each event as follows:
+- **Data.personaCorrelationId** - A globally unique identifier for unique personas in a session
 
-  - **accountType** - Whether the user belongs to an organization or a consumer
+- **Data.properties** - Additional metadata collected for each event as follows: *[This field has been removed from current builds of Office, but might still appear in older builds.]*
 
   - **cardCorrelationId** - Duplicate of Data.appContextId above
-
   - **cardPersonaCorrelationId** - Duplicate of Data.cardCorrelationId above
-
   - **ClientTimeStamp** - Time on the application when the event was logged
-
   - **consumerCorrelationId** - Duplicate of Data.clientCorrelationId above
 
-  - **contextType** - What context (app) the card was launched from
-
-  - **ecsConfigIds** - Version identifiers for the features enabled in the card
-
-  - **ecsTagId** - Tag ID for features
-
   - **externalAppSessionCorrelationId** - A globally unique identifier for the app to identify all persona cards opened in the same sub-session
-
-  - **flights** - The features enabled in the card
-
-  - **fromCache** - Whether data was fetched from memory
-
-  - **hasFinePointer** - Whether the device has mouse-pointer capability
-
-  - **hasHoverEvents** - Whether the device has mouse-hover capability
-
-  - **immersiveProfileCorrelationId** - A globally unique identifier for the expanded profile view session
-
-  - **offlineResolved** - Whether data was fetched while offline
-
-  - **personaCorrelationId** - A globally unique identifier for unique personas in a session
 
 - **Data.region** -The geographical region of the profile card backend service to which user is connected
 
@@ -4214,6 +5248,149 @@ The following fields are collected:
 
 - **DeviceInfo_SDKUid** - Uniquely identifies the device from the telemetry SDK's perspective
 
+#### Office.LivePersonaCard.UserActions.ClosedExpandedPersonaCard
+
+Logged when the user closes an expanded Persona Card. It is used to observe critical anomalies in failure rates of closing the Live Persona Card.
+
+The following fields are collected:
+
+- **AppInfo_Id** – Name of the host application
+
+- **AppInfo_Version** – Version of the host application
+
+- **Data.appContextId** - A randomly generated id used to identify different accounts in the same app
+
+- **Data.AppInfo.Name** - Name of the service in use (Profile card)
+
+- **Data.cardCorrelationId** - The globally unique identifier for a persona card
+
+- **Data.cardPersonaCorrelationId** - The globally unique identifier for a specific persona shown in a card
+
+- **Data.clientCorrelationId** - The globally unique identifier for the app's session
+
+- **Data.clientType** - The type of device the app is run on, e.g. “Outlook_Win32”
+
+- **Data.eventId** - Name identifier of the event, e.g. "LivePersonaCardRenderedAction"
+
+- **Data.exportName** - Human readable name of the user action event, e.g. "ClosedExpandedPersonaCard"
+
+- **Data.exportType** - Category of the event for GDPR export request
+
+- **Data.externalAppSessionCorrelationId** - A globally unique identifier for the app to identify all persona cards opened in the same sub-session
+
+- **Data.feature** - Used to group various events of the same feature (Profile card)
+
+- **Data.immersiveProfileCorrelationId** - A globally unique identifier for the expanded profile view session
+
+- **Data.OTelJS.Version** - Version of OTel logger
+
+- **Data.personaCorrelationId** - A globally unique identifier for unique personas in a session
+
+- **Data.properties** - Additional metadata collected for each event as follows: *[This field has been removed from current builds of Office, but might still appear in older builds.]*
+
+   - **cardCorrelationId** - Duplicate of Data.appContextId above 
+   - **cardPersonaCorrelationId** - Duplicate of Data.cardCorrelationId above
+   - **ClientTimeStamp** - time that the event occurred in Unix epoch time
+   - **consumerCorrelationId** - Duplicate of Data.clientCorrelationId above 
+
+- **Data.region** -The geographical region of the profile card backend service to which user is connected
+
+- **Data.tenantAadObjectId** - The tenant to which a user’s subscription is tied. Allows us to classify issues and identify whether a problem is widespread or isolated to a set of users or a specific tenant
+
+- **Data.type** -Type of the logged event, e.g. Trace, Error, Event
+
+- **Data.userAadObjectId** -The globally unique user identifier for an enterprise Microsoft account (duplicate of Data.UserInfo.Id)
+
+- **Data.UserInfo.Id** - The globally unique user identifier for an enterprise Microsoft account 
+
+- **Data.UserInfo.MsaId** - The globally unique user identifier for a consumer Microsoft account
+
+- **Data.UserInfo.OMSTenantId** - The tenant that a user’s subscription is tied to. Allows us to classify issues and identify whether a problem is widespread or isolated to a set of users or a specific tenant.
+
+- **Data.userPuid** -The globally unique user identifier for a consumer Microsoft account (duplicate of Data.UserInfo.MsaId)
+
+- **Data.version** -The version of the service (Profile Card)
+
+- **DeviceInfo_Id** – The globally unique device identifier for a device
+
+- **DeviceInfo_Make** – The brand of the operating system
+
+- **DeviceInfo_Model** – The model of the device
+
+- **DeviceInfo.NetworkCost** - Indicates network cost/type (metered, metered above cap, etc.)
+
+- **DeviceInfo_OsName** - The name of the device OS
+
+- **DeviceInfo_OsVersion** – The version of the operating system
+
+- **PipelineInfo.ClientCountry** - The Country Code of the Sender, based on the un-scrubbed Client IP Address
+
+
+#### Office.LivePersonaCard.UserActions.ClosedPersonaCard
+
+We log when the user closes a Persona Card.  The data is used to determine whether the card closed correctly. 
+
+The following fields are collected: 
+
+- **BatchId** - Globally unique identifier if a set of requests was made
+
+- **Data.appContextId** - A randomly generated id used to identify different accounts in the same app
+
+- **Data.AppInfo.Name** - Name of the service in use (Profile card)
+
+- **Data.AppInfo_Id** - Name of the host application
+
+- **Data.AppInfo_Version** - Version of the host application
+
+- **Data.cardCorrelationId** - The globally unique identifier for a persona card
+
+- **Data.cardPersonaCorrelationId** - The globally unique identifier for a specific persona shown in a card
+
+- **Data.clientCorrelationId** - The globally unique identifier for the app's session
+
+- **Data.clientType** - The type of device the app is run on
+
+- **Data.eventId** - Name identifier of the event, e.g. "LivePersonaCardRenderedAction"
+
+- **Data.externalAppSessionCorrelationId** - A globally unique identifier for the app to identify all persona cards opened in the same sub-session.
+
+- **Data.feature** - Used to group various events of the same feature (Profile card)
+
+- **Data.immersiveProfileCorrelationId** - A globally unique identifier for the expanded profile view session
+
+- **Data.OTelJS.Version** - Version of OTel logger
+
+- **Data.personaCorrelationId** - A globally unique identifier for unique personas in a session
+
+- **Data.properties** - Additional metadata collected for each event as follows: *[This field has been removed from current builds of Office, but might still appear in older builds.]*
+
+  - **ClientTimeStamp** - Time on the application when the event was logged
+  - **cardCorrelationId** - Duplicate of Data.appContextId above
+  - **cardPersonaCorrelationId** - Duplicate of Data.cardCorrelationId above
+  - **consumerCorrelationId** - Duplicate of Data.clientCorrelationId above
+
+- **Data.region** -The geographical region of the profile card backend service to which user is connected
+
+- **Data.tenantAadObjectId** - The tenant to which a user's subscription is tied. Allows us to classify issues and identify whether a problem is widespread or isolated to a set of users or a specific tenant
+
+- **Data.type** -Type of the logged event, e.g. Trace, Error, Event
+
+- **Data.userAadObjectId** -The globally unique user identifier for an enterprise Microsoft account (duplicate of Data.UserInfo.Id)
+
+- **Data.UserInfo.Id** - The globally unique user identifier for an enterprise Microsoft account
+
+- **Data.UserInfo.MsaId** - The globally unique user identifier for a consumer Microsoft account
+
+- **Data.UserInfo.OMSTenantId** - The tenant that a user's subscription is tied to. Allows us to classify issues and identify whether a problem is widespread or isolated to a set of users or a specific tenant
+
+- **Data.userPuid** -The globally unique user identifier for a consumer Microsoft account (duplicate of Data.UserInfo.MsaId)
+
+- **Data.version** -The version of the service (Profile Card)
+
+- **Data_hostAppRing** - The rollout ring of the persona card
+
+- **Event_ReceivedTime** - The time the event was logged in the service
+
 #### Office.LivePersonaCard.UserActions.OpenedExpandedPersonaCard
 
 Logged when the user opens an expanded Persona Card. It is used to observe critical anomalies in failure rates of launching the Live Persona Card.
@@ -4234,9 +5411,13 @@ The following fields are collected:
 
 - **Data.clientCorrelationId** - The globally unique identifier for the app's session
 
+- **Data.clientScenario** - To identify the feature in the app from where the persona card was opened
+
 - **Data.clientType** - The type of device the app is run on
 
 - **Data.eventId** - Name identifier of the event, e.g. "LivePersonaCardRenderedAction"
+
+- **Data.externalAppSessionCorrelationId** - A globally unique identifier for the app to identify all persona cards opened in the same sub-session.
 
 - **Data.exportName** - Human readable name of the user action event, e.g. "OpenedPersonaCard"
 
@@ -4244,31 +5425,25 @@ The following fields are collected:
 
 - **Data.feature** - Used to group various events of the same feature (Profile card)
 
+- **Data.hasPersonaInsightRing** - Insights from Office or LinkedIn could be available for the user
+
 - **Data.hostAppRing** - The ring by which the app was distributed
+
+- **Data.immersiveProfileCorrelationId** - A globally unique identifier for the expanded profile view session
 
 - **Data.OTelJS.Version** - Version of OTel logger
 
-- **Data.properties** - Additional metadata collected for each event as follows:
+- **Data.personaCorrelationId** - A globally unique identifier for unique personas in a session
+
+- **Data.properties** - Additional metadata collected for each event as follows: *[This field has been removed from current builds of Office, but might still appear in older builds.]*
 
   - **cardCorrelationId** - Duplicate of Data.appContextId above 
-
   - **cardPersonaCorrelationId** - Duplicate of Data.cardCorrelationId above
-
-  - **clientScenario** - To identify the feature in the app from where the persona card was opened
-
   - **consumerCorrelationId** - Duplicate of Data.clientCorrelationId above 
 
-  - **externalAppSessionCorrelationId** - A globally unique identifier for the app to identify all persona cards opened in the same sub-session
-
-  - **hasPersonalInsightRing** - Insights from Office or LinkedIn could be available for the user
-
-  - **immersiveProfileCorrelationId** - A globally unique identifier for the expanded profile view session
-
-  - **personaCorrelationId** - A globally unique identifier for unique personas in a session
-
-  - **section** – The active section of the expanded card
-
 - **Data.region** -The geographical region of the profile card backend service to which user is connected
+
+- **Data.section** – The active section of the expanded card
 
 - **Data.tenantAadObjectId** - The tenant to which a user's subscription is tied. Allows us to classify issues and identify whether a problem is widespread or isolated to a set of users or a specific tenant
 
@@ -4313,6 +5488,8 @@ The following fields are collected:
 
 - **Data.AppInfo.Name** - Name of the service in use (Profile card)
 
+- **Data.bandwidthEstimateMbps** - Effective bandwidth estimate in Mbps
+
 - **Data.cardCorrelationId** - The globally unique identifier for a persona card
 
 - **Data.cardPersonaCorrelationId** - The globally unique identifier for a specific persona shown in a card
@@ -4327,11 +5504,28 @@ The following fields are collected:
 
 - **Data.exportType** - Category of the event for GDPR export request
 
+- **Data.externalAppSessionCorrelationId** - A globally unique identifier for the app to identify all persona cards opened in the same sub-session
+
 - **Data.feature** - Used to group various events of the same feature (Profile card)
+
+- **Data.hasPersonaInsightRing** - Insights from Office or LinkedIn could be available for the user
 
 - **Data.hostAppRing** - The ring by which the app was distributed
 
+- **Data.immersiveProfileCorrelationId** - A globally unique identifier for the expanded profile view session
+
 - **Data.OTelJS.Version** - Version of OTel logger
+
+- **Data.personaCorrelationId** - A globally unique identifier for unique personas in a session
+
+- **Data.properties** - Additional metadata collected for each event as follows. *[This field has been removed from current builds of Office, but might still appear in older builds.]*
+
+    - **cardCorrelationId** - Duplicate of Data.appContextId above 
+    - **cardPersonaCorrelationId** - Duplicate of Data.cardCorrelationId above
+    - **consumerCorrelationId** - Duplicate of Data.clientCorrelationId above 
+    - **networkEffectiveType** - The effective type of network connection, e.g. "slow-2g Online" to identify whether the user is connected to the internet at the time of showing the persona card
+    - **networkType** - The type of network connectivity of the device in use
+    - **roundTripEstimateMs** - Estimated effective round-trip of the current connection in milliseconds
 
 - **Data.region** -The geographical region of the profile card backend service to which user is connected
 
@@ -4353,34 +5547,11 @@ The following fields are collected:
 
 - **Data.viewType** -Defines the type of the Profile card displayed
 
+- **Data.wasOpenedAsCompactCard** - Used to identify if the card was opened as a compact view initially
+
 - **NetworkCost** - Indicates network cost/type (metered, metered above cap, etc.)
 
 - **NetworkCountry** - The Country Code of the Sender, based on the un-scrubbed Client IP Address.
-
-- **Data.properties** - Additional metadata collected for each event as follows.
-
-    - **bandwidthEstimateMbps** - Effective bandwidth estimate in Mbps
-
-    - **cardCorrelationId** - Duplicate of Data.appContextId above 
-
-    - **cardPersonaCorrelationId** - Duplicate of Data.cardCorrelationId above
-
-    - **consumerCorrelationId** - Duplicate of Data.clientCorrelationId above 
-
-    - **externalAppSessionCorrelationId** - A globally unique identifier for the app to identify all persona cards opened in the same sub-session
-
-    - **immersiveProfileCorrelationId** - A globally unique identifier for the expanded profile view session
-
-    - **networkEffectiveType** - The effective type of network connection, e.g. "slow-2g Online" to identify whether the user is connected to the internet at the time of showing the persona card
-
-    - **networkType** - The type of network connectivity of the device in use
-
-    - **personaCorrelationId** - A globally unique identifier for unique personas in a session
-
-    - **roundTripEstimateMs** - Estimated effective round-trip of the current connection in milliseconds
-
-    - **wasOpenedAsCompactCard** - Used to identify if the card was opened as a compact view initially
-
 
 #### Office.Manageability.Client Fetch.PolicyPreChecks
 
@@ -4402,15 +5573,17 @@ The following fields are collected:
 
   - **Data.Log** - Custom log message indicating the precheck success or failure
 
-#### Office_OfficeMobile_PdfViewer_PdfFileOpenMeasurements
+#### Office.OfficeMobile.PdfViewer.PdfFileOpenMeasurements
 
-This event is collected for Union iOS, it records when a file open operation takes
+This event is collected for the Office app for iOS, it records when a file open operation takes
 place. We collect this data to ensure good performance for all file opens on the app. 
 
 The following fields are collected:
 
 - **Data_Doc_ActivationFQDN** - Domain name of the Provider app for a file activation scenario
 (only 1st party app info is being logged).
+
+- **Data_Doc_CreateTelemetryReason** – Telemetry reason for PDF creation.(eg: Create from scan, using “picture to pdf” action, using “document to pdf” action, etc.)
 
 - **Data_Doc_DownloadDurationms** - Time to download a PDF cloud file.
 
@@ -4420,7 +5593,7 @@ The following fields are collected:
 
 - **Data_Doc_FileOpSessionID** - Unique Id for a Document Session.
 
-- **Data_Doc_Location** - Location where the file sits (Local, ODSP, iCloud, third party files app , wopi
+- **Data_Doc_Location** - Location where the file sits (Local, ODSP, iCloud, third party files app, wopi
 
 - **Data_Doc_OpenCompletionTime** - Timestamp for end of open operation of a PDF file.
 
@@ -4434,9 +5607,9 @@ browse, File Activation, Protocol Activation, etc.).
 - **Doc_RenderDurationms** - Time to render a pdf file
 
 
-#### Office_OfficeMobile_PdfViewer_PdfFileOperations
+#### Office.OfficeMobile.PdfViewer.PdfFileOperations
 
-The event is collected for the Office app for Android. It records when a PDF open, close, or save operation takes place and is used to understand and prioritize the user experience based on PDF file operation information. The event enables us to keep the PDF open, close and save operations performing as expected, and to improve PDF file operation performance.
+The event is collected for the Office app for Android. It records when a .pdf open, close, or save operation takes place and is used to understand and prioritize the user experience based on .pdf file operation information. The event enables us to keep the .pdf open, close and save operations performing as expected, and to improve .pdf file operation performance.
 
 The following fields are collected:
 
@@ -4448,11 +5621,17 @@ The following fields are collected:
 
 - **Data_FailureReason** - In case of open failure, these enums define the reason for failure.
 
+- **Data_FileGUID** – Global identifier for the file which is random generated
+
 - **Data_FileLocation** - Location where the file sits, ex: Local, ODSP, iCloud, etc.
 
 - **Data_FileOpenEntryPoint** - entry point for file open
 
 - **Data_FileSize** - Size of the file on which the operation is happening
+
+- **Data_NetworkRequestErrorResponse** – Network Error response corresponding to error code.
+
+- **Data_NetworkRequestStage** – Error stage in case of cloud pdf file download.
 
 - **Data_OpenMode** - In which mode the PDF was opened, ex: 0: View mode, 2: Sign mode
 
@@ -4467,6 +5646,41 @@ The following fields are collected:
 - **Data_Result** - The status of the operation being performed, ex: true:success, false:failure
 
 - **Data_Type** - Type of file operation (open, close or save) 
+
+#### Office.OfficeMobile.PdfViewer.PdfFileOperations
+
+The event is collected for the Office app for iOS. It records when a .pdf open, close, or save operation takes place and is used to understand and prioritize the user experience based on .pdf file operation information. The event enables us to keep the .pdf open, close and save operations performing as expected, and to improve .pdf file operation performance. 
+
+- **Data_Doc_FileOpSessionID** - Unique Id for a Document Session 
+
+- **Data_ErrorCode** – error in case of file open failures/download failures / download canceled 
+
+- **Data_ErrorMessage** – relevant message to error code 
+
+- **Data_FailureReason** - In case of open failure, these enums define the reason for failure. 
+
+- **Data_FileGUID** – Global identifier for the file which is random generated
+
+- **Data_FileLocation** - Location where the file sits (Local, ODSP, iCloud, etc.) 
+
+- **Data_FileOpenEntryPoint** – entry point for file open 
+
+- **Data_FileSize** - Size of the file on which the operation is happening 
+
+- **Data_OpenMode** - In which mode the PDF was opened ( 0: View mode 2: Sign mode) 
+
+- **Data_PageCount** - Count of page in the PDF File.
+
+- **Data_PasswordProtected** - Marker that tell whether the file is password protected or not. 
+
+- **Data_ProviderApp** – currently providing provider app in case of file activation only 
+
+- **Data_ReadOnly** - Marker that tell whether the file is read-only or not.
+
+- **Data_Result** - The status of the operation being performed ( true:success , false:failure) 
+
+- **Data_Type** - Type of file operation (open, close or save)
+
 
 #### Office.OneNote.Android.App.Navigation.NavigationUIStateChanged, OneNote.App.Navigation.NavigationUIStateChanged *(previous name)*
 
@@ -4493,6 +5707,35 @@ The following fields are collected:
 - **IMAGE_COUNT** - Indicates the number of images taken
 
 - **LAUNCH_REASON** - Indicates the flow under which OfficeLens was launched. It could be over the lock screen or via Camera or Gallery options in StickyNotes or via OneNote Canvas etc.
+
+
+#### Office.OneNote.Android.StickyNotes.NoteCreated
+ 
+Critical signal that is used to monitor the ability of Sticky Notes users to create notes in the app.   Telemetry is used to ensure critical regression detection for OneNote app and service health. If users can’t create a note, this would trigger a high severity incident.
+
+The following fields are collected:
+
+- **IsExportable** - A flag indicating whether this event was a result of a user action or not. Should be set to True as NoteCreated is a user-triggered action.
+
+- **NoteLocalId** - Distinguishable unique identifier assigned to a note at the time of a user creates the note within the app.
+
+- **StickyNotes-SDKVersion** - Version number indicating the version of Sticky Notes the user is using. Allows us to identify which versions of the product are showing an issue so that we can correctly prioritize it.
+
+
+#### Office.OneNote.Android.StickyNotes.NoteViewed
+
+Critical signal that is used to monitor the ability of Sticky Notes users to view notes in the app.  Telemetry is used to ensure critical regression detection for OneNote app and service health. If users can’t view their notes, this would trigger a high severity incident.
+
+The following fields are collected:
+
+- **HasImages** - A flag indicating whether the note viewed has images stored in it.
+
+- **IsExportable** - A flag indicating whether this event was a result of a user action or not. Should be set to True as NoteViewed is a user-triggered action.
+
+- **NoteLocalId** - Distinguishable unique identifier assigned to a note at the time a user creates the note within the app.
+
+- **StickyNotes-SDKVersion** - Version number indicating the version of Sticky Notes the user is using. Allows us to identify which versions of the product are showing an issue so that we can correctly prioritize it.
+
 
 #### Office.OneNote.Canvas.Ink.InkStrokeLogger 
 
@@ -4636,6 +5879,16 @@ The following fields are collected:
 -  **TimeToLastResultInMs** - Indicates the amount of time OneNote takes to find the last match.
 
 -  **TimeToMedianResultInMs** - Indicates the median of time OneNote takes to find all matches.
+
+### Office.OneNote.SIGS.CriticalErrorEncountered
+
+This event captures a critical signal that is used to monitor the health of Signal Ingestion Service (SIGS), by logging whenever a critical error is encountered. Critical errors can block the whole of SIGS, and this will help us catch any such issues as soon as they are encountered by users. 
+
+Without this we will be dependent on users to report the problems they are facing. Absence of such telemetry would make the turnaround time for such issues much higher.
+
+The following fields are collected: 
+
+- **ErrorCode** - The code of the issue that was hit by the user.
 
 
 #### Office.OneNote.StickyNotes.NoteCreated (on iOS), OneNote.StickyNotes.NoteCreated (on Android)
@@ -4972,7 +6225,7 @@ The following fields are collected:
 
   - **Data\_fLifeguarded:bool -** Was document ever lifeguarded (feature to fix document errors by themselves without prompting user)?
 
-  - **Data\_IsDocAutoSaveable:bool -** Is presentation auto savable?
+  - **Data\_IsDocAutoSaveable:bool -** Is presentation auto saveable?
 
   - **Data\_IsDocDirty:bool -** Does presentation have changes that are not yet saved?
 
@@ -5459,6 +6712,10 @@ The following fields are collected:
 - **Data_StopwatchDuration:long** - Total time for Activity
 
 - **Data_TypeOfSaveDialog:long** - Predefined set of values of Dialog (RUN_SAVEAS_DLG,RUN_SAVEMEDIA_DLG, RUN_SAVEAS_VIDEO_DLG etc.)
+
+- **Data_WaitForSaveOrMergeSuccess:bool** - SaveAs succeeded waiting for a background save or merge.
+ 
+- **Data_WaitForSaveOrMergeTimeout:long** - SaveAs timeouted when waiting for a background save or merge.
 
 - **DstDoc** - New location of document 
 
@@ -6795,6 +8052,14 @@ The following fields are collected:
 
   - **Data\_ViewKind-** Type of Word view
 
+#### OneNote.App.Navigation.RatingReminderDialogShown
+
+The critical signal used to measure effectiveness of trigger logic for Rating reminder. This dialog is shown when the user has met all the conditions to see the rating reminder (no. of active days, has rated previously or not, etc.). This is used to ensure that the trigger logic for Rating reminder. If the users are seeing this dialog, it will provide us with ways to receive feedback from the customers on the right time and improve app health.
+
+The following fields are collected:
+
+- None
+
 #### OneNote.Canvas.PageOpened *(previous name)*, Office.OneNote.Android.Canvas.PageOpened
 
 The signal used to record when a Page is opened.  The telemetry is used to monitor, detect and fix any issues caused when a Page is opened in OneNote
@@ -6809,7 +8074,9 @@ The following fields are collected:
 
 This signal is used to ensure that after a user signs-into a OneNote Android App, notebooks are properly provisioned, and user has successfully created a new note.  This is used to ensure critical regression detection for OneNote app and service health.
 
-No additional fields are collected.
+The following fields are collected:
+
+- None
 
 #### OneNote.MessageBar.MessageBarClicked *(previous name)*, Office.OneNote.Android.MessageBar.MessageBarClicked
 
@@ -6861,7 +8128,7 @@ The following fields are collected:
 
 - **RMS.VerifySignatureDuration** - Duration time to verify signature
 
-#### read_conversation
+#### read.conversation
 
 Used for monitoring possible negative impact on the health and performance of rendering an email message
 
@@ -6886,12 +8153,14 @@ The following fields are collected:
 - **recent_message_id** - the ID of the most recent message in the conversation
 
 - **suggested_reply_state** - the state of suggested replies for this conversation (unavailable, available, shown, used, or discarded)
+
+- **suggested_reply_types** - indicates type and count of suggested reply shown/used for this conversation. It’s a dictionary. For example {text: 2, send_avail: 1}.
   
 - **total_count** - total frames displayed by the component
  
 - **view_duration** - how long the component was viewed by the user
 
-#### save_attempt
+#### save.attempt
 
 Allows us to identify the impact of issues caused by users attempting to save a file by evaluating the number of sessions impacted and if there are common features of those sessions.
 
@@ -6903,19 +8172,19 @@ The following fields are collected:
 
 - **token_type** - the type of token used to authenticate the account in order to save the file to help us detect authentication issues associated with saving a file
 
-#### search_subtab_selected
+#### search.subtab.selected
 
-This event lets us track the entity type pills (all, mail, contacts and calendar) that users are using when they do their searches so we can ensure the search filter mechanisms are working properly.
+The event collects origin points for the reason a search sub_tab was selected. The sub tabs sit under the primary app search bar to filter data. This event lets us track the entity type pills (all, mail, contacts and calendar) that users are using when they do their searches so we can ensure the search filter mechanisms are working properly.
 
 The following fields are collected:
 
 - **properties_general** -The general properties that all Aria event is collecting
 
-- **selected_reason** - The cause of the type pill getting selected, which could be one of these three values: tap_on_header, tap_on_see_all, enter_search_mode
+- **selected_reason** - The cause of the type pill getting selected, which could be one of the following values (glyph being an icon): tap_on_header, tap_on_see_all, enter_search_mode, mail_glyph, calendar_glyph.
 
 - **subtab_type** - The type pill that got selected, which could be one of these four values: all, mail, contact, event.
 
-#### send_message
+#### send.message
 
 Used for monitoring possible negative impact on the performance and health of sending email messages.
 
@@ -6951,9 +8220,11 @@ The following fields are collected:
 
 - **suggested_reply_state** - capturing suggested reply state i.e., unavailable, available, shown, used, discarded for this sent mail
 
+- **suggested_reply_types** - indicates type and count of suggested reply shown/used for this sent email. It’s a dictionary. For example {text: 2,  send_avail: 1}.
+
 - **suggestions_requested** - indicates how many smart compose suggestions requested
 
-- **suggestions_results** - smart compose suggestions’ result, i.e accpected, rejected
+- **suggestions_results** - smart compose suggestions’ result, i.e accepted, rejected
 
 - **suggestions_returned** - indicates how many smart compose suggestions returned from server
 
@@ -6971,9 +8242,9 @@ The following fields are collected:
 
 - **has_hx** - Tells us the account is using our new sync service to help us detect issues caused by our sync service
 
-#### settings_action
+#### settings.action
 
-Allows us to detect situations where there is possible negative impact on your ability configure your app settings, such as your notification settings, your primary mail account, and configuring your mail signature.
+This event collects the configuration information in settings. The data allows us to detect situations where there is possible negative impact on the users’ ability configure app settings, such as notification settings, primary mail account, and configuring the email signature.
 
 The following fields are collected: 
 
@@ -6983,49 +8254,46 @@ The following fields are collected:
 
 - **auth_type** - The authentication type being used by the account, so we understand which backend sync layer we are using to help us diagnose issues 
 
-- **auth_type** - indicates the back-end authentication type allowing us to know if there is an issue with a particular account type
-
-- **badge_count_state** - indicates what type of badge count the user has asked for i.e. no badges, focused inbox only, etc. 
-
 - **changed_folder** - Capturing whether a folder was changed to help us diagnose issues. 
-
-- **changed_folder** - determines whether this action was archived, scheduled, or another action.
 
 - **delete_scope** - During an account deletion, whether you deleted the account from this device or from all devices with Outlook.  
 
-- **delete_scope** - tracks whether this action was related to deleting someone just on this device or on all devices, if applicable. 
-
 - **enabled_state** - Whether your auto reply, save contacts, and block external images settings are configured correctly  
 
-- **enabled_state** - whether state related to the action is enabled
+- **notification_action** - To check if you have configured any notification actions for triaging emails to help us make sure this setting is working successfully 
 
-- **notification_state** - indicates what type of badge count the user has asked for i.e. no badges, focused inbox only, etc.,
+- **notification_action_number** - To check if your notification actions (action one or action two) are configured correctly
 
-- **server_type** - Similar to auth_type, it tells us which type of account you have to help us diagnose issues better. Examples** - Office365, Gmail, Outlook
+- **server_type** - Similar to auth_type, it tells us which type of account you have to help us diagnose issues better.  Examples: Office365, Gmail, Outlook
 
-- **server_type** - indicates the back-end server type allowing us to know if there is an issue with a particular server type
+- **setting_properties** - Tracks properties relation to setting action detailed below: 
+   - **alternate_app_icon_setting** - the selected alternate app icon (light, dark)
+   - **auth_type** - indicates the back-end authentication type allowing us to know if there is an issue with a particular account type
+   - **badge_count_state** - indicates what type of badge count the user has asked for I.e. no badges, focused inbox only, etc. 
+   - **changed_folder** - determines whether this action was archived, scheduled, or another action.
+   - **delete_scope** - tracks whether this action was related to deleting someone just on this device or on all devices, if applicable. 
+  - **enabled_state** - whether state related to the action is enabled
+  - **in_app_language** - the selected in-app language, string type (default, en-US, fa, ru etc.)
+  - **notification_action_setting** - indicates the details of, if applicable, notification action settings related to this action
+    - **notification_action** - indicates what the user was trying to do, I.e. flag, delete, archive, it allows us to determine what message action the user wanted to perform on the notification and if the action failed or not. 
+    - **notification_action_number** - indicates which action number (two of three actions are customizable) was assigned a notification action, i.e. action one, action two. This allows us to determine if there is a problem with a particular action.
+   - **notification_state** - indicates what type of badge count the user has asked for i.e. no badges, focused inbox only, etc.
+   - **server_type** - indicates the back-end server type allowing us to know if there is an issue with a particular server type
+   - **source** - indicates what is the source of notifications, if applicable, from settings or do not disturb setting
+   - **swipe_setting** - indicates the details of, if applicable, swipe settings related to this action
+     - **swipe_action** - indicates what the user was trying to do, i.e. flag, delete, archive, it allows us to determine what action the user wanted and if the action failed or not. 
+     - **swipe_direction** - indicates which way the user set up the swipe to be, i.e. left to right or right to left. This allows us to determine if there is a problem with a particular swipe direction.
+   - **ui_mode_setting** - the selected UI mode (dark, light, system default, low battery etc.)
+   - **signature_setting** - indicates if the setting was applied to all account or an individual account
 
-- **setting_properties** - Tracks properties relation to setting action 
-
-- **signature_setting** - indicates if the setting was applied to all account or an individual account
-
-- **source** - indicates what is the source of notifications, if applicable, from settings or do not disturb setting
-
-- **state_changed_to** - To check if your focused inbox on/off setting is configured correctly 
+- **state_changed_to** - To check if your focused inbox On/Off setting is configured correctly 
 
 - **swipe_action** - To check if you have configured any swipe actions for triaging emails to help us make sure this setting is working successfully 
 
-- **swipe_action** - indicates what the user was trying to do, i.e. flag, delete, archive, it allows us to determine what action the user wanted and if the action failed or not. 
-
 - **swipe_direction** - To check if your swipe directions (left or right) are configured correctly
 
-- **swipe_direction** - indicates which way the user set up the swipe to be, i.e. left to right or right to left. This allows us to determine if there is a problem with a particular swipe direction.
 
-- **swipe_setting** - indicates the details of, if applicable, swipe settings related to this action
-
-- **ui_mode_setting** - the selected UI mode (dark, light, system default, low battery etc.)
-
-#### sidebar_action
+#### sidebar.action
 
 Allows us to detect situations where there is possible negative impact on your ability configure your app settings, such as your notification settings, your primary mail account, and configuring your mail signature.
 
@@ -7134,7 +8402,7 @@ The following fields are collected:
 
 Determination if specific feature events have occurred, such as start or stop, and if feature is running​.
 
-#### app_startup
+#### app.startup
 
 This event lets us detect and fix issues where Outlook is starting slowly or incompletely, making it difficult for users to use our app.  This includes information on the specific features that were enabled and how long parts of the startup took.
 
@@ -7162,13 +8430,15 @@ The following fields are collected:
 
 - **total_millis** - total time from class loading start to Android Activity resume completion
 
-#### boot_time 
+#### boot.time 
 
 This event lets us detect when critical app errors occurred that would cause your app to crash or experience serious issues like causing you to see empty rows in your inbox. This event collects information that allows us to categorize and classify issues to help prioritize the impact of issues on customers.
 
 The following fields are collected:
 
 - **black_list_reason** - Tells us if there is a reason why we should disregard this data. Some examples include launching due to a remote notification and launching due to a background fetch.
+
+- **step_premain** – Tells us the amount of time it has taken for Outlook to go from the user tapping the icon to step0_main the “main” step defined in this document.
 
 - **step0_main** - Tells us the amount of time it has taken for Outlook to get to the "main" step, which is a step defined by Apple.
 
@@ -7222,7 +8492,7 @@ The following fields are collected:
 
 - **RMS.StatusCode** - Status code of the operation result
 
-#### first_visible
+#### first.visible
 
 This event lets us detect the first time the app is launched intentionally by the user. This event is required to ensure that the app is successfully working in Original Equipment Manufacturer (OEM) builds.
 
@@ -7716,7 +8986,32 @@ The following fields are collected:
 
 - **UsesSharedRuntime** - indicates if the app uses sharedRuntime or not.
 
-#### OneNote.App.AppBootComplete *(previous name)*, Office.OneNote.Android.App.AppBootComplete 
+#### Office.OfficeMobile.AppActivation.Launch
+
+This event identifies first time and subsequent activations through external triggers that activate the app. App activation loads certain dependencies that are responsible for making the app run smoothly and this event will record if it loaded successfully. It will also record the source of activation and app intent that was responsible for activating the app
+
+The following fields are collected:
+
+- **ActionName** - Integer value mapping to the name of the action/feature which is invoked from the activation point.
+ 
+- **ActivationType** - Integer value mapping to the source of activation
+  
+- **IsActionTriggered** - Boolean value determining whether the action got triggered after the successful activation of the app.
+
+- **IsFirstRun** - Boolean value determining whether it was the first run of the app or a subsequent run.
+ 
+
+#### Office.OfficeMobile.FRE.FirstRunSetup
+
+The first run of the app after installation will trigger this heartbeat event. It will help identify installs and auto upgrades from older versions of the app and enable us to identify errors in auto-upgrades, including library loads and expansion/language package download failures.
+
+The following fields are collected:
+
+- **IsFlightAssigned** - Boolean value determining if the user was part of any preassigned flight group which can trigger exposure to certain experiences.
+
+- **IsFRELoadSuccessful** - integer mentioning the result state
+
+#### OneNote.App.AppBootComplete *(previous name)*, Office.OneNote.Android.App.AppBootComplete, Office.Android.EarlyTelemetry.AppBootComplete
 
 The critical signal used to ensure new consumer users (Microsoft Account) can successfully launch and use OneNote for the first time.  This is used to ensure critical regression detection for OneNote app and service health.  If users can't launch the app for the first time, this would trigger a high severity incident.
 
@@ -7728,7 +9023,7 @@ The following fields are collected:
 
 - **ANY_DIALOG_SHOWN** - Indicates if any dialog is shown during boot time
 
-- **APP_SUSPEND_DURING_EVENT** - Indicates if the boot was pre-empted
+- **APP_SUSPEND_DURING_EVENT** - Indicates if the boot was preempted
 
 - **APP_THREAD_CREATION_WAIT_TIME_TIME_FOR_APP_THREAD_CREATION** - Time taken to create Application threads
 
@@ -9003,7 +10298,7 @@ The following fields are collected:
 
   - **Data\_Data\_ZoomText -** indicates if ZoomText was running during the session
 
-#### Office_Apple_DarkMode
+#### Office.Apple.DarkMode
 
 This event is collected for Office applications running under Apple platforms. The event tells us if user is running a System on DarkMode and whether the user overwrote the DarkMode System setting in Office.  We use this event to help ensure accessibility and prioritize user-experience optimization.
 
@@ -9013,7 +10308,7 @@ The following fields are collected:
 
 - **Data_RequiresAquaSystemAppearanceEnabled** - Whether DarkMode is overwritten in Office.
 
-#### Office_Apple_HardwareKeyboardInUse_Apple
+#### Office.Apple.HardwareKeyboardInUse.Apple
 
 This event is collected for Office applications running under Apple platforms. The event tells us that a user is attaching a keyboard to their mobile device. The event helps us improve accessibility and optimize our user experience.
 
@@ -9021,7 +10316,7 @@ The following fields are collected:
 
 - **Data_CollectionTime** - A timestamp denoting the event collection time.
 
-#### Office_Apple_MbuInstrument_DeviceAccessibilitySettings
+#### Office.Apple.MbuInstrument.DeviceAccessibilitySettings
 
 This event is collected for Office applications running under Apple platforms. The event collects the state of the different accessibility options available during a session. We use this event to help ensure accessibility and prioritize user-experience optimization.
 
@@ -9144,7 +10439,7 @@ The following are the data subtypes in this category:
 
 Unexpected application exits and the state of the application when that happens​.
 
-#### app_startup_reason
+#### app.startup.reason
 
 This event lets us detect and fix issues where Outlook crashed during app start up.  This event includes information on why the crash happened so we can fix the issue quickly.
 
@@ -9171,7 +10466,7 @@ The following fields are collected for only Outlook Mobile for iOS:
 - **is_watch_supported_and_active** - indicates whether a watch is supportive and active during the session
 
 
-#### application_crash
+#### application.crash
 
 Used for monitoring critical app crashes and helps us collect information on why the app has crashed and how to prevent it.
 
@@ -9199,7 +10494,7 @@ The following fields are collected:
 
      - java - if crash recorded on application Layer.
 
-     - native - if crash recored on native layer within the app. 
+     - native - if crash recorded on native layer within the app. 
 
      - non-fatal - crashes being recorded to debug any feature. Application won’t crash but it will upload non-fatal crash logs to help in debugging a feature.
 
@@ -9218,7 +10513,7 @@ The following fields are collected:
 - **glEsVersion** - OpenGL Embedded Systems version key
 
 
-#### crash_event
+#### crash.event
 
 Allows us to detect and fix situations where critical app crashes have occurred and helps us collect information on why the app has crashed and how to prevent it.
 
@@ -9226,13 +10521,19 @@ The following fields are collected:
 
 - **crashTime** - Date and time the crash occurred to help with investigation
 
+- **crash_time_from_start** – The elapsed time from app start to the crash occurred, to help with investigation
+
 - **exceptionName** - The name of the exception that triggered the crash to help with investigation
+
+- **exception_reason** – The reason of the exception that triggered the crash to help with investigation
 
 - **hasHx** - Tells us the account is using our new sync service to help us detect issues caused by our sync service
 
 - **incidentIdentifier** - A unique ID for the crash report so we can find the corresponding issue
 
 - **isAppKill** - Helps us understand if that app was killed or close on the device
+
+- **is_crashloop** – Helps us understand if the crash could likely be a crash loop.
 
 - **reportKey** - A unique ID for the application installation om the device for issue investigation
 
@@ -9267,7 +10568,7 @@ The following fields are collected:
 
 - **Event Name** - Event Name is the Event Category and Event Label.
 
-#### Office_Apple_IdentityDomainName
+#### Office.Apple.IdentityDomainName
 
 This event is collected for Office applications running under Apple platforms. The event is used to monitor the health of our system as well as investigating causes of failures by certain domain users. We collect the domain used by our users when they authenticate.  We use this data to help identify and fix those issues that might not seem too impactful at a broader level, but that turn out to be very impactful to a certain domain of users.
 
@@ -9279,7 +10580,7 @@ The following fields are collected:
 
 - **Data_IdentityProviderEnum** - The authentication identity provider code. (A number)
 
-#### Office_Apple_SystemHealthAppExitMacAndiOS
+#### Office.Apple.SystemHealthAppExitMacAndiOS
 
 This event is collected for Office applications running under Apple platforms. The event is used to monitor the health of our Office applications as well as for investigating causes of failures. We collect data on each application exit to determine whether an application exited gracefully.
 
@@ -9396,6 +10697,8 @@ The following fields are collected:
 - **IsDebug** - indicates if session is a debug session
 
 - **IsPreload** – indicates if the add-in is being preloaded in background for improving activation perf.
+
+- **IsWdagContainer** – indicates if the add-in activation is being taken place in a Windows Defender Application Guard container.
 
 - **NumberOfAddinsActivated** - Counter of add-ins activated
 
@@ -9685,7 +10988,16 @@ The following fields are collected:
 
 - **Event Name** - Event Name is the Event Category and Event Label.
 
-#### telemetry_error
+#### OneNote.SafeBootResetCrashCounterOnAppSuspend, Office.OneNote.Android.SafeBootResetCrashCounterOnAppSuspend, Office.Android.EarlyTelemetry. SafeBootResetCrashCounterOnAppSuspend
+
+The critical signal is sent when we are resetting the crash counter on app suspend before safe boot dialog is shown. This marker is required to track and diagnose the health of the app. A safe boot dialog is shown when the app crashes multiple times continuously. It gives the user an option to reset the app. This marker will help  figure out if Safe boot dialog was not shown to a user despite hitting trigger criteria. 
+
+The following fields are collected:
+
+- None
+
+
+#### telemetry.error
 
 This event lets us diagnose and fix issues that are preventing necessary diagnostic data from being generated or sent. These events let us understand if we are missing critical data needed to identify security issues or major issues with how your app is working.
 
@@ -9696,7 +11008,7 @@ The following fields are collected:
 - **type** - tells us the type of timer error to help us detect when our app is having any issues with sending diagnostic telemetry data
 
 
-#### watchdog_anr
+#### watchdog.anr
 
 Needed for monitoring app performance errors to prevent cases where the app stops responding, and your screen becomes frozen in the app (referred to as ANR - application not responding).
 
@@ -9721,7 +11033,7 @@ The following fields are collected:
 
 Poor response time or performance for scenarios such as application start up or opening a file.
 
-#### android_frame_metrics
+#### android.frame.metrics
 
 Allows us to detect and fix situations where our Android app components are causing performance issues, for example, if your inbox is not scrolling smoothly.
 
@@ -9747,7 +11059,7 @@ The following fields are collected:
 
 - **unknown_delay** - delay caused by unknown sources other than the explicitly tracked durations
 
-#### cal_component
+#### cal.component
 
 This event lets us detect and fix issues where there is perceivable performance impact on our calendar UI components that would cause your calendar to have scrolling issues.
 
@@ -9767,7 +11079,25 @@ The following fields are collected:
 
 - **view_duration** - Tells us how long it took to render the various UI calendar components to help us detect performance issues impacting your calendar experience
 
-#### conversation_load_time
+#### contact.action
+
+This event is triggered on different actions on contacts - viewing, updating, and deleting contacts as well as viewing the contacts list. It is used to determine if there are any performance regressions that have to do with contacts.
+
+The following fields are collected: 
+
+- **accounts_with_filters** - the number of accounts with filters applied to the contact list
+
+- **action** - the action that was performed, e.g. viewing a contact
+ 
+- **duration_initial_view_load** - duration from opening the view to initially loading the contact list
+
+- **duration_show_contacts** - duration from opening the view to showing contacts in the contact list
+ 
+- **total_contacts** - number of contacts with no filters applied
+ 
+- **total_filtered_contacts** - number of contacts with filters applied
+
+#### conversation.load.time
 
 This event lets us detect and fix issues where there is perceivable performance impact on loading your email conversations to ensure your emails are loading as expected.
 
@@ -9775,7 +11105,7 @@ The following fields are collected:
 
 - **time** - Tells us the amount of time that it has taken for the email conversation to complete loading.
 
-#### core_data_migration
+#### core.data.migration
 
 Allows us to detect and fix situations where there was an error in updating email data on your device to a newer version.
 
@@ -9789,7 +11119,7 @@ The following fields are collected:
 
 - **migration_duration_seconds** - tracks the migration duration rounded to one of these time slots - 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180 (180 and beyond should just be 180)
 
-#### core_data_performance
+#### core.data.performance
 
 Allows us to detect and fix situations where the email data we're storing on your device is causing performance issues.
 
@@ -9805,9 +11135,9 @@ The following fields are collected:
 
 - **operation** - raw value of operation either save, fetch, or "read write queue blocked"
 
-#### inbox_component
+#### inbox.component
 
-This event lets us detect and fix issues where there is perceivable performance impact on your inbox UI components which would cause email messages, avatar, read/unread state to not load or display properly.
+This event collects two types of user data: Microsoft 365 subscription status, and whether the user sees ads. This helps us detect and fix issues where there is perceivable performance impact on the user's inbox UI components which would cause email messages, avatar, read/unread state to not load or display properly.
 
 The following fields are collected: 
 
@@ -9823,7 +11153,9 @@ The following fields are collected:
 
 - **ad_shown** - whether an ad was shown (if ads are enabled)
 
-- **age** - age of the person (used to confirm compliance with age limitations on ads)
+- **ad_shown_for_premium** - unexpectedly showing ad to premium users
+
+- **age** - age of the person (used to confirm compliance with age limitations on ads) *[This field has been removed from current builds of Office, but might still appear in older builds.]*
 
 - **app_instance** – Outlook has 2 entry points for Duo, one is for Calendar and one is for Mail and both can be launched side by side in multi instance environment. This will let us know which instance is making this reporting call, either Mail or Calendar
 
@@ -9843,6 +11175,8 @@ The following fields are collected:
 
 - **orientation** - the screen orientation at the time of the even (portrait or landscape)
 
+- **provider** – the provider (Xandr or Facebook) of the current showing ad
+
 - **sub_error_type** - detailed error type
 
 - **taskId** – TaskId will give us the current instance’s taskId. This will be required in multi instance environment if user wants to launch same instances (Calendar, Calendar or Mail, Mail) side by side
@@ -9851,7 +11185,7 @@ The following fields are collected:
 
 - **view_duration** - how long the component was viewed by the user
 
-#### Initial_page_landing 
+#### Initial.page.landing 
  
 This event helps track the type of experience that users see when they land in our application page.  This data is used to determine the traffic of users piped into each experience in our application and also helps us to easily consolidate experimentation results.
  
@@ -10015,7 +11349,7 @@ The following fields are collected:
 
 - **UserInfo.UserObjectId** - The user object ID
 
-#### json_parse_error 
+#### json.parse.error 
  
 This event denotes that an error is thrown by the json parser.  We will be able to debug the read registry string that was sent to the json parser, to allow a smooth experience for our users.
  
@@ -10023,7 +11357,7 @@ The following fields are collected:
 
 - **Error** - This consists of the error message that the error object returns.
 
-#### mail_filter_component
+#### mail.filter.component
 
 This event lets us detect and fix issues where there is perceivable performance impact on your mail filtering experience which would cause your filters to not load or display properly.
 
@@ -10132,7 +11466,7 @@ The following fields are collected:
 - **UserDialogInterruptionDuringBoot** - Boolean for any blocking dialog shown during boot
 
 
-#### Office_Apple_Apple_AppBoot_Mac
+#### Office.Apple.Apple.AppBoot.Mac
 
 This event is collected for Office applications running under Apple platforms. The event is used to collect the time taken to boot the app, as well as some details on the type of boot done. This event helps us monitor our performance and provide performance improvements.
 
@@ -10162,7 +11496,7 @@ The following fields are collected:
 
 - **Data_SentToBackground** - Whether the app was sent to background during boot.
 
-#### Office_Apple_DiskRuleResultSerializerErrorOnStreamOp
+#### Office.Apple.DiskRuleResultSerializerErrorOnStreamOp
 
 This event is collected for Office applications running under Apple platforms. The event is used to monitor the health of our telemetry infrastructure. This event denotes an error has occurred.
 
@@ -10174,7 +11508,7 @@ The following fields are collected:
 
 - **Data_IsWriteOp** - Whether we are about to execute a write operation
 
-#### Office_Apple_MacBootResourceUsage
+#### Office.Apple.MacBootResourceUsage
 
 This event is collected for Office applications running under Apple platforms. This event is collected for Office applications running under Apple platforms. The event is used to collect multiple indicators around the resources being consumed during boot by Office apps. This event helps us monitor our performance and provide performance improvements.
 
@@ -10218,7 +11552,7 @@ The following fields are collected:
 
 - **Data_VoluntaryContextSwitchesNvcsw** - The number of voluntary context switches
 
-#### Office_Apple_MAU_Validation
+#### Office.Apple.MAU.Validation
 
 This event is collected for Office applications running under Apple platforms. The event is used to monitor the health of the Microsoft Autoupdate component, which is used to distribute and install application updates. The data collected is used for detecting errors and investigating causes of failures.
 
@@ -10228,7 +11562,7 @@ The following fields are collected:
 
 - **Data_Message** - We collect a string containing a description of the error
 
-#### Office_Apple_MbuInstrument_Hang_Detection_Spin_Control
+#### Office.Apple.MbuInstrument.Hang.Detection.Spin.Control
 
 This event is collected for Office applications running under Apple platforms. The event is logged whenever an application appears to become non-responsive. This event helps us monitor our performance and provide performance improvements.
 
@@ -10236,7 +11570,7 @@ The following fields are collected:
 
 - **Data_CountSpinControlStart** - A marker than indicates that the application appears to have become unresponsive (or slow to respond)
 
-#### Office_Apple_MbuInstrument_VMOnDocumentClose
+#### Office.Apple.MbuInstrument.VMOnDocumentClose
 
 This event is collected for Office applications running under Apple platforms. The event is used to collect a snapshot of the state of memory during document close. This event helps us monitor our performance and provide performance improvements.
 
@@ -10248,7 +11582,7 @@ The following fields are collected:
 
 - **Data_VirtualMemory** - Observed virtual memory value
 
-#### Office_Apple_MbuInstrument_VMOnShutdown
+#### Office.Apple.MbuInstrument.VMOnShutdown
 
 This event is collected for Office applications running under Apple platforms. The event is used to collect a snapshot of the state of memory during application shutdown. This event helps us monitor our performance and provide performance improvements.
 
@@ -10260,7 +11594,7 @@ The following fields are collected:
 
 - **Data_VirtualMemory** - Observed virtual memory value
 
-#### Office_Apple_MbuInstrument_VMOnStart
+#### Office.Apple.MbuInstrument.VMOnStart
 
 This event is collected for Office applications running under Apple platforms. The event is used to collect a snapshot of the state of memory during application start. This event helps us monitor our performance and provide performance improvements.
 
@@ -10272,7 +11606,7 @@ The following fields are collected:
 
 - **Data_VirtualMemory** - Observed virtual memory value
 
-#### Office_Apple_MsoAppDelegate_BootPerf
+#### Office.Apple.MsoAppDelegate.BootPerf
 
 This event is collected for Office applications running under Apple platforms. The event is used to collect time and memory consumed during boot by Office apps, as well as some details on the type of boot done. This event helps us monitor our performance and provide performance improvements.
 
@@ -10288,7 +11622,7 @@ The following fields are collected:
 
 - **Data_VirtualMemory** - A snapshot of the available virtual memory during boot
 
-#### Office_Apple_UngracefulAppExitHangsInPreviousSession
+#### Office.Apple.UngracefulAppExitHangsInPreviousSession
 
 This event is collected for Office applications running under Apple platforms. The event is used to monitor the health of our Office applications as well as for investigating causes of failures. We collect the number of times an application appeared to be unresponsive prior to hitting an ungraceful application exit.
 
@@ -10302,7 +11636,7 @@ The following fields are collected:
 
 - **Data_SessionVersion** - The major version of the application in which an ungraceful application exit was observed.
 
-#### Office_Apple_WhatsNewErrorAndWarning
+#### Office.Apple.WhatsNewErrorAndWarning
 
 This event is collected for Office applications running under Apple platforms. The event is used to monitor the health of the What's New feature. This event denotes that an error/warning occurred while parsing What's New content, pointing to potential content authoring issues.
 
@@ -10347,6 +11681,16 @@ The following fields are collected:
 - **ReqId** - GUID for the batch request that this method belongs to
 
 - **TypeId** - GUID for the interface on which this method being called
+
+#### Office.iOS.Paywall.FailedScreen.RetryButtonTap
+
+This usage telemetry is collected to know when the Purchase/Provisioning/Activation failed, and the user tapped the “Retry” button.  Used to troubleshoot purchase error scenarios that lead to retry and improve process reliability.
+
+The following fields are collected:
+
+- **failureReason** - String – Indicates what the failure was the user is retrying. Like “provisioningFailed”, “purchaseFailed”, “activationFailed”.
+
+- **productid** - String – App Store ID of the product for which user is retrying the failed request
 
 
 #### Office.Manageability.Service.ApplyPolicy
@@ -10443,40 +11787,66 @@ Collected when an Office application is booted. Includes whether the boot was in
 
 The following fields are collected:
 
-  - **ActivationKind** - Whether the application was started by launching from the Start menu, by opening a file, or through OLE Automation.
+- **ActivationKind** - Whether the application was started by launching from the Start menu, by opening a file, or through OLE Automation.
   
-  - **BootToStart** - Whether the user has chosen to show the start screen when this application starts.
+- **BootToStart** - Whether the user has chosen to show the start screen when this application starts.
 
-  - **ColdBoot** - Whether is first time Office application runs after a system restart or application binary had to be loaded from disk.
+- **ColdBoot** - Whether is first time Office application runs after a system restart or application binary had to be loaded from disk.
 
-  - **DeviceModel** - The model of the device.
+- **DeviceModel** - The model of the device.
 
-  - **DocLocation** -  When opening a document, indicates which service provided the document (OneDrive, File Server, SharePoint, etc.).
+- **DocLocation** -  When opening a document, indicates which service provided the document (OneDrive, File Server, SharePoint, etc.).
 
-  - **DurationUntilMso20Initialization** - The duration in microseconds it took between when the Office process was initialized and mso20win32client.dll was loaded.
+- **DurationUntilMso20Initialization** - The duration in microseconds it took between when the Office process was initialized and mso20win32client.dll was loaded.
 
-  - **FirstBoot** - Whether this was a first boot of the application.
+- **Embedding** – Whether the app was opened for OLE embedding.
 
-  - **InitializationDuration** - The duration in microseconds it took to first initialize the Office process.
+- **FirstBoot** - Whether this was a first boot of the application.
 
-  - **InterruptionMessageId** - If the boot was interrupted by a dialog asking for user input, the ID of the dialog.
+- **InitializationDuration** - The duration in microseconds it took to first initialize the Office process.
 
-  - **TotalWorkingSetMB** - The amount of memory in megabytes in the process's working set.
+- **InterruptionMessageId** - If the boot was interrupted by a dialog asking for user input, the ID of the dialog.
 
-  - **VirtualSetMB** - The amount of memory in megabytes in the process's virtual set. (MacOS / iOS only)
+- **LegacyDuration** - The length of time the activity took to execute, measured using different starting and ending points than Activity.Duration.
 
-  - **WorkingSetPeakMB** - The largest amount of memory in megabytes that was ever in the process's working set so far.
+- **OpenAsNew** – Whether the app was started by opening an existing document as the template for a new one.
+
+- **TotalWorkingSetMB** - The amount of memory in megabytes in the process's working set.
+
+- **VirtualSetMB** - The amount of memory in megabytes in the process's virtual set. (MacOS / iOS only)
+
+- **WorkingSetPeakMB** - The largest amount of memory in megabytes that was ever in the process's working set so far.
 
 
 #### Office.PowerPoint.PPT.Android.RehearseView
 
-This event is triggered on Stop of rehearsal session. In combination with Office.PowerPoint.PPT.Android.RehearseView.StartSession this will be the first indicator of any crashes or errors that user faces.
+This event is denoting that user has stopped the rehearsal session. In combination with Office.PowerPoint.PPT.Android.RehearseView.StartSession this will be the first indicator of any crashes or errors that user faces.
 
 The following fields are collected:
 
-- **ResumeRehearsingCount** – Count of how many times user clicked on resume rehearsal
+- **ConnectionCreationTime** - time taken to create service side connections.
 
-- **PauseRehearsingCount** – Count of how many times user clicked on pause rehearsal
+- **CountDownAlertTime** – Time for which countdown alert was displayed.
+
+- **CountdownInitTime–** Time between slideshow load completed and countdown started.
+
+- **CritiqueSummary** - Summary of what all critiques user saw with their counts.
+
+- **ExitEventCode** – Code to identify under which scenario user exit out of rehearse session, whether it was error scenario or successful exit. 
+
+- **FRETime** - Time between FRE screen started to display until user dismissed it. 
+
+- **MicrophonePermissionTime** - Time for which microphone permission alert was displayed until user select one of the options.
+
+- **PauseRehearsingCount** – Count of how many times user clicked on pause rehearsal.
+
+- **RehearsalInitTime** - Time taken by rehearsal to initialize.
+
+- **ResumeRehearsingCount** – Count of how many times user clicked on resume rehearsal.
+
+- **Sessionid** - This is speech frontdoor session id. This is used to debug service logs.
+
+- **SlideshowViewLoadTime** – Time taken by slideshow to load.
 
 
 #### Office.PowerPoint.PPT.Android.RehearseView.Errors
@@ -10496,8 +11866,25 @@ Event triggered when summary page is loaded. This event helps us in capturing th
 
 The following fields are collected:
 
-- **SummaryPageLoadTime:int** – Time (in ms) taken to load summary page. This includes payload creation time 
+- **PayloadCreationTime** – This is the time taken in milliseconds to create payload. 
 
+- **PostUrlCallTime** – This is the time taken in milliseconds to send the post Url call. 
+
+- **RehearseSessionid** - This is speech frontdoor session id. We can use this to debug service logs.
+
+- **RequestPayloadSize** – This is the size of the request payload. 
+
+- **ResourcesLoadTime** – This is the time taken in milliseconds to load resources (js, css). 
+
+- **SummaryPageErrorReceived** – This is a Boolean value which indicates if summary page was received or error occurred.
+
+- **SummaryPageHtmlLoadTime** – This is the time taken in milliseconds to load summarypageHtml. 
+
+- **SummaryPageLoadStartTime** – This is the time taken in milliseconds receive first response from the server. 
+
+- **SummaryPageLoadTime** – Time (in ms) taken to load summary page. This includes payload creation time 
+
+- **ThumbnailsCount** – This is the total number of thumbnails that will be part of summary page. 
 
 #### Office.PowerPoint.PPT.Android.RehearseView.StartSession
 
@@ -10506,6 +11893,58 @@ Event triggered when user clicks on start session. This event helps us in captur
 The following fields are collected:
 
  - None
+
+#### Office.PowerPoint.Rehearsal.SessionMetrics 
+
+Event triggered when the speech session is stopped for Presenter Coach. This event helps us in capturing some metrics for a rehearsal session in Presenter Coach. It will help in maintaining a high quality of service for this feature.
+
+The following fields are collected:
+
+- **ActualRehearseBootTimeInMs** – This is the actual time taken for the connections to be created.
+
+- **AdaptationTextSize** – This is the size of the text that is send to service.
+
+- **AuthDurationInMs** – This is the time taken in milliseconds for authentication (refresh the auth token).
+
+- **AuthError** – This describes the authentication error that occurred (if at all).
+
+- **AvgFragmentLatencyInMs** – This is the average round-trip time for network speech messages.
+
+- **ConnectDurationInMs** – This is the time taken in milliseconds for the session to complete the connection. 
+
+- **FirstAudioDelayInMs** – This is the time taken in milliseconds for the first audio data to be received.
+
+- **FRetriedOnOpenConnection** – This is a Boolean which indicates whether retry happen for openconnection or not.
+
+- **InitMediaCaptureLayerDurationInMs** – This is the time taken in milliseconds to initialize the media/audio capture layer.
+
+- **LocallyDroppedMessageCount** – This is the total number of messages dropped locally.
+
+- **NumReconnectAttemptsDuringSession** – This indicates how many times the attempt was made to reconnect to speechservice.
+
+- **NumTriesDuringEachReconnectAttempt** – This is an array that indicates number of tries that were done during each reconnect attempt.
+
+- **OpenFrontDoorConnectionDurationInMs** – This is the time in milliseconds taken to open the connection to the FrontDoor service.
+
+- **SendAdaptationTextDurationInMs** – This is the time taken in milliseconds to send the adaptation text to the service.
+
+- **ServiceDroppedMessageCount** – This is the total number of messages dropped by the service.
+
+- **SessionDurationInMs** – This is the time duration of entire session from when user clicked start to when user clicked stop.
+
+- **SessionId** – This is the speech frontdoor session id. We can use this to debug service logs.
+
+- **SpeechClientResultEventsWithTimestamps** – This is an array of error codes received along with the timestamps which can help in debugging.
+
+- **SpeechHResultsWithTimestamps** – This is an array of error codes received along with the timestamps which can help in debugging.
+
+- **StartSpeechCaptureDurationInMs** – This is the time taken in milliseconds to start speech capture.
+
+- **StartSpeechServiceDurationInMs** – This is an array of time taken to start speech session every time there is reconnect, including first start speech session duration also. 
+
+- **TotalMessageCount** – This is the total number of audio messages sent to the service.
+
+- **WebSocketConnectDurationInMs** – This is the time taken in milliseconds to complete the web socket connection.
 
 
 #### Office.UX.OfficeInsider.CanShowOfficeInsiderSlab
@@ -10653,7 +12092,7 @@ The following fields are collected:
 
 #### OneNote.App.SafeBootDialogActionTaken, Office.OneNote.Android.SafeBootDialogActionTaken, Office.Android.EarlyTelemetry.SafeBootDialogActionTaken
 
-The critical signal used to track user response when he/she sees a safe boot dialog. Safe boot dialog is shown when we were unable to launch repeatedly. User choice to safe boot is used as permission to clear app data to launch successfully. This is used to ensure critical regression detection for OneNote app and service health. User sees when they encounter critical boot crash bug. This info will help track if they crash causehas been resolved and user can launch the app successfully or not.
+The critical signal used to track user response when he/she sees a safe boot dialog. Safe boot dialog is shown when we were unable to launch repeatedly. User choice to safe boot is used as permission to clear app data to launch successfully. This is used to ensure critical regression detection for OneNote app and service health. User sees when they encounter critical boot crash bug. This info will help track if they crash cause has been resolved and user can launch the app successfully or not.
 
 The following fields are collected: 
 
@@ -10686,7 +12125,7 @@ The following fields are collected:
 
 - **ServerType** - Returns the type of the server offering the service
 
-#### perf_event
+#### perf.event
 
 Used for monitoring possible negative impact on performance of loading different parts of the app, for example to ensure when you first open the app, your inbox loads as quickly as possible.
 
@@ -10702,15 +12141,23 @@ The following fields are collected:
 
 - **total_time_elapsed** - Tells us how long the performance event took to help us understand the severity of the performance issue
 
-#### performance_record
+#### performance.record
 
-Allows us to detect and fix situations where the app memory usage and CPU usage becomes critically high which could cause your device to slow down
+This event collects performance metrics of the app. This allows us to detect and fix situations where the app memory usage and CPU usage becomes critically high or has other performance issues which could cause your device to slow down.
 
 The following fields are collected: 
+
+- **app_exit_metric** - Tell us the metrics about counts of different performance types of foreground and background app exits, to help us understand app exits unexpectedly with negative performance reasons.
+
+- **average_suspended_memory** - Tells us the average amount of memory in use by the app when it’s suspended so we have something to compare, to help us understand the negative performance impact.
 
 - **category** - Tells us if the app is in the foreground or background at the time. Possible values include foreground and background.
 
 - **cpu_usage** - Tells us how much CPU was used by the app so we have something to compare, to help us understand the negative performance impact
+
+- **cumulative_CPU_time** - Tells us the total amount of CPU the app used with the measurement of duration of time, so we have something to compare, to help us understand the negative performance impact.
+
+- **cumulative_GPU_time** - Tells us the total amount of GPU time used by the app, so we have something to compare, to help us understand the negative battery life impact.
 
 - **is_watch_app_installed** - Tells us if the user is currently using an Apple Watch and whether it is installed to help us understand the negative performance impact due to the Watch
 
@@ -10721,6 +12168,10 @@ The following fields are collected:
 - **memoAry_used_percentage** - Tells us what percentage of memory was used by the app so we have something to compare, to help us understand the negative performance impact
 
 - **memory_used** - Tells us how much memory was used by the app so we have something to compare, to help us understand the negative performance impact
+
+- **peak_memory_usage** - Tells us the largest amount of memory used by the app so we have something to compare, to help us understand the negative performance impact.
+
+- **scroll_hitch_time_ratio** - Tells us the ratio of the time spent hitching while scrolling on UI, to help us understand the negative UI performance impact.
 
 
 ### *Application activity error subtype*
@@ -10749,7 +12200,7 @@ The following fields are collected:
 
 - **type** - the type of assertion error that occurred, e.g. null_folder_name, compose_selected_null_account, to help us detect issues related to a certain part of the code
 
-#### edit_contact_error
+#### edit.contact.error
 
 Allows us to detect and fix situations where errors were caused when you're trying to view or edit contacts through our app.
 
@@ -10761,7 +12212,7 @@ The following fields are collected:
 
 - **version** - The version of the contact card service we are using to help us diagnose the issue
 
-#### error_report
+#### error.report
 
 This event lets us detect when critical app errors occurred so that we can prevent issues that could cause your app to crash or prevent you from reading email. 
 
@@ -11158,6 +12609,25 @@ The following fields are collected:
 
 - **UriScheme** - scheme of the URL
 
+#### Office.Android.AuthACEErrors
+
+This event uses the Microsoft Account (MSA) to determine which user is attempting to sign-in to the app and during that which telemetry in discussion is getting triggered as part of an unsuccessful attempt.  
+
+This event helps with MSA sign-in error distribution analysis, which helps in understanding reasons behind unsuccessful MSA sign-in flow end.
+
+The following fields are collected:
+
+- **ExceptionsName** - indicates exception classes with regard to exception tags that occur during Microsoft account sign-in flow.
+
+- **ExceptionsTag** - indicates which inflow exceptions present in union are occurring for MSA-sign in flow.
+
+- **IDCRLACEErrorCode** - Gives error code occurring during MSA sign-in flow. Different error codes mentioned at %SRCROOT%\identity\coreapi\public\IdentityData.h
+
+- **IDCRLAuthenticationStatusErrorCode** - Indicates error codes for invalid status of Authentication result coming from Microsoft Account (MSA).
+
+- **IDCRLUserInteractionMissingError** - Indicates if Microsoft Account (MSA) sign-in flow invoked with showUI flag as false causing the hit.
+
+
 #### Office.Android.BCS.Errors
 
 Binary conversion Errors telemetry for Print and Share as PDF.  Microsoft uses this to identify failure points during BCS conversions in Word, Excel, or PowerPoint.
@@ -11178,7 +12648,7 @@ The following fields are collected:
 
 - **PdfConversionHRStatus** - PDF conversion status code
 
-- **PdfConversionResult** - PDF Conversion result enumeration.  Values: "Success", "Failed" and "Cancelled"
+- **PdfConversionResult** - PDF Conversion result enumeration.  Values: "Success", "Failed" and "Canceled"
 
 - **PdfFileSize** - Size of the PDF
 
@@ -11234,7 +12704,7 @@ The following fields are collected:
 
 - **ExceptionErrorMessage** - verbose error message
 
-#### Office_Android_EarlyTelemetry_ExpansionFilesErrors
+#### Office.Android.EarlyTelemetry.ExpansionFilesErrors
 
 Android Package Kit (APK) expansion files for the Office mobile app are supplementary resource files that Android app developers can publish along with their app. To make our Expansion files download mechanism more reliable, we are logging the cause of errors that occur either in downloading the expansion files or while reading the downloaded expansion files.
 
@@ -11249,6 +12719,49 @@ The following fields are collected:
 - **Data_ExceptionType** - An optional text field representing the name of the exception thrown from source code.
 
 - **Data_MethodName** - Text representing the method name in source code where there is an error.
+
+#### Office.Android.EarlyTelemetry.ExtractionError
+
+To reduce the size of Office Android apps, we apply compression to the resources in the final package. At run time, we first extract these resources before using them. Sometimes there are unexpected errors while performing extractions, which leads to app crashes. 
+
+Through this event we are collecting some diagnostic information related to extraction, like name of the resource being extracted, path where its extracted etc., free disk space available etc. This data is collected only when there are extraction errors.
+
+We use this data to understand the cause of extraction failures, and to improve the user experience of our apps.
+
+The following fields are collected:
+
+- **Data_ArchiveName** - Name of the resource that is being extracted.
+
+- **Data_ArchivePath** - Path where the resource is temporarily cached.
+
+- **Data_ArchiveSizeKB** - Size of the resource that is being extracted.
+ 
+- **Data_ClassName** - File name in source code where the error is encountered.
+
+- **Data_ErrorDetail** - Text describing more details about the cause of the error, like the error code etc.
+
+- **Data_ErrorMessage** - Text describing the type of error encountered during extraction.
+
+- **Data_ExtractionDestinationPath** - Path where the resource is to be saved after extraction.
+
+- **Data_FreeDiskSpaceMB** - The amount of free disk space available on the device measured in Mega Bytes. 
+
+- **Data_ItemToExtract** - Name of the resource that is being extracted.
+
+- **Data_MethodName** - Method name in source code where the error is encountered.
+
+
+#### Office.Android.EarlyTelemetry.RegistryErrors
+
+This event captures any errors faced during Android registry access. This event data helps us in understanding the user errors and making the registry feature more robust.
+
+The following fields are collected:
+
+- **App** – The application process sending the event.
+
+- **AppVersionLong** – The application version.
+
+- **Data_StackTrace** – The stacktrace of the error.
 
 #### Office.Android.EarlyTelemetry.SharedLibraryLoadersearchAndloadLibraryError 
 
@@ -11459,7 +12972,7 @@ The following fields are collected:
 - **WasIdentitySignedOut** - Indicates if account was in signed out state.
 
 
-#### Office_Apple_Licensing_Mac_DRActivationFailures
+#### Office.Apple.Licensing.Mac.DRActivationFailures
 
 This event is collected for Office applications running under Apple platforms. The event is used for capturing digital river activation failures (the event logs the key and product that was used to activate, as well as the error code received).  This event is used for detecting and helping troubleshoot activation failures (Digital River issues).
 
@@ -11473,7 +12986,7 @@ The following fields are collected:
 
 - **Data_ProductKeyHash** - An encoded product key being activated
 
-#### Office_Apple_Licensing_Mac_GetMachineStatusErrors
+#### Office.Apple.Licensing.Mac.GetMachineStatusErrors
 
 This event is collected for Office applications running under Apple platforms. The event collects the error code returned while periodically checking the validity of a subscription license. The error code can signify server unavailability but also license expiration, machine count limit, invalid hardware ID, etc.  This event is used to monitor the health of the Office Licensing Service but also to investigate issues related to subscription machine management.
 
@@ -11493,7 +13006,7 @@ The following fields are collected:
 
 - **Result** - result error code
 
-#### Office_FirstRun_Apple_MacONIOLKFirstRunStarted
+#### Office.FirstRun.Apple.MacONIOLKFirstRunStarted
 
 This event is collected for Office applications running under Apple platforms. The event lets us know a user has entered first run experience. We use this event to figure out if the First-Run Experience (FRE) was started successfully.
 
@@ -11513,7 +13026,7 @@ The following fields are collected:
 
   - **Data\_TagID** - The identifier of the failure that occurred
 
-#### Office.Outlook.Desktop.Calendar.AcceptCalShareNavigateToSharedFolder\_Error
+#### Office.Outlook.Desktop.Calendar.AcceptCalShareNavigateToSharedFolder.Error
 
 Collects information when any failure occurs when while Navigation to shared Calendar. This data is used to monitor the health of the calendar sharing API as well as Outlooks interaction with shared calendars.
 
@@ -11797,7 +13310,7 @@ The following fields are collected:
 
 - **RMS.SDKVersion** - The version of Rights Management Service Client
 
-#### save_error
+#### save.error
 
 Allows us to detect and fix situations where there was an error when you attempted to save a file.  It tracks errors caused by failures to save a file, including a descriptive error message to help us resolve the issue.
 
@@ -11823,7 +13336,7 @@ The following are the data subtypes in this category:
 
 Network connection state and device settings, such as memory.
 
-#### application_did_receive_memory_warning
+#### application.did.receive.memory.warning
 
 This event is sent when Apple tells us that the application is running out of memory. It tells us that we have introduced an issue with memory management on your device.
 
@@ -11847,7 +13360,7 @@ The following fields are collected:
 
 - **running_time** - Tell us the amount of time that app has spent running at the time the application has run out of memory.
 
-#### conversation_memory_leak
+#### conversation.memory.leak
 
 Allows us to detect situations where our email conversation view is causing us to use up more memory on your device that expected.
 
@@ -11855,7 +13368,7 @@ The following fields are collected:
 
 - No fields or added data are collected. Only logs are collected if there is a memory leak related to a conversation thread.
 
-#### core_data_corruption
+#### core.data.corruption
 
 Allows us to detect situations where we cannot show you your email or calendar because where we store your email on your device has become corrupted.
 
@@ -11865,7 +13378,7 @@ The following fields are collected:
 
 - **sqlError** - numerical error code listed at https://www.sqlite.org/c3ref/c_abort.html
 
-#### core_data_corruption_user_reset
+#### core.data.corruption.user.reset
 
 Allows us to detect situations where you have deleted or reset your account in our app and it was caused by a corruption in email data we've stored on your device.
 
@@ -11873,7 +13386,7 @@ The following fields are collected:
 
 - **errorSource** - dictates where the corruption occurred whether during save or create
 
-#### core_data_diagnostics 
+#### core.data.diagnostics 
 
 Allows us to detect and fix situations where our email storage is using up too much of your device storage space
 
@@ -11881,7 +13394,7 @@ The following fields are collected:
 
 - **db_size_megabytes** - tracks the size of the core data database rounded to the nearest 25 megabytes and with a maximum megabyte of 500
 
-#### general_properties_log
+#### general.properties.log
 
 This event collects information that allows us to categorize and classify issues within the Outlook app that are related to accessibility and device settings.  This categorization is necessary to prioritize the impact of issues on customers.
 
@@ -11933,7 +13446,13 @@ The following fields are collected for Android only:
 
 - **talkback** - Tells us if the user has turned on the setting for talkback on their device to help us detect issues related to this setting
 
-#### low_storage_warning
+- **webview_kernel_version**: The Chromium kernel version of webview on the device to help us detect compatibility issues related to the version of webview.
+
+- **webview_package_name**: The package name of webview on the device to help us detect compatibility issues related to the version of webview.
+
+- **webview_package_version**: The package version of webview on the device to help us detect compatibility issues related to the version of webview.
+
+#### low.storage.warning
 
 This is needed to monitor if our app suddenly takes up most of your device storage due to high memory usage by indicating when the device is low on storage
 
@@ -12051,7 +13570,7 @@ The following fields are collected:
 
 #### Office.ServiceabilityManager.OfficeSvcMgrProfile
 
-This event is triggered when Office Serviceability Manager starts, and is critical for providing accurate insights related to Deployment Status and Application and Add-in crashes within customer's tenant by allowing us to generate insights for the IT Admin to be able to confidently roll-out updates for their enterprise machines.  
+This event is triggered when Office Serviceability Manager starts, and is critical for providing accurate insights related to Deployment Status and Application and Add-in crashes within customer's tenant by allowing us to generate insights for the IT Admin to be able to confidently roll out updates for their enterprise machines.  
 
 The following fields are collected:
 

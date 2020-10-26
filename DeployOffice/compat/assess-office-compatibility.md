@@ -29,7 +29,7 @@ Office Telemetry Dashboard and its components is a compatibility monitoring fram
   
 Office Telemetry Dashboard works as follows: When an Office document or solution is loaded, used, closed, or raises an error in certain Office applications, the application adds a record about the event to a local data store. Each record includes a description of the problem and a link to more information. Inventory and usage data is also tracked.
   
-How does Office Telemetry Dashboard work in earlier versions of Office? Office Telemetry Dashboard is not built into Office 2003, Office 2007, and Office 2010. For those clients, you deploy an agent that collects information about the installed add-ins and the most recently used documents. You won't get application event data for these clients like you do with newer Office clients, but you'll get inventory and usage data that helps you discover what is being used and likely important to your business. 
+How does Office Telemetry Dashboard work in earlier versions of Office? Office Telemetry Dashboard is not built into Office 2003, Office 2007, and Office 2010. For those clients, which are no longer supported, you deploy an agent that collects information about the installed add-ins and the most recently used documents. You won't get application event data for these clients like you do with newer Office clients, but you'll get inventory and usage data that helps you discover what is being used and likely important to your business. 
 
 > [!IMPORTANT]
 > - Office Telemetry Dashboard is an on-premises tool that collects inventory, usage, and health data about the Office documents and solutions, such as add-ins, used in your organization. The data is primarily designed to help your organization with application compatibility testing.
@@ -195,9 +195,9 @@ As part of your overall Office training plan, you should provide guidance to use
   
 ### Prepare help desk and users for change
 
-Your Help Desk should be ramped up on Office and ready to support users. They should start by going to the [Office Training Center](https://support.office.com/office-training-center).
+Your Help Desk should be ramped up on Office and ready to support users. They should start by going to [Microsoft 365 Training](https://support.microsoft.com/training).
     
-## Related topics
+## Related articles
 
 - [Guide to Office Telemetry Dashboard resources](compatibility-and-telemetry-in-office.md)
 - [Deploy Office Telemetry Dashboard](deploy-telemetry-dashboard.md)

@@ -122,13 +122,13 @@
     },
     {
       "source_path": "DeployOffice/best-practices/best-practices-links-for-helpdesk-and-end-user-training.md",
-      "redirect_url": "https://support.office.com/office-training-center",
-      "redirect_document_id": true
+      "redirect_url": "https://support.microsoft.com/training",
+      "redirect_document_id": false
     },
     {
       "source_path": "DeployOffice/best-practices/best-practices-common-debugging-steps.md",
-      "redirect_url": "https://support.office.com/article/e90bb691-c2a7-4697-a94f-88836856c72f",
-      "redirect_document_id": true
+      "redirect_url": "https://support.microsoft.com/office/e90bb691-c2a7-4697-a94f-88836856c72f",
+      "redirect_document_id": false
     },
     {
       "source_path": "DeployOffice/best-practices/best-practices-assessing-your-infrastructure.md",
@@ -313,7 +313,7 @@
     {
       "source_path": "DeployOffice/best-practices/best-practices-links-for-administration-education.md",
       "redirect_url": "https://docs.microsoft.com/learn/",
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     {
       "source_path": "deployoffice/best-practices/best-practices-group-policy-and-office-365-proplus.md",
@@ -353,7 +353,7 @@
     {
       "source_path": "DeployOffice/rds-onedrive-business-vdi.md",
       "redirect_url": "https://docs.microsoft.com/onedrive/sync-vdi-support",
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     {
       "source_path": "DeployOffice/mac/set-preference-diagnostic-data.md",
@@ -411,6 +411,16 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "DeployOffice/endofsupport/index.md",
+      "redirect_url": "resources",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "DeployOffice/admincenter/index.md",
+      "redirect_url": "overview",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "DeployOffice/about-office-365-proplus-in-the-enterprise.md",
       "redirect_url": "https://docs.microsoft.com/deployoffice/about-microsoft-365-apps",
       "redirect_document_id": true
@@ -427,8 +437,8 @@
     },
     {
       "source_path": "DeployOffice/reference-articles-for-deploying-office-365-proplus.md",
-      "redirect_url": "https://docs.microsoft.com/deployoffice/reference-articles",
-      "redirect_document_id": true
+      "redirect_url": "https://docs.microsoft.com/deployoffice/deployment-guide-microsoft-365-apps",
+      "redirect_document_id": false
     },
     {
       "source_path": "DeployOffice/deploy-office-365-proplus-in-gcc-high-dod.md",
@@ -537,12 +547,92 @@
     },
     {
       "source_path": "DeployOffice/delay-receiving-feature-updates-from-deferred-channel-for-office-365-proplus.md",
-      "redirect_url": "https://docs.microsoft.com/deployoffice/delay-feature-updates-semi-annual-channel",
-      "redirect_document_id": true
+      "redirect_url": "https://docs.microsoft.com/deployoffice/office-deployment-tool-configuration-options#targetversion-attribute-part-of-updates-element",
+      "redirect_document_id": false
     },
     {
       "source_path": "DeployOffice/use-the-readiness-toolkit-to-assess-application-compatibility-for-office-365-pro.md",
       "redirect_url": "https://docs.microsoft.com/deployoffice/readiness-toolkit-application-compatibility-microsoft-365-apps",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "DeployOffice/office-2007-end-support-roadmap.md",
+      "redirect_url": "https://docs.microsoft.com/deployoffice/endofsupport/office-2007-end-support-roadmap",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "DeployOffice/office-2010-end-support-roadmap.md",
+      "redirect_url": "https://docs.microsoft.com/deployoffice/endofsupport/office-2010-end-support-roadmap",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "DeployOffice/windows-7-support.md",
+      "redirect_url": "https://docs.microsoft.com/deployoffice/endofsupport/windows-7-support",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "DeployOffice/reference-articles.md",
+      "redirect_url": "https://docs.microsoft.com/deployoffice/deployment-guide-microsoft-365-apps",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "DeployOffice/feedback.md",
+      "redirect_url": "https://techcommunity.microsoft.com/t5/microsoft-365-apps-for/bd-p/Microsoft365Apps",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "DeployOffice/frp/assess-network.md",
+      "redirect_url": "https://docs.microsoft.com/office365/enterprise/office-365-networking-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "DeployOffice/frp/assign-licenses.md",
+      "redirect_url": "https://docs.microsoft.com/microsoft-365/admin/add-users/add-users",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "DeployOffice/frp/choose-settings.md",
+      "redirect_url": "https://config.office.com/officeSettings/configure",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "DeployOffice/frp/create-support-group.md",
+      "redirect_url": "https://adoption.microsoft.com/microsoft-365/#build-champions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "DeployOffice/frp/deploy-Office.md",
+      "redirect_url": "https://docs.microsoft.com/mem/configmgr/sum/deploy-use/office-365-dashboard",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "DeployOffice/frp/get-insights.md",
+      "redirect_url": "https://docs.microsoft.com/mem/configmgr/sum/deploy-use/office-365-dashboard",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "DeployOffice/frp/plan-updates.md",
+      "redirect_url": "https://docs.microsoft.com/deployoffice/overview-update-channels",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "DeployOffice/frp/request-admin-access.md",
+      "redirect_url": "https://docs.microsoft.com/partner-center/customers_revoke_admin_privileges",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "DeployOffice/frp/streamline-addins.md",
+      "redirect_url": "https://docs.microsoft.com/deployoffice/readiness-tools",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "DeployOffice/frp/sync-accounts.md",
+      "redirect_url": "https://docs.microsoft.com/microsoft-365/enterprise/set-up-directory-synchronization",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "DeployOffice/delay-feature-updates-semi-annual-channel.md",
+      "redirect_url": "https://docs.microsoft.com/deployoffice/office-deployment-tool-configuration-options#targetversion-attribute-part-of-updates-element",
       "redirect_document_id": false
     }
   ]
